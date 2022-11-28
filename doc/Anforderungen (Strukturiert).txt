@@ -1,14 +1,12 @@
 High-level:
 ----------
-Applikation mit welcher Bilder und deren Metadaten geladen und dann vermessen werden können: Distanz zwischen zwei Punkten, der Umfang (z.B. einer Zelle) oder
-allgemein die Länge entlang einem Pfad (z.B. Länge der Wirbelsäule vom Sakrum bist zum Brustkorb), also Polygone. Manchmal sind auch noch Winkel praktisch, z.B. zwischen
-zwei Fingern oder Wirbelachsen.
+Applikation mit welcher Bilder und deren Metadaten geladen und dann vermessen werden können: Distanz zwischen zwei Punkten, der Umfang (z.B. einer Zelle) oder allgemein die Länge entlang einem Pfad (z.B. Länge der Wirbelsäule vom Sakrum bist zum Brustkorb), also Polygone. Manchmal sind auch noch Winkel praktisch, z.B. zwischen zwei Fingern oder Wirbelachsen.
 
 Functional:
 ----------
 Prio 1:
-- Distanz zwischen zwei Punkten ist wichtig --> PYTHAGORAS
-- Umfang (z.B. einer Zelle) oder allgemein die Länge entlang einem Pfad (z.B. Länge der Wirbelsäule vom Sakrum bist zum Brustkorb) --> POLYGON
+- Distanz zwischen zwei Punkten ist wichtig --> PYTHAGORAS, bzw. hier: https://www.baeldung.com/java-distance-between-two-points
+- Umfang (z.B. einer Zelle) oder allgemein die Länge entlang einem Pfad (z.B. Länge der Wirbelsäule vom Sakrum bist zum Brustkorb) --> POLYGON (min. über Einzelstrecken iterieren/addieren)
 - GUI muss fogelndes anzeigen:
 	- Einheitenskala (Anschrift der Seitenlängen: Width x Height; in ensprechender Einheit, s. unten)
 	- Beschreibung muss angezeigt werden
@@ -23,6 +21,7 @@ Prio 3:
 - Abteilungsleiter Hugentobler möchte noch einen Nachtmodus
 
 Non-Functional:
+--------------
 Prio 1:
 - Metadaten (Metrik, Beschreibung, Bilddatei, etc.) aus Textdatei pro Bild (.txt)
 - Unterstützte Bilddateitypen: .jpg, .png
@@ -43,7 +42,8 @@ Prio 2:
 Prio 3:
 - Profil der Bilddaten entlang einer Linie (z.B. um Höhenmodelle analysieren zu können)
  
-Organisation / Stakeholder:
+Roles & Responsibilities:
+--------------------------
 - Abteilungsleiter: Hugentoble (Vorname?) --> SPONSOR ??
 - Entwicklungsleiterin: Sophie Meier --> APPROVER für SRS und Testabnahme ??
 - Urlaubsvertretung Entwicklunsleiterin: Praktikant (Vorname, Name?) --> APPROVER für Testabnahme ??
