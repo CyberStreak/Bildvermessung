@@ -1,0 +1,49 @@
+High-level:
+----------
+Applikation mit welcher Bilder und deren Metadaten geladen und dann vermessen werden können: Distanz zwischen zwei Punkten, der Umfang (z.B. einer Zelle) oder
+allgemein die Länge entlang einem Pfad (z.B. Länge der Wirbelsäule vom Sakrum bist zum Brustkorb), also Polygone. Manchmal sind auch noch Winkel praktisch, z.B. zwischen
+zwei Fingern oder Wirbelachsen.
+
+Functional:
+----------
+Prio 1:
+- Distanz zwischen zwei Punkten ist wichtig --> PYTHAGORAS
+- Umfang (z.B. einer Zelle) oder allgemein die Länge entlang einem Pfad (z.B. Länge der Wirbelsäule vom Sakrum bist zum Brustkorb) --> POLYGON
+- GUI muss fogelndes anzeigen:
+	- Einheitenskala (Anschrift der Seitenlängen: Width x Height; in ensprechender Einheit, s. unten)
+	- Beschreibung muss angezeigt werden
+
+Prio 2:
+- Winkel zwischen zwei Linien (z.B. zwischen zwei Fingern oder Wirbelachsen.) --> PYTHAGORAS
+
+Prio 3:
+- Kommandozeilentool, welches alle in einem Ordner befindlichen Bilddateien auflistet, eine Zeile pro Bild
+	- Namen
+	- Dimensionen in physikalischen Einheiten (ABKLäREN: das ist nicht die Auflösung sondern Pixel x Pixel und Höhe x Breite in der richtigen Einheit aus dem .txt)
+- Abteilungsleiter Hugentobler möchte noch einen Nachtmodus
+
+Non-Functional:
+Prio 1:
+- Metadaten (Metrik, Beschreibung, Bilddatei, etc.) aus Textdatei pro Bild (.txt)
+- Unterstützte Bilddateitypen: .jpg, .png
+- Auflösung, Folgende Einheiten müssen mindestens unterstütz werden: mm, cm, m, km
+- Wenn Auflösung in Metadaten fehlt, wird als Einheit 'px' (pixel) angezeigt
+
+- format-agnostisch, d.h. Bilder dürfen nicht verzerrt dargestellt werden, also ENTSCHEIDEN:
+	- Bildfenster dynamisch erstellen (aufgrund des Ausgangsformats des Bildes; aus Metadaten lesen?)
+	- ODER Bild auf (fixe?) Fenstergrösse skalieren, weil Bilder unterschiedlich gross sein können
+
+- GUI muss mit JavaFX programmatisch (d.h. ohne visuelle Layout Tools wie Scene Builder) implementiert werden
+- Keine zusätzlichen Bibliotheken erlaubt (ausser zum Lesen der JSON Daten)
+- 3-Schichten Architektur (damit die Logik-Klassen auch unabhängig vom GUI wiederverwendet werden können; s. FR xy zu Kommandozeilenaufruf)
+	
+Prio 2:
+- Metadaten auch aus JSON lesen
+
+Prio 3:
+- Profil der Bilddaten entlang einer Linie (z.B. um Höhenmodelle analysieren zu können)
+ 
+Organisation / Stakeholder:
+- Abteilungsleiter: Hugentoble (Vorname?) --> SPONSOR ??
+- Entwicklungsleiterin: Sophie Meier --> APPROVER für SRS und Testabnahme ??
+- Urlaubsvertretung Entwicklunsleiterin: Praktikant (Vorname, Name?) --> APPROVER für Testabnahme ??
