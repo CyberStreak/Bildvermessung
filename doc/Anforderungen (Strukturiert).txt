@@ -12,10 +12,10 @@ Prio 1:
 	- Beschreibung muss angezeigt werden
 
 Prio 2:
-- Winkel zwischen zwei Linien (z.B. zwischen zwei Fingern oder Wirbelachsen.) --> PYTHAGORAS
+- Winkel zwischen zwei Linien (z.B. zwischen zwei Fingern oder Wirbelachsen.) --> PYTHAGORAS, bzw. im Internet, z.B. hier: https://stackoverflow.com/questions/54704947/calculate-angle-between-two-lines
 
 Prio 3:
-- Kommandozeilentool, welches alle in einem Ordner befindlichen Bilddateien auflistet, eine Zeile pro Bild
+- Kommandozeilentool, welches alle in einem Ordner befindlichen Bilddateien auflistet, eine Zeile pro Bild (--> .txt bzw. JSON auslesen, tabellarisch anzeigen)
 	- Namen
 	- Dimensionen in physikalischen Einheiten (ABKLäREN: das ist nicht die Auflösung sondern Pixel x Pixel und Höhe x Breite in der richtigen Einheit aus dem .txt)
 - Abteilungsleiter Hugentobler möchte noch einen Nachtmodus
