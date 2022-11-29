@@ -1,13 +1,17 @@
 = Hintergrund
 == Welches Problem wird durch dieses Projekt gelöst und für wen?
-Man kann Objekte auf Bilddateien messen und in genauen metrischen Einheiten angeben. 
-Das Projekt ist für den Kunden.
+* Man kann Objekte auf Bilddateien messen und in genauen metrischen Einheiten angeben. 
+* Das Projekt ist für den Kunden.
+
 == Was sind die wichtigsten Bedürfnisse der Benutzenden und warum?
-Das alles reibungslos und schnell funktioniert, um keien Unnötigen Wartezeiten zu haben.
+* Dass alles reibungslos und schnell funktioniert, um keine unnötigen Wartezeiten zu haben.
+
 == Welche Ziele sollen erreicht werden?
-Distanz zwischen zwei Punkten und Länge entlang eines Pfads ausmessen. 
-Es müssen Einheitenskala und Beschreibung angezeigt werden.
-Winkel zwischen zwei Linien analysieren.
+* Bilddatei aus einer Ordnerstruktur auswählen und anzeigen
+* Distanz zwischen zwei Punkten und Länge entlang eines Pfads ausmessen. 
+* Es müssen Einheitenskala und Beschreibung angezeigt werden.
+* Winkel zwischen zwei Linien analysieren.
+
 == Wie wird das Problem gelöst und welcher Ansatz wird gewählt?
 
 == Was ist der Unterschied zu bestehenden Lösungen?
