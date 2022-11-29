@@ -5,8 +5,8 @@ Applikation mit welcher Bilder und deren Metadaten geladen und dann vermessen we
 Functional:
 ----------
 Prio 1:
-- Distanz zwischen zwei Punkten messen --> PYTHAGORAS, bzw. hier: https://www.baeldung.com/java-distance-between-two-points
-- Länge entlang eines Pfads (z.B. Länge der Wirbelsäule vom Sakrum bist zum Brustkorb) --> Einzelstrecken addieren, Spezialfall POLYGON)
+- Distanz zwischen zwei Punkten messen --> PYTHAGORAS, bzw. hier: https://www.baeldung.com/java-distance-between-two-points und hier: https://www.baeldung.com/javax-measure - PRUEFEN ob javax keine zusätzliche Library benötigt!)
+- Länge entlang eines Pfads (z.B. Länge der Wirbelsäule vom Sakrum bist zum Brustkorb) --> Einzelstrecken addieren, Spezialfall POLYGON); evt. von hier: https://www.includehelp.com/java-programs/java-program-to-add-two-distances-using-class.aspx
 - GUI muss fogelndes anzeigen:
 	- Einheitenskala (Anschrift der Seitenlängen: Width x Height; in ensprechender Einheit, s. unten)
 	- Beschreibung muss angezeigt werden
@@ -24,7 +24,7 @@ Non-Functional:
 --------------
 Prio 1:
 - Metadaten (Metrik, Beschreibung, Bilddatei, etc.) aus Textdatei pro Bild (.txt)
-- Unterstützte Bilddateitypen: .jpg, .png
+- Unterstützte Bilddateitypen: .jpg, .png (Kommentar zu VTK Datei s. Prio 3)
 - Auflösung, Folgende Einheiten müssen mindestens unterstütz werden: mm, cm, m, km
 - Wenn Auflösung in Metadaten fehlt, wird als Einheit 'px' (pixel) angezeigt
 
@@ -41,6 +41,7 @@ Prio 2:
 
 Prio 3:
 - Profil der Bilddaten entlang einer Linie (z.B. um Höhenmodelle analysieren zu können; könnte komplex werden: wie wird z.B. auf dem Bild mit der Schweizer Topokarte entschieden, wie gross der Höhenunterschied zwischen den Farben ist?)
+- achtung, der Ordner VTK enthält möglicherweise eine 3D Datei (ist fast 100 MB gross; DAS wird evt. zu komplex für ein 4x4 Tage Projekt! s. auch https://www.particleincell.com/2011/vtk-java-visualization/)
  
 Roles & Responsibilities (s. auch Scrum Rollen: https://www.atlassian.com/agile/scrum/roles)
 --------------------------
