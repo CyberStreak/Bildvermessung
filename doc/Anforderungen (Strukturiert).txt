@@ -5,8 +5,8 @@ Applikation mit welcher Bilder und deren Metadaten geladen und dann vermessen we
 Functional:
 ----------
 Prio 1:
-- Distanz zwischen zwei Punkten ist wichtig --> PYTHAGORAS, bzw. hier: https://www.baeldung.com/java-distance-between-two-points
-- Umfang (z.B. einer Zelle) oder allgemein die Länge entlang einem Pfad (z.B. Länge der Wirbelsäule vom Sakrum bist zum Brustkorb) --> POLYGON (min. über Einzelstrecken iterieren/addieren)
+- Distanz zwischen zwei Punkten messen --> PYTHAGORAS, bzw. hier: https://www.baeldung.com/java-distance-between-two-points
+- Länge entlang eines Pfads (z.B. Länge der Wirbelsäule vom Sakrum bist zum Brustkorb) --> Einzelstrecken addieren, Spezialfall POLYGON)
 - GUI muss fogelndes anzeigen:
 	- Einheitenskala (Anschrift der Seitenlängen: Width x Height; in ensprechender Einheit, s. unten)
 	- Beschreibung muss angezeigt werden
@@ -18,7 +18,7 @@ Prio 3:
 - Kommandozeilentool, welches alle in einem Ordner befindlichen Bilddateien auflistet, eine Zeile pro Bild (--> .txt bzw. JSON auslesen, tabellarisch anzeigen)
 	- Namen
 	- Dimensionen in physikalischen Einheiten (ABKLäREN: das ist nicht die Auflösung sondern Pixel x Pixel und Höhe x Breite in der richtigen Einheit aus dem .txt)
-- Abteilungsleiter Hugentobler möchte noch einen Nachtmodus
+- Nachtmodus (Anforderung kommt vom Abteilungsleiter, überzeugen, dass die Anforderung niedrige Priorität hat)
 
 Non-Functional:
 --------------
@@ -29,21 +29,25 @@ Prio 1:
 - Wenn Auflösung in Metadaten fehlt, wird als Einheit 'px' (pixel) angezeigt
 
 - format-agnostisch, d.h. Bilder dürfen nicht verzerrt dargestellt werden, also ENTSCHEIDEN:
-	- Bildfenster dynamisch erstellen (aufgrund des Ausgangsformats des Bildes; aus Metadaten lesen?)
+	- Bildfenster dynamisch erstellen (aufgrund des Ausgangsformats des Bildes; kann man das einfach aus den Metadaten der Grafikdatei lesen?)
 	- ODER Bild auf (fixe?) Fenstergrösse skalieren, weil Bilder unterschiedlich gross sein können
 
 - GUI muss mit JavaFX programmatisch (d.h. ohne visuelle Layout Tools wie Scene Builder) implementiert werden
-- Keine zusätzlichen Bibliotheken erlaubt (ausser zum Lesen der JSON Daten)
-- 3-Schichten Architektur (damit die Logik-Klassen auch unabhängig vom GUI wiederverwendet werden können; s. FR xy zu Kommandozeilenaufruf)
+- 3-Schichten Architektur (damit die Logik-Klassen auch unabhängig vom GUI wiederverwendet werden können; s. FuncReq zu Kommandozeilenaufruf)
+- Keine zusätzlichen Bibliotheken erlaubt (ausser zum Lesen der JSON Daten und das ist Prio 2)
 	
 Prio 2:
-- Metadaten auch aus JSON lesen
+- Metadaten auch aus JSON lesen (Grund für Prio2: Nicht alle Bilder haben ein zugehöriges JSON)
 
 Prio 3:
-- Profil der Bilddaten entlang einer Linie (z.B. um Höhenmodelle analysieren zu können)
+- Profil der Bilddaten entlang einer Linie (z.B. um Höhenmodelle analysieren zu können; könnte komplex werden: wie wird z.B. auf dem Bild mit der Schweizer Topokarte entschieden, wie gross der Höhenunterschied zwischen den Farben ist?)
  
-Roles & Responsibilities:
+Roles & Responsibilities (s. auch Scrum Rollen: https://www.atlassian.com/agile/scrum/roles)
 --------------------------
-- Abteilungsleiter: Hugentoble (Vorname?) --> SPONSOR ??
-- Entwicklungsleiterin: Sophie Meier --> APPROVER für SRS und Testabnahme ??
-- Urlaubsvertretung Entwicklunsleiterin: Praktikant (Vorname, Name?) --> APPROVER für Testabnahme ??
+- Abteilungsleiter: Hr. Hugentobler --> SPONSOR ??
+- Entwicklungsleiterin: Fr. Meier --> APPROVER für SRS und Testabnahme ??
+- Urlaubsvertretung Entwicklungsleiterin: Hr. Praktikant --> APPROVER für Testabnahme ??
+Evt. sind diese klassischen Rollen nicht deckungsgleich mit den Scrum Rollen, was es zu klären und aufzulösen gilt:
+- Product Owner: ... (u.U. nicht der Abteilungsleiter)
+- Scrum Master: ... (u.U. nicht die Entwicklungsleiterin)
+- Development Team: Milan Eric, Micha Weibel, Muriel Leiser
