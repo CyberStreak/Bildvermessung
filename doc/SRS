@@ -1,0 +1,20 @@
+= Hintergrund
+== Welches Problem wird durch dieses Projekt gelöst und für wen?
+== Was sind die wichtigsten Bedürfnisse der Benutzenden und warum?
+== Welche Ziele sollen erreicht werden?
+== Wie wird das Problem gelöst und welcher Ansatz wird gewählt?
+== Was ist der Unterschied zu bestehenden Lösungen?
+
+= Allgemeine Beschreibung
+== Benutzende und deren Eigenschaften
+* Wer wird das System benutzen und wie sind diese charakterisiert?
+
+= Funktionale Anforderungen
+== Welche Aufgaben wollen die Benutzenden mit dem System durchführen können?
+== Weshalb? (Welche Bedürfnisse haben sie? Welche Ziele wollen sie erreichen?)
+
+= Weitere Anforderungen
+== Nicht-funktionale Anforderungen - Welche Qualitäten soll das System aufweisen und wie werden diese überprüft/gemessen?
+== Externe Schnittstellen
+* Mit welchen externen technischen Systemen (Hardware, Software, Kommunikation) muss das zu bauende System Informationen austauschen?
+* Wie sind diese Schnittstellen spezifiziert?
