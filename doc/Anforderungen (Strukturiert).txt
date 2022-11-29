@@ -5,7 +5,7 @@ Applikation mit welcher Bilder und deren Metadaten geladen und dann vermessen we
 Functional:
 ----------
 Prio 1:
-- Distanz zwischen zwei Punkten messen --> PYTHAGORAS, bzw. hier: https://www.baeldung.com/java-distance-between-two-points und hier: https://www.baeldung.com/javax-measure - PRUEFEN ob javax keine zusätzliche Library benötigt!)
+- Distanz zwischen zwei Punkten messen --> PYTHAGORAS, bzw. hier: https://www.baeldung.com/java-distance-between-two-points und hier: https://www.baeldung.com/javax-measure - PRUEFEN ob javax keine zusätzliche Library benötigt! Wo ist der Mousepointer gerade? https://alvinalexander.com/java/java-mouse-current-position-location-coordinates/)
 - Länge entlang eines Pfads (z.B. Länge der Wirbelsäule vom Sakrum bist zum Brustkorb) --> Einzelstrecken addieren, Spezialfall POLYGON); evt. von hier: https://www.includehelp.com/java-programs/java-program-to-add-two-distances-using-class.aspx
 - GUI muss fogelndes anzeigen:
 	- Einheitenskala (Anschrift der Seitenlängen: Width x Height; in ensprechender Einheit, s. unten)
