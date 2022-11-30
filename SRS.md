@@ -17,6 +17,8 @@ Das Produkt hebt sich von anderen ab, indem es kostengünstiger ist und einfache
 |Administrator|X       |Kann die Veränderungen an den zu verfügbar stehenden Daten vornehmen.          |Studierende, Dozenten         |
 |Entwickler|        |Gutes erstes Projekt auf erstellen. Verbesserung der Fähigkeiten.          |Studierende        |
 
+## Benutzende und deren Eigenschaften
+
 |Benutzer   | Beschreibung  |
 |---|---|
 |Angestellte   |Angestellte zwischen 16 und 65 Jahren werden das Programm <br> ausschließlich auf PCs im Büro benutzen.|
@@ -39,7 +41,7 @@ Verschiedene .jpg und .png Dateien lesen können.
 
 Verschiedene .txt und .json Dateien lesen können. 
 
-Die Bilddateien in einem bestimmten Ordner auswählen können und im Fenster darstellen. Die Dimension des Bildes soll sich bei einer Änderung der Fenster Grösse an dieses anpassen. Mit der Maus zwei oder mehrere Punkte mit einer Linie verbinden können 
+Die Bilddateien in einem bestimmten Ordner auswählen können und im Fenster darstellen. Die Dimension des Bildes soll sich bei einer Änderung der Fenster Grösse an dieses anpassen. Die Skalierung des Bildes angezeigen. Mit der Maus zwei oder mehrere Punkte mit einer Linie verbinden können 
 
 Die Längen der Linien sowie mögliche Winkel zwischen Linien in metrischen Einheiten berechnen.  
 
