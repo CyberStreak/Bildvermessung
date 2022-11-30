@@ -35,34 +35,32 @@ Zur Entwicklung des Produkts wird die Entwicklung IntelliJ IDEA Community verwen
 
 Das System soll…  
 
-  
+    1. Verschiedene .jpg und .png Dateien lesen können. 
 
-Verschiedene .jpg und .png Dateien lesen können. 
+    2. Verschiedene .txt und .json Dateien lesen können. 
 
-Verschiedene .txt und .json Dateien lesen können. 
+    3. Die Bilddateien in einem bestimmten Ordner auswählen können und im Fenster darstellen. Die Dimension des Bildes soll sich bei einer Änderung der Fenster Grösse an dieses anpassen. Die Skalierung des Bildes angezeigen. Mit der Maus zwei oder mehrere Punkte mit einer Linie verbinden können.
 
-Die Bilddateien in einem bestimmten Ordner auswählen können und im Fenster darstellen. Die Dimension des Bildes soll sich bei einer Änderung der Fenster Grösse an dieses anpassen. Die Skalierung des Bildes angezeigen. Mit der Maus zwei oder mehrere Punkte mit einer Linie verbinden können 
+    4. Die Längen der Linien sowie mögliche Winkel zwischen Linien in metrischen Einheiten berechnen.  
 
-Die Längen der Linien sowie mögliche Winkel zwischen Linien in metrischen Einheiten berechnen.  
+    5. Die berechneten Werte in einem Textfeld darstellen.  
 
-Die berechneten Werte in einem Textfeld darstellen.  
+    6. In einem Nachtmodus verfügbar sein. 
 
-In einem Nachtmodus verfügbar sein. 
-
-Für Bilder ohne Hintergrunddaten die Masseinheit in Pixeln wieder geben.  
+    7. Für Bilder ohne Hintergrunddaten die Masseinheit in Pixeln wieder geben.  
 
 # Weitere Anforderungen
 ## Nicht-funktionale Anforderungen - Welche Qualitäten soll das System aufweisen und wie werden diese überprüft/gemessen?
 
-Zuverlässigkeit: Durch die Benutzererfahrungen und Testläufen während der Entwicklung, soll ein Zuverlässiger Betrieb der Software gewährleistet werden.   
+    1. Zuverlässigkeit: Durch die Benutzererfahrungen und Testläufen während der Entwicklung, soll ein Zuverlässiger Betrieb der Software gewährleistet werden.   
 
-Leistung:  Durch das saubere Arbeit mit dem Code, soll der RAM Verbrauch des Systems nicht überbeansprucht werden. 
+    2. Leistung:  Durch das saubere Arbeit mit dem Code, soll der RAM Verbrauch des Systems nicht überbeansprucht werden. 
 
-Sicherheit: Durch das Benutzen der neusten Software und Bibliotheken werden mögliche Sicherheitslücken geschlossen. 
+    3. Sicherheit: Durch das Benutzen der neusten Software und Bibliotheken werden mögliche Sicherheitslücken geschlossen. 
 
-Wartbarkeit: Das Einhalten der Coding Conventions sorgt für eine gute Wartbarkeit des Systems.  
+    4. Wartbarkeit: Das Einhalten der Coding Conventions sorgt für eine gute Wartbarkeit des Systems.  
 
 ## Externe Schnittstellen
 
-Softwareschnittstellen: Das System muss in der Lage sein .txt, .json, .png und.jpg Daten lesen zu können. 
+    1. Softwareschnittstellen: Das System muss in der Lage sein .txt, .json, .png und.jpg Daten lesen zu können. 
 
