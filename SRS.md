@@ -17,6 +17,10 @@ Das Produkt hebt sich von anderen ab, indem es kostengünstiger ist und einfache
 |Administrator|X       |Kann die Veränderungen an den zu verfügbar stehenden Daten vornehmen.          |Studierende, Dozenten         |
 |Entwickler|        |Gutes erstes Projekt auf erstellen. Verbesserung der Fähigkeiten.          |Studierende        |
 
+|Benutzer   | Beschreibung  |
+|---|---|
+|Angestellte   |Angestellte zwischen 16 und 65 Jahren werden das Programm <br> ausschließlich auf PCs im Büro benutzen.|
+
 ## Risiken
 
 Um allfällige Risiken abzudecken sollten die neusten Versionen der Entwicklungsumgebung sowie den Bibliotheken verwendet werden.  
