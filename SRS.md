@@ -1,21 +1,12 @@
-# Hintergrund
-## Welches Problem wird durch dieses Projekt gelöst und für wen?
-* Man kann Objekte auf Bilddateien messen und in genauen metrischen Einheiten angeben. 
-* Das Projekt ist für den Kunden.
+#Hintergrund 
 
-## Was sind die wichtigsten Bedürfnisse der Benutzenden und warum?
-* Dass alles reibungslos und schnell funktioniert, um keine unnötigen Wartezeiten zu haben.
+Bilder sind zwar schön anzusehen, jedoch sind sie nicht wirklich aussagekräftig was die Grösse und der Umfang des Objektes auf dem Bild angeht.  
 
-## Welche Ziele sollen erreicht werden?
-* Bilddatei aus einer Ordnerstruktur auswählen und anzeigen
-* Distanz zwischen zwei Punkten und Länge entlang eines Pfads ausmessen. 
-* Es müssen Einheitenskala und Beschreibung angezeigt werden.
-* Winkel zwischen zwei Linien analysieren.
+Um dies zu vereinfachen, werden wir eine eine Applikation herstellen, mit der man Bilder und deren Metadaten laden und dann vermessen kann: Distanz zwischen zwei Punkten, der Umfang (z.B. einer Zelle) oder allgemein die Länge entlang einem Pfad (z.B. Länge der Wirbelsäule vom Sakrum bis zum Brustkorb), also Polygone. Manchmal sind auch noch Winkel praktisch, z.B. zwischen zwei Fingern oder Wirbelachsen. Die Angaben der Einheiten soll mindestens mm, cm, m und km enthalten und soll inklusive der Beschreibung angezeigt werden. 
 
-## Wie wird das Problem gelöst und welcher Ansatz wird gewählt?
+Diese Applikation wird für den Kunden hergestellt und soll reibungslos und schnell funktionieren, um lange Wartezeiten zu vermeiden.  
 
-## Was ist der Unterschied zu bestehenden Lösungen?
-*Das Produkt wird kostengünstiger und einfachr in der Handhabung als bestehende Softwarelösungen wie z.b. Matlab.
+Das Produkt hebt sich von anderen ab, indem es kostengünstiger ist und einfacher in der Handhabung als bereits bestehende Softwarelösungen wie beispielsweise Matlab. 
 
 # Allgemeine Beschreibung
 ## Benutzende und deren Eigenschaften
