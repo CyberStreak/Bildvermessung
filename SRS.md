@@ -1,12 +1,12 @@
 # Hintergrund 
 
-Bilder sind zwar schön anzusehen, jedoch sind sie nicht wirklich aussagekräftig was die Grösse und der Umfang des Objektes auf dem Bild angeht.  
+Bilder sind zwar schön anzusehen, jedoch sind sie nicht wirklich aussagekräftig was die Grösse und den Umfang des Objektes auf dem Bild angeht.  
 
-Um dies zu vereinfachen, werden wir eine eine Applikation herstellen, mit der man Bilder und deren Metadaten laden und dann vermessen kann: Distanz zwischen zwei Punkten, der Umfang (z.B. einer Zelle) oder allgemein die Länge entlang einem Pfad (z.B. Länge der Wirbelsäule vom Sakrum bis zum Brustkorb), also Polygone. Manchmal sind auch noch Winkel praktisch, z.B. zwischen zwei Fingern oder Wirbelachsen. Die Angaben der Einheiten soll mindestens mm, cm, m und km enthalten und soll inklusive der Beschreibung angezeigt werden. 
+Um dies zu vereinfachen, werden wir eine eine Applikation herstellen, mit der man Bilder und deren Metadaten laden und dann vermessen kann: Distanz zwischen zwei Punkten, den Umfang (z.B. einer Zelle) oder allgemein die Länge entlang einem Pfad (z.B. Länge der Wirbelsäule vom Sakrum bis zum Brustkorb), also Polygone. Manchmal sind auch noch Winkel praktisch, z.B. zwischen zwei Fingern oder Wirbelachsen. Die Angaben der Einheiten soll mindestens mm, cm, m und km enthalten und soll inklusive der Beschreibung angezeigt werden. 
 
 Diese Applikation wird für den Kunden hergestellt und soll reibungslos und schnell funktionieren, um lange Wartezeiten zu vermeiden.  
 
-Das Produkt hebt sich von anderen ab, indem es kostengünstiger ist und einfacher in der Handhabung als bereits bestehende Softwarelösungen wie beispielsweise Matlab. 
+Das Produkt hebt sich von anderen ab, indem es kostengünstiger und einfacher in der Handhabung als bereits bestehende Softwarelösungen wie beispielsweise Matlab ist. 
 
 # Allgemeine Beschreibung
 ## Anspruchsgruppen
@@ -50,7 +50,7 @@ Das System soll…
     7. Für Bilder ohne Hintergrunddaten die Masseinheit in Pixeln wieder geben.  
 
 # Weitere Anforderungen
-## Nicht-funktionale Anforderungen - Welche Qualitäten soll das System aufweisen und wie werden diese überprüft/gemessen?
+## Nicht-funktionale Anforderungen
 
     1. Zuverlässigkeit: Durch die Benutzererfahrungen und Testläufen während der Entwicklung, soll ein Zuverlässiger Betrieb der Software gewährleistet werden.   
 
