@@ -44,15 +44,17 @@ Das System soll:
       4.1. Die Längen der Linien in Anzahl Pixel anzeigen
       4.2. Falls Metadaten vorliegen, die Längen der Linien in metrischen Einheiten anzeigen
       4.3. Falls zwei Linien gewählt werden, den Winkel zwischen diesen zwei Linien anzeigen
-      4.4. Die Längen mehrerer verbundenen Linien summieren können (für Umfang).
+      4.4. Die Längen mehrerer verbundenen Linien summieren können (als Umfang).
     
   Prio 2:
   
     1. Die Dimension des Bildes soll sich bei einer Änderung der Fenster Grösse an dieses anpassen.
 
-    2. In einem Nachtmodus verfügbar sein.
+    2. Mehrere Farben und Dicken für die Linien zur verfügung stellen.
 
-    3. Profil der Bilddaten entlang einer Linie (z.B. um Höhenmodelle analysieren zu können)
+    3. In einem Nachtmodus verfügbar sein.
+
+    4. Profil der Bilddaten entlang einer Linie (z.B. um Höhenmodelle analysieren zu können)
     
 
 # Weitere Anforderungen
@@ -85,5 +87,7 @@ Das System soll:
 
 ## Externe Schnittstellen
 
-    1. Softwareschnittstellen: Das System muss in der Lage sein .txt, .json, .png und.jpg Daten lesen zu können. 
+    1. Softwareschnittstellen: Das System muss in der Lage sein .txt, .json, .png und.jpg Daten lesen zu können.
+
+    2. In den Metadaten der Bilder muss die Auflösungen in mm, cm, m und km eingetragen sein.
 
