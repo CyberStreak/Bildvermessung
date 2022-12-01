@@ -68,7 +68,11 @@ Das System soll:
 
     9. Die Applikation soll bei einem Gebrauch von einer Stunde nicht mehr als ein mal abstürzen.
 
-  Prio 2:
+  Prio 2: 
+
+    1. Metadaten auch aus JSON lesen können.
+
+  Prio 3:
     
     1. Profil der Bilddaten entlang einer Linie (z.B. um Höhenmodelle analysieren zu können; könnte komplex werden:
         wie wird z.B. auf dem Bild mit der Schweizer Topokarte entschieden, wie gross der Höhenunterschied zwischen den
