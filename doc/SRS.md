@@ -13,15 +13,9 @@ Das Produkt hebt sich von anderen ab, indem es kostengünstiger und einfacher in
 
 | Benutzer | Benutzt das System | Beschreibung | Repräsentiert von |
 |--------------:|:-------------|----------------|:-------------:|
-|Benutzer|X       |Der Benutzer kann Bilddateien auswählen, laden und im Fensteranzeigen lassen. Er kann mit der Maus zwei oder mehrere Punkte verbinden. Die erzeugten Pfade durch das verbinden der ausgewählten Punkte, können gemessen werden. Winkel zwischen zwei Pfaden können gemessen werden.         |Studierende, Dozenten       |
-|Administrator|X       |Kann die Veränderungen an den zu verfügbar stehenden Daten vornehmen.          |Studierende, Dozenten         |
+|Anwender|X       |Produkt wird ausschliesslich auf PCs im Büro verwendet|Studierende, Kunden       |
 |Entwickler|        |Gutes erstes Projekt auf erstellen. Verbesserung der Fähigkeiten.          |Studierende        |
 
-## Benutzende und deren Eigenschaften
-
-|Benutzer   | Beschreibung  |
-|---|---|
-|Angestellte   |Angestellte zwischen 16 und 65 Jahren werden das Programm <br> ausschließlich auf PCs im Büro benutzen.|
 
 ## Risiken
 
@@ -35,49 +29,53 @@ Zur Entwicklung des Produkts wird die Entwicklung IntelliJ IDEA Community verwen
 
 Das System soll: 
 
-    3. Die Bilddateien in einem bestimmten Ordner auswählen können und im Fenster darstellen. Die Dimension des Bildes soll sich bei einer Änderung der Fenster Grösse an dieses anpassen. Die Skalierung des Bildes angezeigen. Mit der Maus zwei oder mehrere Punkte mit einer Linie verbinden können.
+  Prio 1:
+    
+    1. Eine Bilddatei in einem bestimmten Ordner auswählen können
+    
+    2. Die gewählte Bilddatei im Fenster darstellen:
+      2.1. Die Skalierung des Bildes angezeigen.
+      
+    3. Mit der Maus zwei oder mehrere Punkte mit einer Linie verbinden können.
 
-    4. Die Längen der Linien sowie mögliche Winkel zwischen Linien in metrischen Einheiten berechnen.  
+    4. Die berechneten Werte in einem Textfeld darstellen:
+      4.1. Die Längen der Linien in Anzahl Pixel anzeigen
+      4.2. Falls Metadaten vorliegen, die Längen der Linien in metrischen Einheiten anzeigen
+      4.3. Falls zwei Linien gewählt werden, den Winkel zwischen diesen zwei Linien anzeigen
+    
+  Prio 2:
+  
+    1. Die Dimension des Bildes soll sich bei einer Änderung der Fenster Grösse an dieses anpassen.
 
-    5. Die berechneten Werte in einem Textfeld darstellen.  
+    2. In einem Nachtmodus verfügbar sein.
 
-    6. In einem Nachtmodus verfügbar sein. 
-
-    7. Für Bilder ohne Hintergrunddaten die Masseinheit in Pixeln wieder geben.  
+    3. Profil der Bilddaten entlang einer Linie (z.B. um Höhenmodelle analysieren zu können)
+    
 
 # Weitere Anforderungen
 ## Nicht-funktionale Anforderungen
 
     Prio 1:
 
-    1. Metadaten (Metrik, Beschreibung, Bilddatei, etc.) sollen aus Textdatei pro Bild (.txt) gelesen werden.
+    1. GUI muss mit JavaFX programmatisch (d.h. ohne visuelle Layout Tools wie Scene Builder) implementiert werden.
 
-    2. Unter anderem soll das System  die unterstützten Bilddateitypen: .jpg, .png lesen können. 
+    2. 3-Schichten Architektur (damit die Logik-Klassen auch unabhängig vom GUI wiederverwendet werden können).
 
-    3. Auflösung, Folgende Einheiten müssen mindestens unterstütz werden: mm, cm, m, km
+    3. Keine zusätzlichen Bibliotheken erlaubt ausser zum Lesen der JSON Daten.
     
-    4. Wenn Auflösung in Metadaten fehlt, wird als Einheit 'px' (pixel) angezeigt.
-    
-    5. Format muss -agnostisch, d.h. Bilder dürfen nicht verzerrt dargestellt werden.
-    
-    6. GUI muss mit JavaFX programmatisch (d.h. ohne visuelle Layout Tools wie Scene Builder) implementiert werden.
+    4. Unterstützte Bilddateitypen: .jpg, .png
 
-    7. 3-Schichten Architektur (damit die Logik-Klassen auch unabhängig vom GUI wiederverwendet werden können).
+    5. Unterstütze Einheiten: mm, cm, m, km
+   
+    6. Formatagnostisch: Bilder dürfen nicht verzerrt dargestellt werden.
 
-    8. Keine zusätzlichen Bibliotheken erlaubt ausser zum Lesen der JSON Daten.
-
-    9. Die Applikation soll bei einem Gebrauch von einer Stunde nicht mehr als ein mal abstürzen.
+    7. MTBF: 6 Stunden (Applikation soll bei einem Gebrauch von einer Stunde nicht mehr als ein mal abstürzen)
 
   Prio 2: 
 
     1. Metadaten auch aus JSON lesen können.
-
-  Prio 3:
     
-    1. Profil der Bilddaten entlang einer Linie (z.B. um Höhenmodelle analysieren zu können; könnte komplex werden:
-        wie wird z.B. auf dem Bild mit der Schweizer Topokarte entschieden, wie gross der Höhenunterschied zwischen den
-        Farben ist?)
-    2. 3D Dateien lesen können.
+
 
 
     
