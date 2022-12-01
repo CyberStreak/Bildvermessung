@@ -33,11 +33,7 @@ Zur Entwicklung des Produkts wird die Entwicklung IntelliJ IDEA Community verwen
 
 # Funktionale Anforderungen
 
-Das System soll…  
-
-    1. Verschiedene .jpg und .png Dateien lesen können. 
-
-    2. Verschiedene .txt und .json Dateien lesen können. 
+Das System soll: 
 
     3. Die Bilddateien in einem bestimmten Ordner auswählen können und im Fenster darstellen. Die Dimension des Bildes soll sich bei einer Änderung der Fenster Grösse an dieses anpassen. Die Skalierung des Bildes angezeigen. Mit der Maus zwei oder mehrere Punkte mit einer Linie verbinden können.
 
@@ -52,13 +48,35 @@ Das System soll…
 # Weitere Anforderungen
 ## Nicht-funktionale Anforderungen
 
-    1. Zuverlässigkeit: Durch die Benutzererfahrungen und Testläufen während der Entwicklung, soll ein Zuverlässiger Betrieb der Software gewährleistet werden.   
+    Prio 1:
 
-    2. Leistung:  Durch das saubere Arbeit mit dem Code, soll der RAM Verbrauch des Systems nicht überbeansprucht werden. 
+    1. Metadaten (Metrik, Beschreibung, Bilddatei, etc.) sollen aus Textdatei pro Bild (.txt) gelesen werden.
 
-    3. Sicherheit: Durch das Benutzen der neusten Software und Bibliotheken werden mögliche Sicherheitslücken geschlossen. 
+    2. Unter anderem soll das System  die unterstützten Bilddateitypen: .jpg, .png lesen können. 
 
-    4. Wartbarkeit: Das Einhalten der Coding Conventions sorgt für eine gute Wartbarkeit des Systems.  
+    3. Auflösung, Folgende Einheiten müssen mindestens unterstütz werden: mm, cm, m, km
+    
+    4. Wenn Auflösung in Metadaten fehlt, wird als Einheit 'px' (pixel) angezeigt.
+    
+    5. Format muss -agnostisch, d.h. Bilder dürfen nicht verzerrt dargestellt werden.
+    
+    6. GUI muss mit JavaFX programmatisch (d.h. ohne visuelle Layout Tools wie Scene Builder) implementiert werden.
+
+    7. 3-Schichten Architektur (damit die Logik-Klassen auch unabhängig vom GUI wiederverwendet werden können).
+
+    8. Keine zusätzlichen Bibliotheken erlaubt ausser zum Lesen der JSON Daten.
+
+    9. Die Applikation soll bei einem Gebrauch von einer Stunde nicht mehr als ein mal abstürzen.
+
+  Prio 2:
+    
+    1. Profil der Bilddaten entlang einer Linie (z.B. um Höhenmodelle analysieren zu können; könnte komplex werden:
+        wie wird z.B. auf dem Bild mit der Schweizer Topokarte entschieden, wie gross der Höhenunterschied zwischen den
+        Farben ist?)
+    2. 3D Dateien lesen können.
+
+
+    
 
 ## Externe Schnittstellen
 
