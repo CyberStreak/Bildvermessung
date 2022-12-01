@@ -19,8 +19,8 @@ Das Produkt hebt sich von anderen ab, indem es kostengünstiger und einfacher in
 
 ## Risiken
 
-Es besteht das Risiko, dass wir mit den für uns neuen tools Maven und Gitlab nicht effizient arbeiten.
-Es besteht weiter das Risko, dass wir aufgrund mangelnder Erfahrung zu viel Zeit für das Programmieren brauchen.
+Es besteht das Risiko, dass wir mit den für uns neuen Tools Maven und Gitlab nicht effizient arbeiten.
+Es besteht weiter das Risiko, dass wir aufgrund mangelnder Erfahrung zu viel Zeit für das Programmieren brauchen.
 Um zu verhindern, dass wir dadurch mit unseren Tasks in Verzug geraten, werden wir regelmässig Rücksprache mit den Dozierenden oder Applikationsentwicklern halten.  
 
 ## Resourcen
