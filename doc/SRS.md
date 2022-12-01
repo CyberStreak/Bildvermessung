@@ -19,7 +19,9 @@ Das Produkt hebt sich von anderen ab, indem es kostengünstiger und einfacher in
 
 ## Risiken
 
-Um allfällige Risiken abzudecken sollten die neusten Versionen der Entwicklungsumgebung sowie den Bibliotheken verwendet werden.  
+Es besteht das Risiko, dass wir mit den für uns neuen tools Maven und Gitlab nicht effizient arbeiten.
+Es besteht weiter das Risko, dass wir aufgrund mangelnder Erfahrung zu viel Zeit für das Programmieren brauchen.
+Um zu verhindern, dass wir dadurch mit unseren Tasks in Verzug geraten, werden wir regelmässig Rücksprache mit den Dozierenden oder Applikationsentwicklern halten.  
 
 ## Resourcen
 
@@ -42,6 +44,7 @@ Das System soll:
       4.1. Die Längen der Linien in Anzahl Pixel anzeigen
       4.2. Falls Metadaten vorliegen, die Längen der Linien in metrischen Einheiten anzeigen
       4.3. Falls zwei Linien gewählt werden, den Winkel zwischen diesen zwei Linien anzeigen
+      4.4. Die Längen mehrerer verbundenen Linien summieren können (für Umfang).
     
   Prio 2:
   
