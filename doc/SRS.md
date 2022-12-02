@@ -76,7 +76,7 @@ Das System soll:
 
     3. Keine zusätzlichen Bibliotheken erlaubt ausser zum Lesen der JSON Daten.
     
-    4. Unterstützte Bilddateitypen: .jpg, .Polygone
+    4. Unterstützte Bilddateitypen: .jpg, .png
 
     5. Metadaten (Metrik, Beschreibung, Bilddatei, etc.) aus Textdatei pro Bild von .txt und .json auslesen können.
 
