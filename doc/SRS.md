@@ -94,5 +94,5 @@ Das System soll:
 
     1. Softwareschnittstellen: Das System muss in der Lage sein .txt, .json, .png und.jpg Daten lesen zu können.
 
-    2. In den Metadaten der Bilder muss die Auflösungen in mm, cm, m und km eingetragen sein.
+
 
