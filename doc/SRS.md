@@ -13,8 +13,16 @@ Das Produkt hebt sich von anderen ab, indem es kostengünstiger und einfacher in
 
 | Benutzer | Benutzt das System | Beschreibung | Repräsentiert von |
 |--------------:|:-------------|----------------|:-------------:|
-|Anwender|X       |Produkt wird ausschliesslich auf PCs im Büro verwendet|Studierende, Kunden       |
-|Entwickler|        |Gutes erstes Projekt auf erstellen. Verbesserung der Fähigkeiten.          |Studierende        |
+|Anwender|X       |Verwenden die Applikation um bei der Arbeit Objekte auf Bildern vermessen zu lassen. |Studierende, Kunden       |
+|Entwickler|        |Gutes erstes Projekt erstellen. Verbesserung der Fähigkeiten.          |Studierende        |
+
+## Benutzende und deren Eigenschaften
+
+|Benutzer   | Beschreibung  |
+|---|---|
+|Angestellte   |Angestellte zwischen 16 und 65 Jahren werden das Programm <br> ausschließlich auf PCs im Büro benutzen.|
+
+
 
 
 ## Risiken
@@ -68,20 +76,17 @@ Das System soll:
 
     3. Keine zusätzlichen Bibliotheken erlaubt ausser zum Lesen der JSON Daten.
     
-    4. Unterstützte Bilddateitypen: .jpg, .png
+    4. Unterstützte Bilddateitypen: .jpg, .Polygone
 
-    5. Unterstütze Einheiten: mm, cm, m, km
+    5. Metadaten (Metrik, Beschreibung, Bilddatei, etc.) aus Textdatei pro Bild von .txt und .json auslesen können.
+
+    6. Unterstütze Einheiten: mm, cm, m, km
    
-    6. Formatagnostisch: Bilder dürfen nicht verzerrt dargestellt werden.
+    7. Formatagnostisch: Bilder dürfen nicht verzerrt dargestellt werden.
 
-    7. MTBF: 6 Stunden (Applikation soll bei einem Gebrauch von einer Stunde nicht mehr als ein mal abstürzen)
+    8. MTBF: 6 Stunden (Applikation soll bei einem Gebrauch von einer Stunde nicht mehr als ein mal abstürzen)
 
-  Prio 2: 
-
-    1. Metadaten auch aus JSON lesen können.
-    
-
-
+  
 
     
 
