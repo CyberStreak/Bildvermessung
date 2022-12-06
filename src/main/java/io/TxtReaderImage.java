@@ -1,13 +1,13 @@
 package io;
 
+import logic.ImageGenerator;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Optional;
 import java.util.Scanner;
 
 public class TxtReaderImage implements ImageDataReader {
-
-    // Das File der MetaDaten als Varibale
     private final File imageData;
 
     // Konstruktor der Klasse
@@ -15,7 +15,10 @@ public class TxtReaderImage implements ImageDataReader {
         this.imageData = imageData;
     }
 
-    // Daten aus dem Text lesen.
+    /**
+     * Reader um .txt Dateien lesen zu können
+     * @return Das Bild als Objekt.
+     */
     @Override
     public Optional<ImageGenerator> readData() {
 
@@ -28,7 +31,11 @@ public class TxtReaderImage implements ImageDataReader {
             return Optional.empty();
         }
 
-        // .txt Datein sind nicht gleich aufgebaut Methode kann sich so nicht immmer wiederholen.
+
+        /**
+         * .txt Dateien sind nicht gleich aufgebaut.
+         * Methode muss durchlaufen bis alle Variablen gefüllt sind oder mit if statements nach den Schlagwörtern suchen.
+         */
         String description = "";
         String imageFile = "";
         String resolution = "";
@@ -41,6 +48,10 @@ public class TxtReaderImage implements ImageDataReader {
         return Optional.of(image);
     }
 
+    /**
+     * Muss man hier was anpassen? Wie kan das zusammenspiel funktionieren?
+     * @param fileName -> Wird der Name des Files mitgegeben oder das ganze File?
+     */
     @Override
     public void read(String fileName) {
 
