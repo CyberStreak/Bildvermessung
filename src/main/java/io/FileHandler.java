@@ -20,7 +20,7 @@ public class FileHandler {
                 reader = new JsonReaderImage();
             }
             else if(ext == "txt") {
-                reader = new TxtReaderImage(file);
+                reader = new TxtReaderImage(file); // Welches File muss man mitgeben, dass ein Reader konstruiert wird.
             }
             // use else if to add more readers
         }
