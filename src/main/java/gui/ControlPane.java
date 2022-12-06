@@ -10,7 +10,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
-import logic.FileHandler;
+import io.FileHandler;
 
 import java.io.File;
 

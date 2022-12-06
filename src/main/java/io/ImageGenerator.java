@@ -5,7 +5,7 @@ import javafx.scene.image.Image;
 public class ImageGenerator {
 
     // nicht sicher ob Bild hier generiert werden soll oder doch lieber in einer seperaten Klasse..
-    Image img = new Image("C:\\Users\\milic\\IdeaProjects\\praktikum-programmieren-ii\\src\\main\\java\\data" + getImageFile());
+    private final Image img = new Image("C:\\Users\\milic\\IdeaProjects\\praktikum-programmieren-ii\\src\\main\\java\\data" + getImageFile());
 
     private final String description;
     private final String imageFile;

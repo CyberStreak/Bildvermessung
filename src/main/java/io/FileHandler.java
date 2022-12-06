@@ -1,8 +1,4 @@
-package logic;
-
-import io.ImageDataReader;
-import io.JsonReaderImage;
-import io.TxtReaderImage;
+package io;
 
 import java.io.File;
 import java.io.FileNotFoundException;
