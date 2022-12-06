@@ -1,20 +1,21 @@
 package io;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+
+import java.util.Optional;
+import java.util.Scanner;
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-
-import java.util.Optional;
-
 //import javax.json.stream.JsonParser;
 //import javax.json.stream.JsonParser.Event;
 
-
 public class JsonReaderImage implements ImageDataReader {
+
     JSONParser parser = new JSONParser();
 
     // Das hat es vorgeschlagen, weiss nicht ob es wirklich gebraucht wird.
@@ -25,17 +26,15 @@ public class JsonReaderImage implements ImageDataReader {
 
     @Override
     public void read(String fileName) throws FileNotFoundException {
+        // This is our checkpoint to see if the call from FileHandler works (currently not).
+        System.out.println("We're in the JSON Reader now, the file name is: "+fileName);
+
         JSONParser jsonparser = new JSONParser();
-        FileReader reader = new FileReader(".\\data\\test-image-01.json");
+        FileReader reader = new FileReader(fileName);
 
         //Object obj=jsonparser.parse(reader);
-
         //JSONObject testjsonobj=(JSONObject)obj;
-
         //String descr=(String) testjsonobj.get("description");
-
-
-
 
     }
 }
