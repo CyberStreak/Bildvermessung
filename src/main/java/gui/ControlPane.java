@@ -10,6 +10,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
+
 import io.FileHandler;
 
 import java.io.File;
@@ -36,11 +37,15 @@ public class ControlPane extends StackPane {
 
         loadButton.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
+            //FileChooser fileChooser = new FileChooser.ExtensionFilter("Text Files", "*.txt", "*.json");
             fileChooser.setTitle("Metadaten laden..");
             // Filter um Daten laden zu können..
             //fileChooser.getExtensionFilters().addAll(
             //        new FileChooser.ExtensionFilter("Text Files", "*.txt", "*.json"))
+            fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("JSON files (*.json)", "*.json"));
+
             File dataFile = fileChooser.showOpenDialog(null);
+
             FileHandler.readFile(dataFile);
         });
 

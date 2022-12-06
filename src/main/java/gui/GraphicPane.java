@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class GraphicPane extends StackPane {
+
     public GraphicPane() {
         String strTitle = "Titulo de la Ventana";
         int w_width = 500;
@@ -55,4 +56,5 @@ public class GraphicPane extends StackPane {
         this.getChildren().add(graphicPane);
 
     }
+
 }

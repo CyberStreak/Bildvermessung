@@ -1,9 +1,13 @@
 package io;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.*;
+
 import java.util.Optional;
 
 //import javax.json.stream.JsonParser;
@@ -23,6 +27,13 @@ public class JsonReaderImage implements ImageDataReader {
     public void read(String fileName) throws FileNotFoundException {
         JSONParser jsonparser = new JSONParser();
         FileReader reader = new FileReader(".\\data\\test-image-01.json");
+
+        //Object obj=jsonparser.parse(reader);
+
+        //JSONObject testjsonobj=(JSONObject)obj;
+
+        //String descr=(String) testjsonobj.get("description");
+
 
 
 
