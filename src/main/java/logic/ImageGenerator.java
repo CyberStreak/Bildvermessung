@@ -5,16 +5,19 @@ import javafx.scene.image.Image;
 public class ImageGenerator {
 
     // nicht sicher ob Bild hier generiert werden soll oder doch lieber in einer seperaten Klasse..
-    private final Image img = new Image("C:\\Users\\milic\\IdeaProjects\\praktikum-programmieren-ii\\src\\main\\java\\data" + getImageFile());
+    private  Image img;
 
     private final String description;
     private final String imageFile;
-    private final String resolution;
+    private final Double resolution;
+    private final String resolutionUnit;
 
-    public ImageGenerator(String description, String imageFile, String resolution) {
+    public ImageGenerator(String description, String imageFile, Double resolution, String resolutionUnit) {
         this.description = description;
         this.imageFile = imageFile;
         this.resolution = resolution;
+        this.resolutionUnit = resolutionUnit;
+        img = new Image(imageFile);
     }
 
     public Image getImg() {
@@ -29,9 +32,11 @@ public class ImageGenerator {
         return imageFile;
     }
 
-    public String getResolution() {
+    public Double getResolution() {
         return resolution;
     }
+
+    public String getResolutionUnit() { return resolutionUnit; }
 
     // Methode schreiben um die Masseinheit und den Wert aus der resolution zu trennen..
 

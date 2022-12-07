@@ -1,15 +1,18 @@
 package io;
 
+import javafx.scene.image.Image;
+import logic.ImageGenerator;
+
 import java.io.File;
 import java.io.FileNotFoundException;
-
+import java.util.Optional;
 
 
 public class FileHandler {
 
-    public static void readFile(File file) {
+    public static ImageGenerator readFile(File file) {
         if(file == null) {
-            return;
+            return null;
         }
         String ext = FileHandler.getExtension(file);
         ImageDataReader reader = null;
@@ -28,7 +31,7 @@ public class FileHandler {
                 //Checkpoint!
                 System.out.println("We're passing this file to the TxtReaderImage class now: "+file);
                 // We need to prove that the 'file' variable passed to TxtReaderImage makes it there (insert a System.out to check).
-                reader = new TxtReaderImage(file);
+                reader = new TxtReaderImage();
             }
             // use else if to add more filetypes pointing to their TO BE DEVELOPED readers
         }
@@ -36,11 +39,14 @@ public class FileHandler {
         if(reader != null)
         {
             try {
-                reader.read(file.getName());
+                Optional<ImageGenerator> imageOptional = reader.read(file);
+                return imageOptional.get();
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
         }
+
+        return null;
     }
 
     private static String getExtension(File file) {

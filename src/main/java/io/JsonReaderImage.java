@@ -1,4 +1,5 @@
 package io;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -24,13 +25,13 @@ public class JsonReaderImage implements ImageDataReader {
     }
 
     @Override
-    public void read(String fileName) throws FileNotFoundException {
+    public Optional<ImageGenerator> read(File file) throws FileNotFoundException {
         // Checkpoint to make sure the call from FileHandler hits here
         // ... and it does. POSSIBLE PROBLEM: fileName doesn't have the path anymore
-        System.out.println("We're in the JSON Reader now, the file name is: "+fileName);
+        System.out.println("We're in the JSON Reader now, the file name is: "+ file.getName());
 
         JSONParser jsonparser = new JSONParser();
-        FileReader reader = new FileReader(".\\data\\"+fileName);
+        FileReader reader = new FileReader(file.getAbsolutePath());
 
         Object obj = null;
         try {
@@ -60,8 +61,8 @@ public class JsonReaderImage implements ImageDataReader {
         // (2) image_resolution currently is a String: can this be changed to Double?
 
         // By fixing (1) & (2) above, these may work pico bello:
-        // ImageGenerator image = new ImageGenerator(description, image_file, image_resolution);
-        //return Optional.of(image);
+         ImageGenerator image = new ImageGenerator(description, file.getParent() + "\\" + image_file, image_resolution, image_resolution_unit);
+        return Optional.of(image);
 
     }
 }
