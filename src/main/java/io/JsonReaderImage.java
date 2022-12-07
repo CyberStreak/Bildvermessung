@@ -49,7 +49,7 @@ public class JsonReaderImage implements ImageDataReader {
         Double image_resolution = (Double) imgJsonobj.get("image_resolution");
         String image_resolution_unit = (String) imgJsonobj.get("image_resolution_unit");
 
-        // ... and also we can access these veriables
+        // ... and also we can access these variables
         System.out.println("description: "+description);
         System.out.println("image_file: "+image_file);
         System.out.println("image_resolution: "+image_resolution);
@@ -61,7 +61,7 @@ public class JsonReaderImage implements ImageDataReader {
         // (2) image_resolution currently is a String: can this be changed to Double?
 
         // By fixing (1) & (2) above, these may work pico bello:
-        //ImageGenerator image = new ImageGenerator(description, image_file, image_resolution);
+        // ImageGenerator image = new ImageGenerator(description, image_file, image_resolution);
         //return Optional.of(image);
 
     }
