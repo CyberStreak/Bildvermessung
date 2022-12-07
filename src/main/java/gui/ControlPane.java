@@ -1,6 +1,6 @@
 package gui;
 
-import logic.ImageGenerator;
+import io.ImageGenerator;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -35,11 +35,6 @@ public class ControlPane extends StackPane {
 
         CheckBox nightMode = new CheckBox("Nachtmodus");
 
-        /**
-         * 1. Mit dem Button das Textfile laden
-         * 2. textFile unterscheiden zwischen .txt und .json mit fileReader()
-         * 3. aus dem textFile ein Objekt generieren
-         */
         loadButton.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
             //FileChooser fileChooser = new FileChooser.ExtensionFilter("Text Files", "*.txt", "*.json");
@@ -54,15 +49,6 @@ public class ControlPane extends StackPane {
             FileHandler.readFile(dataFile);
         });
 
-        /**
-         * imageGenerator ist null. Möglicher Grund -> Kein Objekt generiert.
-         */
-        //String imgDescription = "Bildbeschreibung: " + imageGenerator.getDescription();
-        //textArea.appendText(imgDescription);
-
-        /**
-         * Vertikale anordnung der Komponenten, alles muss hinzugefügt werden.
-         */
         VBox controlPane = new VBox();
         controlPane.getChildren().addAll(loadButton,measureLength, measureDegree, measureScope, measureUnit, textArea, nightMode );
         controlPane.setAlignment(Pos.CENTER);
