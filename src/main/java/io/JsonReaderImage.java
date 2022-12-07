@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.Optional;
 import java.util.Scanner;
 
+import logic.ImageGenerator;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
