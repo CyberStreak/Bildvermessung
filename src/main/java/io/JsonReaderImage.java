@@ -26,43 +26,15 @@ public class JsonReaderImage implements ImageDataReader {
 
     @Override
     public void read(String fileName) throws FileNotFoundException {
-        // Checkpoint to make sure the call from FileHandler hits here
-        // ... and it does. POSSIBLE PROBLEM: fileName doesn't have the path anymore
+        // This is our checkpoint to see if the call from FileHandler works (currently not).
         System.out.println("We're in the JSON Reader now, the file name is: "+fileName);
 
         JSONParser jsonparser = new JSONParser();
-        FileReader reader = new FileReader(".\\data\\"+fileName);
+        FileReader reader = new FileReader(fileName);
 
-        Object obj = null;
-        try {
-            obj = jsonparser.parse(reader);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ParseException e) {
-            throw new RuntimeException(e);
-        }
-        JSONObject imgJsonobj = (JSONObject)obj;
-
-        // The next 8 lines of code are proving that we read the files correctly
-        String description = (String) imgJsonobj.get("description");
-        String image_file = (String) imgJsonobj.get("image_file");
-        Double image_resolution = (Double) imgJsonobj.get("image_resolution");
-        String image_resolution_unit = (String) imgJsonobj.get("image_resolution_unit");
-
-        // ... and also we can access these veriables
-        System.out.println("description: "+description);
-        System.out.println("image_file: "+image_file);
-        System.out.println("image_resolution: "+image_resolution);
-        System.out.println("image_resolution_unit: "+image_resolution_unit);
-
-        //NOW: these strings need to be passed back to the calling Classes (is it FileHandler.java???)
-        //IMPORTANT NOTE: Class ImageGenerator may have the following issues:
-        // (1) image_resolution_unit (String!) missing: needed to calculate what one pixel means
-        // (2) image_resolution currently is a String: can this be changed to Double?
-
-        // By fixing (1) & (2) above, these may work pico bello:
-        //ImageGenerator image = new ImageGenerator(description, image_file, image_resolution);
-        //return Optional.of(image);
+        //Object obj=jsonparser.parse(reader);
+        //JSONObject testjsonobj=(JSONObject)obj;
+        //String descr=(String) testjsonobj.get("description");
 
     }
 }
