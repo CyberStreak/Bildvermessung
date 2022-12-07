@@ -36,6 +36,7 @@ public class TxtReaderImage implements ImageDataReader {
         /**
          * .txt Dateien sind nicht gleich aufgebaut.
          * Methode muss durchlaufen bis alle Variablen gefüllt sind oder mit if statements nach den Schlagwörtern suchen.
+         * resolution und resolutionUnit sollte hier getrennt werden.
          */
         String description = "";
         String imageFile = "";
@@ -45,7 +46,8 @@ public class TxtReaderImage implements ImageDataReader {
             imageFile = fileScanner.nextLine().split("image-file:")[1].trim();
             resolution = fileScanner.nextLine().split("resolution:")[1].trim();
         }
-        ImageGenerator image = new ImageGenerator(description, imageFile, resolution);
+
+        ImageGenerator image = new ImageGenerator(description, imageFile, resolution); // resolution wurde im ImageGenerator auf double angepasst.
         return Optional.of(image);
     }
 
