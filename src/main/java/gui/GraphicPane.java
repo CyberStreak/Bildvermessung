@@ -1,6 +1,8 @@
 package gui;
 
+import javafx.event.EventHandler;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import logic.ImageGenerator;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -30,10 +32,34 @@ public class GraphicPane extends StackPane {
         /**
          * Muss man ausserhalb des MausEvents Linien und Punkte hinzufügen oder innerhalb?
          */
-        canvas.setOnMouseClicked( event -> {
-            gc.setStroke(Color.PAPAYAWHIP);
+        canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                gc.beginPath();
+                gc.moveTo(event.getX(), event.getY());
+                gc.stroke();
+            }
         });
 
+        canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                gc.lineTo(event.getX(), event.getY());
+                gc.stroke();
+                gc.closePath();
+                gc.beginPath();
+                gc.moveTo(event.getX(), event.getY());
+            }
+        });
+
+        canvas.addEventHandler(MouseEvent.MOUSE_RELEASED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                gc.lineTo(event.getX(), event.getY());
+                gc.stroke();
+                gc.closePath();
+            }
+        });
 
         VBox box = new VBox(iv1);
         box.setStyle("-fx-background-color: red");
@@ -46,5 +72,7 @@ public class GraphicPane extends StackPane {
             iv1.setImage(image);
         }
     }
+
+
 
 }

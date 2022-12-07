@@ -6,11 +6,12 @@ import javafx.scene.layout.StackPane;
 
 public class MainPane extends StackPane {
     public static MainPane Instance;
-
     private ControlPane controlPane;
     private GraphicPane graphicPane;
+
     public MainPane() {
         Instance = this;
+
         // stateModel muss noch geschrieben und hinzugefügt werden.
 
         controlPane = new ControlPane();

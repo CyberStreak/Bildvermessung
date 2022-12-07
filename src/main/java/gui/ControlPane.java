@@ -42,15 +42,12 @@ public class ControlPane extends StackPane {
          */
         loadButton.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
-            //FileChooser fileChooser = new FileChooser.ExtensionFilter("Text Files", "*.txt", "*.json");
             fileChooser.setTitle("Metadaten laden..");
             // Filter um Daten laden zu können..
             fileChooser.getExtensionFilters().addAll(
-                   new FileChooser.ExtensionFilter("Text Files", "*.txt", "*.json", "*.png", "*.jpg"));
-            //fileChooser.setSelectedExtensionFilter(new FileChooser.ExtensionFilter("JSON files (*.json)", "*.json"));
+                   new FileChooser.ExtensionFilter("Text Files", "*.txt", "*.json"));
 
             File dataFile = fileChooser.showOpenDialog(null);
-
 
             ImageGenerator imgGenerator = FileHandler.readFile(dataFile);
             if(imgGenerator != null) {
