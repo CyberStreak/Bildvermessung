@@ -1,5 +1,7 @@
 package io;
 
+import logic.ImageGenerator;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Optional;
@@ -19,7 +21,10 @@ public class TxtReaderImage implements ImageDataReader {
     @Override
     public Optional<ImageGenerator> readData() {
 
-        // FileNotFoundException
+        /**
+         * Reader um .txt Dateien lesen zu können
+         * @return Das Bild als Objekt.
+         */
         Scanner fileScanner;
         try {
             fileScanner = new Scanner(imageData);
@@ -28,7 +33,10 @@ public class TxtReaderImage implements ImageDataReader {
             return Optional.empty();
         }
 
-        // .txt Datein sind nicht gleich aufgebaut Methode kann sich so nicht immmer wiederholen.
+        /**
+         * .txt Dateien sind nicht gleich aufgebaut.
+         * Methode muss durchlaufen bis alle Variablen gefüllt sind oder mit if statements nach den Schlagwörtern suchen.
+         */
         String description = "";
         String imageFile = "";
         String resolution = "";
@@ -43,6 +51,5 @@ public class TxtReaderImage implements ImageDataReader {
 
     @Override
     public void read(String fileName) {
-
     }
 }

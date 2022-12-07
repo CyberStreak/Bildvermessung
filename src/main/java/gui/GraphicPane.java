@@ -1,60 +1,45 @@
 package gui;
 
-import javafx.scene.Group;
-import javafx.scene.Scene;
+import logic.ImageGenerator;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import javafx.scene.paint.Color;
 
 public class GraphicPane extends StackPane {
+    private ImageGenerator imageGenerator;
+    static GraphicsContext gc;
 
     public GraphicPane() {
-        String strTitle = "Titulo de la Ventana";
-        int w_width = 500;
-        int w_height = 500;
+        Canvas canvas = new Canvas(500, 750);
+        gc = canvas.getGraphicsContext2D();
 
-        //Die folgen drei Befehle funktionieren noch nicht.
+        ImageView iv1 = new ImageView();
+        iv1.setImage(imageGenerator.getImg()); // imageGenerator ist null, Objekt kann aber nicht vor dem Lesen der Datei erstellt werden.
+        iv1.setFitHeight(300);
+        iv1.setFitWidth(500);
+        iv1.setSmooth(true);
+        iv1.setPreserveRatio(true);
+        iv1.setCache(true);
 
-        //GraphicPane.setTitle(strTitle);
-        //GraphicPane.setWidth(w_width);
-        //GraphicPane.setHeight(w_height);
+        /**
+         * Das Bild auf den canvas bringen und darauf zeichnen mit der Maus.
+         */
+        gc.drawImage(iv1.getImage(), 0, 500);
 
-        Group root = new Group();
-        Scene scene = new Scene(root);
-
-        String imagePath = "src/main/java/data/image01.jpg";
-
-        BufferedImage imvFile;
-
-        ImageView imv = new ImageView(imagePath);
-        try {
-            imvFile = ImageIO.read(new File(imagePath));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        if (imvFile.getWidth() > imvFile.getHeight()) {
-            imv.fitWidthProperty().bind(scene.widthProperty());
-        } else {
-            imv.fitHeightProperty().bind(scene.heightProperty());
-        }
-        imv.setPreserveRatio(true);
+        /**
+         * Muss man ausserhalb des MausEvents Linien und Punkte hinzufügen oder innerhalb?
+         */
+        canvas.setOnMouseClicked( event -> {
+            gc.setStroke(Color.PAPAYAWHIP);
+        });
 
 
-
-        // root.getChildren().add(imv);
-        // primaryStage.setScene(scene);
-        // primaryStage.show();
-
-        VBox graphicPane = new VBox();
-        graphicPane.getChildren().add(imv);
-        this.getChildren().add(graphicPane);
-
+        VBox box = new VBox();
+        // Padding etc.
+        this.getChildren().add(box);
     }
 
 }

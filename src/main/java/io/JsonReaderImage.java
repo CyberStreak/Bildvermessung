@@ -1,11 +1,9 @@
 package io;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
 import java.util.Optional;
-import java.util.Scanner;
 
 import logic.ImageGenerator;
 import org.json.simple.JSONObject;
