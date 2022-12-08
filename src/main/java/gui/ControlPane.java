@@ -16,8 +16,7 @@ import io.FileHandler;
 import java.io.File;
 
 public class ControlPane extends StackPane {
-    private ImageGenerator imageGenerator;
-
+    public ImageGenerator imageGenerator; // Warum wird die Variabel bei private nicht gebraucht und public schon? (Bleibt null)
 
     public ControlPane() {
         Button loadButton = new Button(">>Daten laden<<");

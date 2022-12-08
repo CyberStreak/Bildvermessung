@@ -3,10 +3,7 @@ package logic;
 import javafx.scene.image.Image;
 
 public class ImageGenerator {
-
-    // nicht sicher ob Bild hier generiert werden soll oder doch lieber in einer seperaten Klasse..
     private  Image img;
-
     private final String description;
     private final String imageFile;
     private final Double resolution;
@@ -37,8 +34,4 @@ public class ImageGenerator {
     }
 
     public String getResolutionUnit() { return resolutionUnit; }
-
-    // Methode schreiben um die Masseinheit und den Wert aus der resolution zu trennen..
-
-
 }

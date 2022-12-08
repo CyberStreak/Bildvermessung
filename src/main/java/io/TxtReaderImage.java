@@ -58,8 +58,7 @@ public class TxtReaderImage implements ImageDataReader {
          * .txt Dateien sind nicht gleich aufgebaut.
          * Methode muss durchlaufen bis alle Variablen gefüllt sind oder mit if statements nach den Schlagwörtern suchen.
          */
-        String description = "";
-        String imageFile = "";
+
         //String resolution = "";
         String fileContent = "";
         while (fileScanner.hasNextLine()) {
