@@ -30,8 +30,8 @@ public class GraphicPane extends StackPane {
 
         // Settings for the image
         iv1 = new ImageView();
-        iv1.setFitHeight(drawingPane.getHeight()); // Bild passt sich nicht an das Fenster an
-        iv1.setFitWidth(drawingPane.getWidth()); // Bild passt sich nicht an das Fenster an
+        iv1.setFitHeight(500); // Bild passt sich nicht an das Fenster an
+        iv1.setFitWidth(500); // Bild passt sich nicht an das Fenster an
         // image.getWidth() / iv1.getWidth() * imageGenerator.getResolution() * gemessenePixel
         iv1.setSmooth(true);
         iv1.setPreserveRatio(true);
