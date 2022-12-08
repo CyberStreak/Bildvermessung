@@ -6,8 +6,8 @@ import javafx.scene.layout.StackPane;
 
 public class MainPane extends StackPane {
     public static MainPane Instance;
-    private ControlPane controlPane;
-    private GraphicPane graphicPane;
+    private final ControlPane controlPane;
+    private final GraphicPane graphicPane;
 
     public MainPane() {
         Instance = this;
@@ -23,7 +23,7 @@ public class MainPane extends StackPane {
         verticalSplitter.getItems().addAll(controlPane);
         verticalSplitter.getItems().addAll(graphicPane);
 
-        getChildren().add(verticalSplitter);
+        this.getChildren().add(verticalSplitter);
     }
 
     public ControlPane getControlPane() {

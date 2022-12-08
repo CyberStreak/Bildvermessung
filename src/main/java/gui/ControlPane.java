@@ -16,7 +16,7 @@ import io.FileHandler;
 import java.io.File;
 
 public class ControlPane extends StackPane {
-    public ImageGenerator imageGenerator; // Warum wird die Variabel bei private nicht gebraucht und public schon? (Bleibt null)
+    //public ImageGenerator imageGenerator; // Warum wird die Variabel bei private nicht gebraucht und public schon? (Bleibt null)
 
     public ControlPane() {
         Button loadButton = new Button(">>Daten laden<<");
@@ -50,6 +50,7 @@ public class ControlPane extends StackPane {
 
             ImageGenerator imgGenerator = FileHandler.readFile(dataFile);
             if(imgGenerator != null) {
+                // Image ins statemodel setzen unm es abspeichern zu können.
                 MainPane.Instance.getGraphicPane().setImage(imgGenerator.getImg());
             }
         });

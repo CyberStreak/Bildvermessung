@@ -3,7 +3,7 @@ package logic;
 import javafx.scene.image.Image;
 
 public class ImageGenerator {
-    private  Image img;
+    private final Image img;
     private final String description;
     private final String imageFile;
     private final Double resolution;
