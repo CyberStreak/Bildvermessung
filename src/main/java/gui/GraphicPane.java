@@ -3,6 +3,8 @@ package gui;
 import javafx.event.EventHandler;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import logic.ImageGenerator;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -18,6 +20,12 @@ public class GraphicPane extends StackPane {
     static GraphicsContext gc;
 
     public GraphicPane() {
+
+        // StackPane funktioniert nicht, ScrollPane versuchen oder den ImageView wegnehmen.
+        Pane pane = new Pane();
+        pane.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
+
+        // canvas und imageView funktioniert nicht gemeinsam.
         canvas = new Canvas(500, 750);
         gc = canvas.getGraphicsContext2D();
 
@@ -29,16 +37,20 @@ public class GraphicPane extends StackPane {
         iv1.setPreserveRatio(true);
         iv1.setCache(true);
 
+        // Linie muss ausserhalb generiert werden.
+
+        // Liste mit den gespeicherten Koordinaten der Linien
+
         /**
          * Muss man ausserhalb des MausEvents Linien und Punkte hinzufügen oder innerhalb?
          */
-        canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                gc.beginPath();
-                gc.moveTo(event.getX(), event.getY());
-                gc.stroke();
-            }
+        canvas.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
+            gc.beginPath();
+            gc.moveTo(event.getX(), event.getY());
+            gc.stroke();
+
+            // Über die mouseEvents auf die Linie zugreifen.
+            // Linien start
         });
 
         canvas.addEventHandler(MouseEvent.MOUSE_DRAGGED, new EventHandler<MouseEvent>() {
@@ -49,6 +61,8 @@ public class GraphicPane extends StackPane {
                 gc.closePath();
                 gc.beginPath();
                 gc.moveTo(event.getX(), event.getY());
+
+                // Linie zielort
             }
         });
 
@@ -58,13 +72,21 @@ public class GraphicPane extends StackPane {
                 gc.lineTo(event.getX(), event.getY());
                 gc.stroke();
                 gc.closePath();
+
+                // Liste füllen
             }
         });
 
+        //pane.getChildren().addAll(canvas, iv1); funktioniert weder mit StackPane oder der normalen Pane.
+
+        /*
         VBox box = new VBox(iv1);
         box.setStyle("-fx-background-color: red");
         // Padding etc.
         this.getChildren().add(box);
+
+         */
+
     }
 
     public void setImage(Image image) {

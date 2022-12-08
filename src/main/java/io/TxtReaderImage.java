@@ -80,6 +80,7 @@ public class TxtReaderImage implements ImageDataReader {
             resolutionUnit = resolutionArray[1];
         }
 
+        // Für alle Betriebssysteme möglich machen. -> File.seperater
         String filePath = file.getParent() + "\\" + getValue("image-file: ", fileContent);
         // image-file:
         ImageGenerator image = new ImageGenerator(getValue("description: ", fileContent),
