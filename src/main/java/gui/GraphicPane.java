@@ -22,8 +22,8 @@ public class GraphicPane extends StackPane {
     public GraphicPane() {
 
         // StackPane funktioniert nicht, ScrollPane versuchen oder den ImageView wegnehmen.
-        Pane pane = new Pane();
-        pane.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
+        //Pane pane = new Pane();
+        //pane.setMaxSize(Region.USE_PREF_SIZE, Region.USE_PREF_SIZE);
 
         // canvas und imageView funktioniert nicht gemeinsam.
         canvas = new Canvas(500, 750);
@@ -79,13 +79,12 @@ public class GraphicPane extends StackPane {
 
         //pane.getChildren().addAll(canvas, iv1); funktioniert weder mit StackPane oder der normalen Pane.
 
-        /*
+
         VBox box = new VBox(iv1);
         box.setStyle("-fx-background-color: red");
         // Padding etc.
         this.getChildren().add(box);
 
-         */
 
     }
 

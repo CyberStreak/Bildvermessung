@@ -12,12 +12,9 @@ import java.util.Scanner;
 
 public class TxtReaderImage implements ImageDataReader {
 
-
-
     // Daten aus dem Text lesen.
 
     public Optional<ImageGenerator> readData() {
-
         /**
          * Reader um .txt Dateien lesen zu können
          * @return Das Bild als Objekt.
@@ -71,7 +68,6 @@ public class TxtReaderImage implements ImageDataReader {
 
         //System.out.print(resolution);
 
-
         String[] resolutionArray = getValue("resolution: ", fileContent).split(" ");
         Double resolution = 0.0;
         String resolutionUnit = "";
@@ -81,7 +77,7 @@ public class TxtReaderImage implements ImageDataReader {
         }
 
         // Für alle Betriebssysteme möglich machen. -> File.seperater
-        String filePath = file.getParent() + "\\" + getValue("image-file: ", fileContent);
+        String filePath = file.getParent() + File.separator + getValue("image-file: ", fileContent);
         // image-file:
         ImageGenerator image = new ImageGenerator(getValue("description: ", fileContent),
                                                   filePath,

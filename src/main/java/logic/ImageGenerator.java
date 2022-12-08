@@ -17,7 +17,7 @@ public class ImageGenerator {
         this.imageFile = imageFile;
         this.resolution = resolution;
         this.resolutionUnit = resolutionUnit;
-        img = new Image(imageFile);
+        img = new Image("file:" + imageFile);
     }
 
     public Image getImg() {
