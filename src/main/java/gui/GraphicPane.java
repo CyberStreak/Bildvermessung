@@ -1,67 +1,76 @@
 package gui;
 
+import javafx.geometry.Pos;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.Region;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
-import logic.ImageGenerator;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import logic.ImageGenerator;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class GraphicPane extends StackPane {
     // Start variablen für die Maus als instanz definieren
-    //private ImageGenerator imageGenerator; // Variable ist null, Fehler bevor die App gestartet wird.
     private final ImageView iv1;
-    private double x1;
-    private double y1;
+    double x1 = 0;
+    double y1 = 0;
+    // double x2 = 0; für Winkel benötigt
+    // double y2 = 0; für Winkel benötigt
 
     public GraphicPane() {
-
-        //StackPane funktioniert nicht, ScrollPane versuchen oder den ImageView wegnehmen.
+        // create a Pane for drawing
+        this.iv1 = new ImageView();
         Pane drawingPane = new Pane();
+        Button clear = new Button("Zeichnung bereinigen");
+        drawingPane.setStyle("-fx-background-color: red");
+        drawingPane.getChildren().add(iv1);
 
         // Settings for the image
-        iv1 = new ImageView();
-        iv1.setFitHeight(750); // Bild passt sich nicht an das Fenster an
-        iv1.setFitWidth(750); // Bild passt sich nicht an das Fenster an
+        this.iv1.setFitHeight(750);
+        this.iv1.setFitWidth(500);
         // image.getWidth() / iv1.getWidth() * imageGenerator.getResolution() * gemessenePixel
-        iv1.setSmooth(true);
-        iv1.setPreserveRatio(true);
-        iv1.setCache(true);
+        this.iv1.setSmooth(true);
+        this.iv1.setPreserveRatio(true);
+        this.iv1.setCache(true);
 
         // Liste mit den gespeicherten Koordinaten der Linien
         List<Line> lines = new ArrayList<>();
 
         /**
-         * Start- und Endpunkte wurden als instanz Variablen kreiert
+         * Start- und Endpunkte wurden als instanz Variablen kreiert durch MausClick erzeugt
          */
         drawingPane.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
             // x und y als startpunkt festlegen
-                x1 = event.getX();
-                y1 = event.getY();
+            x1 = event.getX();
+            y1 = event.getY();
         });
 
         drawingPane.addEventHandler(MouseEvent.MOUSE_RELEASED, event -> {
-            // Linie zeichnen
+            // Linie generieren / Pane und Liste hinzufügen
             Line line = new Line();
             line.setStartX(x1);
             line.setStartY(y1);
             line.setEndX(event.getX());
             line.setEndY(event.getY());
             line.setStroke(Color.GREENYELLOW);
-            line.setStrokeWidth(10);
+            lines.add(line);
+            drawingPane.getChildren().add(line);
+        });
+
+        clear.setOnAction(event -> {
+            lines.clear();
         });
 
         VBox box = new VBox();
-        box.getChildren().addAll(drawingPane, iv1);
-        box.setStyle("-fx-background-color: red");
-        // Padding etc.
+        box.getChildren().addAll(drawingPane, clear);
+        box.setAlignment(Pos.CENTER);
+        box.autosize();
         this.getChildren().add(box);
     }
 
@@ -70,7 +79,4 @@ public class GraphicPane extends StackPane {
             iv1.setImage(image);
         }
     }
-
-
-
 }
