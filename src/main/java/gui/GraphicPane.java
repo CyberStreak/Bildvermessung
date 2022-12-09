@@ -10,9 +10,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
-
 import java.util.ArrayList;
-import java.util.List;
 
 public class GraphicPane extends StackPane {
     // Start variablen für die Maus als instanz definieren
@@ -39,7 +37,7 @@ public class GraphicPane extends StackPane {
         this.iv1.setCache(true);
 
         // Liste mit den gespeicherten Koordinaten der Linien
-        List<Line> lines = new ArrayList<>();
+        ArrayList<Line> lines = new ArrayList<>();
 
         /**
          * Start- und Endpunkte wurden als instanz Variablen kreiert durch MausClick erzeugt
@@ -59,17 +57,18 @@ public class GraphicPane extends StackPane {
             line.setEndY(event.getY());
             line.setStroke(Color.GREENYELLOW);
             lines.add(line);
+            System.out.println(lines);
             drawingPane.getChildren().add(line);
             // Wo werden die Linien ausserhalb der Liste gespeichert?
         });
 
         /**
-         * löscht die gesamte Pane. kann nicht neu über loadbutton geladen werden.
-         * Wie greift man auf die Linien zu?
          * Wie kann man die generierte Liste in eine andere Klasse übernehmen
          */
         clear.setOnAction(event -> {
             drawingPane.getChildren().clear();
+            drawingPane.getChildren().add(iv1);
+            lines.clear();
         });
 
         //Vertikalen anordnung der Komponenten
