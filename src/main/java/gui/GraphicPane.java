@@ -3,14 +3,13 @@ package gui;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.scene.shape.Line;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import logic.ImageGenerator;
+import javafx.scene.shape.Line;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +31,7 @@ public class GraphicPane extends StackPane {
         drawingPane.getChildren().add(iv1);
 
         // Settings for the image
-        this.iv1.setFitHeight(750);
+        this.iv1.setFitHeight(500);
         this.iv1.setFitWidth(500);
         // image.getWidth() / iv1.getWidth() * imageGenerator.getResolution() * gemessenePixel
         this.iv1.setSmooth(true);
@@ -52,7 +51,7 @@ public class GraphicPane extends StackPane {
         });
 
         drawingPane.addEventHandler(MouseEvent.MOUSE_RELEASED, event -> {
-            // Linie generieren / Pane und Liste hinzufügen
+            // Linien generieren / Pane und Liste hinzufügen
             Line line = new Line();
             line.setStartX(x1);
             line.setStartY(y1);
@@ -61,12 +60,19 @@ public class GraphicPane extends StackPane {
             line.setStroke(Color.GREENYELLOW);
             lines.add(line);
             drawingPane.getChildren().add(line);
+            // Wo werden die Linien ausserhalb der Liste gespeichert?
         });
 
+        /**
+         * löscht die gesamte Pane. kann nicht neu über loadbutton geladen werden.
+         * Wie greift man auf die Linien zu?
+         * Wie kann man die generierte Liste in eine andere Klasse übernehmen
+         */
         clear.setOnAction(event -> {
-            lines.clear();
+            drawingPane.getChildren().clear();
         });
 
+        //Vertikalen anordnung der Komponenten
         VBox box = new VBox();
         box.getChildren().addAll(drawingPane, clear);
         box.setAlignment(Pos.CENTER);

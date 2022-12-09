@@ -67,13 +67,6 @@ public class ControlPane extends StackPane {
         });
 
         /**
-        * imageGenerator ist null. Möglicher Grund -> Kein Objekt generiert.
-        */
-        //String imgDescription = "Bildbeschreibung: " + imageGenerator.getDescription();
-        //textArea.appendText(imgDescription);
-
-
-        /**
          * Alles in die Box rein
          */
         VBox controlPane = new VBox();
