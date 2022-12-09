@@ -23,7 +23,7 @@ public class ControlPane extends StackPane {
         Button measureLength = new Button("Länge messen");
         Button measureScope = new Button("Umfang messen");
         Button measureDegree = new Button("Winkel messen");
-        //Clear button einfügen..
+
 
         ComboBox measureUnit = new ComboBox();
         measureUnit.setEditable(false);

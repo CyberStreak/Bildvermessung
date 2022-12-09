@@ -2,6 +2,7 @@ package gui;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -10,34 +11,38 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
+import logic.DrawAngle;
+
 import java.util.ArrayList;
 
 public class GraphicPane extends StackPane {
-    // Start variablen für die Maus als instanz definieren
+    ArrayList<Line> lines; // kann man diese Liste einer anderen Klasse geben?
     private final ImageView iv1;
     double x1 = 0;
     double y1 = 0;
-    // double x2 = 0; für Winkel benötigt
-    // double y2 = 0; für Winkel benötigt
+    double x2 = 0;
+    double y2 = 0;
+    int clicks = 1;
 
     public GraphicPane() {
         // create a Pane for drawing
         this.iv1 = new ImageView();
         Pane drawingPane = new Pane();
         Button clear = new Button("Zeichnung bereinigen");
+        Label anzeige = new Label("");
         drawingPane.setStyle("-fx-background-color: red");
         drawingPane.getChildren().add(iv1);
 
         // Settings for the image
-        this.iv1.setFitHeight(500);
-        this.iv1.setFitWidth(500);
+        this.iv1.setFitHeight(750);
+        this.iv1.setFitWidth(750);
         // image.getWidth() / iv1.getWidth() * imageGenerator.getResolution() * gemessenePixel
         this.iv1.setSmooth(true);
         this.iv1.setPreserveRatio(true);
         this.iv1.setCache(true);
 
         // Liste mit den gespeicherten Koordinaten der Linien
-        ArrayList<Line> lines = new ArrayList<>();
+        lines = new ArrayList<>();
 
         /**
          * Start- und Endpunkte wurden als instanz Variablen kreiert durch MausClick erzeugt
@@ -62,9 +67,31 @@ public class GraphicPane extends StackPane {
             // Wo werden die Linien ausserhalb der Liste gespeichert?
         });
 
-        /**
-         * Wie kann man die generierte Liste in eine andere Klasse übernehmen
+        /*
+        -> verursacht andauernde Maus fehler beim reinen drüber fahren
+        drawingPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+                    switch(clicks) {
+                        case 1:
+                            anzeige.setText("Bitte Eckpunkt des Winkels anwählen.");
+                            x1 = event.getX();
+                            y1 = event.getY();
+                            clicks += 1;
+                            System.out.println("Maus wurde 1mal gedrückt");
+                        case 2:
+                            anzeige.setText("Bitte Ende das Ende der zweiten linien wählen.");
+                            x2 = event.getX();
+                            y2 = event.getY();
+                            clicks += 1;
+                            System.out.println("Maus wurde 2mal gedrückt");
+                        case 3:
+                            clicks = 1;
+                            DrawAngle angle = new DrawAngle(x1, y1, x2, y2, event.getX(), event.getY());
+                            drawingPane.getChildren().add(angle);
+                            break;
+                    }
+        });
          */
+
         clear.setOnAction(event -> {
             drawingPane.getChildren().clear();
             drawingPane.getChildren().add(iv1);
