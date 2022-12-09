@@ -52,14 +52,26 @@ public class ControlPane extends StackPane {
             if(imgGenerator != null) {
                 // Image ins statemodel setzen unm es abspeichern zu können.
                 MainPane.Instance.getGraphicPane().setImage(imgGenerator.getImg());
+
+                /**
+                 * Grund fürs nicht funktionieren (s. Blockcomment unten) war: Ausserhalb 'imgGenerator'
+                 * Zusätzlich noch zusammengefasst, ohne Definition von Zwischenvariablen.
+                 */
+                textArea.clear();
+                textArea.appendText("--- Image information ---\n");
+                textArea.appendText(imgGenerator.getDescription()+"\n");
+                textArea.appendText(imgGenerator.getResolution()+" "+imgGenerator.getResolutionUnit()+" per Pixel\n\n");
+                textArea.appendText(imgGenerator.getImageFile()+"\n\n");
+                textArea.appendText("--- Debug information ---\n");
             }
         });
 
         /**
-         * imageGenerator ist null. Möglicher Grund -> Kein Objekt generiert.
-         */
+        * imageGenerator ist null. Möglicher Grund -> Kein Objekt generiert.
+        */
         //String imgDescription = "Bildbeschreibung: " + imageGenerator.getDescription();
         //textArea.appendText(imgDescription);
+
 
         /**
          * Alles in die Box rein
