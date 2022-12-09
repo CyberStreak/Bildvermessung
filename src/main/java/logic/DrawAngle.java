@@ -1,6 +1,7 @@
 package logic;
 
 import javafx.scene.Node;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
 public class DrawAngle extends Node {
@@ -21,6 +22,8 @@ public class DrawAngle extends Node {
         line2.setEndX(x3);
         line2.setEndY(y3);
         this.line2 = line2;
+        line.setStroke(Color.YELLOWGREEN);
+        line2.setStroke(Color.YELLOWGREEN);
     }
 
     /*
