@@ -49,6 +49,8 @@ public class GraphicPane extends StackPane {
         // list for the coordinates of the line
         lines = new ArrayList<>();
 
+        // First created Line here, didn't work properly -> comments line 63
+
         // Set the starting point of the line when the user presses the mouse button
         drawingPane.setOnMousePressed(event -> {
             x1 = event.getX();
@@ -59,7 +61,7 @@ public class GraphicPane extends StackPane {
         // Set the ending point of the line and the settings
         drawingPane.setOnMouseDragged(event -> {
             // When the line is created external and the setting are set up here the window and image resizes itself,
-            // but it gets an error code and the just one line is visible
+            // but it gets an error code and just one line is visible
         });
          */
 
@@ -79,7 +81,7 @@ public class GraphicPane extends StackPane {
         });
 
         // The two mouse events don't get along with each other, as the mouse is released it generates a line,
-        // played around with the DRAGGED gesture look at the comments at line 57
+        // played around with the DRAGGED gesture look at the comments at line 63
         // Maybe the DrawAngle constructor should connect Points? Or should the line drawing be handled different?
         /*
         // Handle mouse clicks for drawing angles
