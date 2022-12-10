@@ -17,8 +17,9 @@ import logic.DrawAngle;
 import java.util.ArrayList;
 
 public class GraphicPane extends StackPane {
-    ArrayList<Line> lines; // kann man diese Liste einer anderen Klasse geben?
+    ArrayList<Line> lines; // How can we access this List in another class? For computing the lengths for example.
     private final ImageView iv1;
+    // should this variables be private?
     double x1 = 0;
     double y1 = 0;
     double x2 = 0;
@@ -77,7 +78,9 @@ public class GraphicPane extends StackPane {
             System.out.println(lines);
         });
 
-        // The two mouse events don't get along with each other
+        // The two mouse events don't get along with each other, as the mouse is released it generates a line,
+        // played around with the DRAGGED gesture look at the comments at line 57
+        // Maybe the DrawAngle constructor should connect Points? Or should the line drawing be handled different?
         /*
         // Handle mouse clicks for drawing angles
         drawingPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
