@@ -15,15 +15,15 @@ public class DrawAngle extends Node {
         line.setStartY(y1);
         line.setEndX(x2);
         line.setEndY(y2);
+        line.setStroke(Color.YELLOWGREEN);
         this.line1 = line;
         Line line2 = new Line();
         line2.setStartX(x2);
         line2.setStartY(y2);
         line2.setEndX(x3);
         line2.setEndY(y3);
-        this.line2 = line2;
-        line.setStroke(Color.YELLOWGREEN);
         line2.setStroke(Color.YELLOWGREEN);
+        this.line2 = line2;
     }
 
     /*

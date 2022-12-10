@@ -1,5 +1,6 @@
 package gui;
 
+import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -41,20 +42,20 @@ public class GraphicPane extends StackPane {
         this.iv1.setPreserveRatio(true);
         this.iv1.setCache(true);
 
-        // Liste mit den gespeicherten Koordinaten der Linien
+        // list for the coordinates of the line
         lines = new ArrayList<>();
 
         /**
          * Start- und Endpunkte wurden als instanz Variablen kreiert durch MausClick erzeugt
          */
-        drawingPane.addEventHandler(MouseEvent.MOUSE_PRESSED, event -> {
+        drawingPane.setOnMousePressed(event -> {
             // x und y als startpunkt festlegen
             x1 = event.getX();
             y1 = event.getY();
         });
 
-        drawingPane.addEventHandler(MouseEvent.MOUSE_RELEASED, event -> {
-            // Linien generieren / Pane und Liste hinzufügen
+        drawingPane.setOnMouseReleased(event -> {
+            // add to pane and list
             Line line = new Line();
             line.setStartX(x1);
             line.setStartY(y1);
@@ -64,32 +65,34 @@ public class GraphicPane extends StackPane {
             lines.add(line);
             System.out.println(lines);
             drawingPane.getChildren().add(line);
-            // Wo werden die Linien ausserhalb der Liste gespeichert?
+            // where are the lines saved?
         });
 
         /*
-        -> verursacht andauernde Maus fehler beim reinen drüber fahren
         drawingPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
-                    switch(clicks) {
-                        case 1:
-                            anzeige.setText("Bitte Eckpunkt des Winkels anwählen.");
-                            x1 = event.getX();
-                            y1 = event.getY();
-                            clicks += 1;
-                            System.out.println("Maus wurde 1mal gedrückt");
-                        case 2:
-                            anzeige.setText("Bitte Ende das Ende der zweiten linien wählen.");
-                            x2 = event.getX();
-                            y2 = event.getY();
-                            clicks += 1;
-                            System.out.println("Maus wurde 2mal gedrückt");
-                        case 3:
-                            clicks = 1;
-                            DrawAngle angle = new DrawAngle(x1, y1, x2, y2, event.getX(), event.getY());
-                            drawingPane.getChildren().add(angle);
-                            break;
-                    }
+            switch (clicks) {
+                case 1 -> {
+                    anzeige.setText("Bitte Eckpunkt des Winkels anwählen.");
+                    clicks += 1;
+                    x1 = event.getX();
+                    y1 = event.getY();
+                    System.out.println("Maus wurde 1mal gedrückt");
+                }
+                case 2 -> {
+                    anzeige.setText("Bitte Ende das Ende der zweiten linien wählen.");
+                    clicks += 1;
+                    x2 = event.getX();
+                    y2 = event.getY();
+                    System.out.println("Maus wurde 2mal gedrückt");
+                }
+                case 3 -> {
+                    clicks = 1;
+                    DrawAngle angle = new DrawAngle(x1, y1, x2, y2, event.getX(), event.getY());
+                    drawingPane.getChildren().add(angle);
+                }
+            }
         });
+
          */
 
         clear.setOnAction(event -> {
