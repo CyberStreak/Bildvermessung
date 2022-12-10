@@ -5,7 +5,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
 public class DrawAngle extends Node {
-    // Was für Variablen braucht es? -> Line oder Liste
+    // Was für Variablen braucht es? -> Line, Liste oder variablen?
     Line line1;
     Line line2;
 
@@ -26,11 +26,38 @@ public class DrawAngle extends Node {
         this.line2 = line2;
     }
 
-    /*
-    public double getDegree(double length1, double length2) {
-        return double degree;
+    public double lineLength(Line line) {
+        double x1 = line.getStartX();
+        double y1 = line.getStartY();
+        double x2 = line.getEndX();
+        double y2 = line.getEndY();
+        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
-    */
+
+    public double angleBetweenLines(Line line1, Line line2) {
+        double x1 = line1.getStartX();
+        double y1 = line1.getStartY();
+        double x2 = line1.getEndX();
+        double y2 = line1.getEndY();
+        double x3 = line2.getStartX();
+        double y3 = line2.getStartY();
+        double x4 = line2.getEndX();
+        double y4 = line2.getEndY();
+
+        // Calculate the angle of line1 using the atan2 function
+        double angle1 = Math.atan2(y2 - y1, x2 - x1);
+
+        // Calculate the angle of line2 using the atan2 function
+        double angle2 = Math.atan2(y4 - y3, x4 - x3);
+
+        // Subtract the two angles to find the angle between the lines
+        double angleBetween = angle1 - angle2;
+
+        // Convert the angle from radians to degrees
+        double angleInDegrees = Math.toDegrees(angleBetween);
+
+        return angleInDegrees;
+    }
 
     @Override
     public Node getStyleableNode() {
