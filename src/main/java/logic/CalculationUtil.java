@@ -53,6 +53,13 @@ public class CalculationUtil {
         double angle2 = Math.atan2(y4 - y3, x4 - x3);
         System.out.println("Angle 2 = "+Math.toDegrees(angle2));
 
+        // Swap angles if they are not in ascending order
+        if (angle1 > angle2){
+            temp = angle1;
+            angle1 = angle2;
+            angle2 = temp;
+        }
+
         // Subtract the two angles to find the angle between the lines
         double angleBetween = angle1 - angle2;
 
