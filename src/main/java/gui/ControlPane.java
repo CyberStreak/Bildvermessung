@@ -1,5 +1,6 @@
 package gui;
 
+import logic.AngleTool;
 import logic.ImageGenerator;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -12,6 +13,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 
 import io.FileHandler;
+import logic.LineTool;
 
 import java.io.File;
 
@@ -23,6 +25,9 @@ public class ControlPane extends StackPane {
         Button measureLength = new Button("Länge messen");
         Button measureScope = new Button("Umfang messen");
         Button measureDegree = new Button("Winkel messen");
+
+        measureLength.setOnAction(event -> {MainPane.Instance.getGraphicPane().changeTool(new LineTool());});
+        measureDegree.setOnAction(event -> {MainPane.Instance.getGraphicPane().changeTool(new AngleTool());});
 
 
         ComboBox measureUnit = new ComboBox();
@@ -49,6 +54,7 @@ public class ControlPane extends StackPane {
             File dataFile = fileChooser.showOpenDialog(null);
 
             ImageGenerator imgGenerator = FileHandler.readFile(dataFile);
+            MainPane.Instance.setCurrentImageGenerator(imgGenerator);
             if(imgGenerator != null) {
                 // Image ins statemodel setzen unm es abspeichern zu können.
                 MainPane.Instance.getGraphicPane().setImage(imgGenerator.getImg());
