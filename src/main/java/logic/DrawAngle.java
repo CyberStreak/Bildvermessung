@@ -1,13 +1,14 @@
 package logic;
 
+import gui.GraphicPane;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 
+import java.util.ArrayList;
+
 public class DrawAngle extends Node {
-    // Was für Variablen braucht es? -> Line, Liste oder variablen?
-    Line line1;
-    Line line2;
+    ArrayList<Line> lines = GraphicPane.getLines();
 
     public DrawAngle(double x1, double y1, double x2, double y2, double x3, double y3) {
         Line line = new Line();
@@ -16,22 +17,12 @@ public class DrawAngle extends Node {
         line.setEndX(x2);
         line.setEndY(y2);
         line.setStroke(Color.YELLOWGREEN);
-        this.line1 = line;
         Line line2 = new Line();
         line2.setStartX(x2);
         line2.setStartY(y2);
         line2.setEndX(x3);
         line2.setEndY(y3);
         line2.setStroke(Color.YELLOWGREEN);
-        this.line2 = line2;
-    }
-
-    public double lineLength(Line line) {
-        double x1 = line.getStartX();
-        double y1 = line.getStartY();
-        double x2 = line.getEndX();
-        double y2 = line.getEndY();
-        return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
 
     public double angleBetweenLines(Line line1, Line line2) {
@@ -54,9 +45,7 @@ public class DrawAngle extends Node {
         double angleBetween = angle1 - angle2;
 
         // Convert the angle from radians to degrees
-        double angleInDegrees = Math.toDegrees(angleBetween);
-
-        return angleInDegrees;
+        return Math.toDegrees(angleBetween);
     }
 
     @Override

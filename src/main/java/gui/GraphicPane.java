@@ -5,7 +5,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -17,7 +16,7 @@ import logic.DrawAngle;
 import java.util.ArrayList;
 
 public class GraphicPane extends StackPane {
-    ArrayList<Line> lines; // How can we access this List in another class? For computing the lengths for example.
+    static ArrayList<Line> lines; // How can we access this List in another class? For computing the lengths for example.
     private final ImageView iv1;
     // should this variables be private?
     double x1 = 0;
@@ -65,6 +64,7 @@ public class GraphicPane extends StackPane {
         });
          */
 
+        // MouseReleased react to clicks too
         // Add the line to the pane and list
         drawingPane.setOnMouseReleased(event -> {
             // Create a Line
@@ -77,6 +77,7 @@ public class GraphicPane extends StackPane {
             line.setStroke(Color.YELLOWGREEN);
             drawingPane.getChildren().add(line);
             lines.add(line);
+            // TEST
             System.out.println(lines);
         });
 
@@ -84,7 +85,7 @@ public class GraphicPane extends StackPane {
         // played around with the DRAGGED gesture look at the comments at line 63
         // Maybe the DrawAngle constructor should connect Points? Or should the line drawing be handled different?
         // Handle mouse clicks for drawing angles
-        drawingPane.addEventHandler(MouseEvent.MOUSE_CLICKED, event -> {
+        drawingPane.setOnMouseClicked(event -> {
             switch (clicks) {
                 case 1 -> {
                     anzeige.setText("Bitte Eckpunkt des Winkels anwählen.");
@@ -127,6 +128,10 @@ public class GraphicPane extends StackPane {
         box.setAlignment(Pos.CENTER);
         box.autosize();
         this.getChildren().add(box);
+    }
+
+    public static ArrayList<Line> getLines() {
+        return lines;
     }
 
     public void setImage(Image image) {
