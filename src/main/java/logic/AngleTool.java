@@ -22,7 +22,7 @@ public class AngleTool implements iTool{
             state = 0;
             // update display text to the measured angle
             float Angle = (float)CalculationUtil.calculateAngel(line1, line2);
-            float Complement = 360 - (float)CalculationUtil.calculateAngel(line1, line2);
+            float Complement = 360 - Angle;
             MainPane.Instance.getGraphicPane().changeDisplayText("Winkel zwischen den Linien: " + Angle+" | "+Complement);
         }
     }
