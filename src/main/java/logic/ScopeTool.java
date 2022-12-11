@@ -5,10 +5,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 
-public class AngleTool implements iTool{
+public class ScopeTool implements iTool{
     // stores the two lines
     private Line line1 = null;
     private Line line2 = null;
+    private Line line3 = null;
     // stores the current line (line1 or line2) which the user is currently drawing
     private Line currentLine = null;
 
@@ -20,10 +21,8 @@ public class AngleTool implements iTool{
         if(state == 2) {
             // reset state
             state = 0;
-            // update display text to the measured angle
-            float Angle = (float)CalculationUtil.calculateAngel(line1, line2);
-            float Complement = 360 - Angle;
-            MainPane.Instance.getGraphicPane().changeDisplayText("Winkel zwischen den Linien: " + Angle+" | "+Complement);
+            double totalLength = CalculationUtil.calculatelineLength(line1)+CalculationUtil.calculatelineLength(line2);
+            MainPane.Instance.getGraphicPane().changeDisplayText("Länge aller Linien: " + totalLength);
         }
     }
 

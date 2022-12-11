@@ -14,6 +14,7 @@ import javafx.stage.FileChooser;
 
 import io.FileHandler;
 import logic.LineTool;
+import logic.ScopeTool;
 
 import java.io.File;
 
@@ -28,6 +29,7 @@ public class ControlPane extends StackPane {
 
         measureLength.setOnAction(event -> {MainPane.Instance.getGraphicPane().changeTool(new LineTool());});
         measureDegree.setOnAction(event -> {MainPane.Instance.getGraphicPane().changeTool(new AngleTool());});
+        measureScope.setOnAction(event -> {MainPane.Instance.getGraphicPane().changeTool(new ScopeTool());});
 
 
         ComboBox measureUnit = new ComboBox();
