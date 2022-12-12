@@ -1,28 +1,64 @@
 package logic;
 
 import gui.MainPane;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 
-public class ScopeTool implements iTool{
-    // stores the two lines
-    private Line line1 = null;
-    private Line line2 = null;
-    private Line line3 = null;
-    // stores the current line (line1 or line2) which the user is currently drawing
-    private Line currentLine = null;
+import java.util.ArrayList;
 
-    // stores the state, 0 = not started, 1 = the first line has been started drawing, 2 = second line has been started drawing
-    private int state = 0;
+public class ScopeTool implements iTool{
+    private Line currentLine;
+    private static final ArrayList<Line> lines = new ArrayList<>();
+
+    public static ArrayList<Line> getLines() {
+        return lines;
+    }
+
+    @Override
+    public void onMousePressed(MouseEvent event, Pane drawingPane) {
+        // generate and add a new line starting from the mouse position
+        currentLine = new Line();
+        drawingPane.getChildren().add(currentLine);
+        currentLine.setStartX(event.getX());
+        currentLine.setStartY(event.getY());
+        currentLine.setEndX(event.getX());
+        currentLine.setEndY(event.getY());
+        currentLine.setStrokeWidth(4);
+        currentLine.setStroke(javafx.scene.paint.Color.LIGHTGREEN);
+    }
+
+    @Override
+    public void onMouseDragged(MouseEvent event, Pane drawingPane) {
+        // while draggin update the end point to the mouse position
+        currentLine.setEndX(event.getX());
+        currentLine.setEndY(event.getY());
+    }
+
     @Override
     public void onMouseRelease(MouseEvent event, Pane drawingPane) {
-        // if we are done drawing the second line
-        if(state == 2) {
-            // reset state
-            state = 0;
-            double totalLength = CalculationUtil.calculatelineLength(line1)+CalculationUtil.calculatelineLength(line2);
-            MainPane.Instance.getGraphicPane().changeDisplayText("Länge aller Linien: " + totalLength);
+        // store the created lines in a list
+        lines.add(currentLine);
+        System.out.println(lines);
+
+        // calculates the length of the drawn line
+        double measuredPixels = totalLength(lines);
+
+        // Imageview from the GraphicsPane for calculating the effective real world length
+        ImageView view = MainPane.Instance.getGraphicPane().getImageView();
+        // ImageGenerator from the GraphicsPane for calculating the effective real world length
+        ImageGenerator generator = MainPane.Instance.getCurrentImageGenerator();
+
+        if ( view != null && generator != null) {
+            // calculate the size relation between on disk size and display size and multiply it by the ratio from the meta file
+            // and by the amount of pixels measured from the line
+            double length = generator.getImg().getWidth() / view.getFitWidth() * generator.getResolution() * measuredPixels;
+            // Update the display text
+            MainPane.Instance.getGraphicPane().changeDisplayText("Länge: " + (float) length + " " + generator.getResolutionUnit());
+        }
+        else {
+            System.out.println("Could not calculate line because either ImageView or ImageGenerator are null");
         }
     }
 
@@ -32,63 +68,19 @@ public class ScopeTool implements iTool{
     }
 
     @Override
-    public void onMousePressed(MouseEvent event, Pane drawingPane) {
-        // if we just started drawing the first line
-        if(state == 0) {
-            // remove previous drawn lines
-            if(line1 != null) {
-                drawingPane.getChildren().remove(line1);
-            }
-            // remove previous drawn lines
-            if(line2 != null) {
-                drawingPane.getChildren().remove(line2);
-            }
-            // generate a new line starting from mouse position
-            line1 = generateLine(event.getX(), event.getY(), event.getX(), event.getY());
-            currentLine = line1;
-        }
-        // if first line already has been drawn
-        else if(state == 1) {
-            // generate second line
-            line2 = generateLine(line1.getEndX(), line1.getEndY(), event.getX(), event.getY());
-            currentLine = line2;
-        }
-
-        // add line to the drawing pane (either line1 or line2)
-        drawingPane.getChildren().add(currentLine);
-        // increase the state by one
-        state++;
-    }
-
-    @Override
-    public void onMouseDragged(MouseEvent event, Pane drawingPane) {
-        // update the endpoint of the line while dragging
-        currentLine.setEndX(event.getX());
-        currentLine.setEndY(event.getY());
-        System.out.println("Line length: "+CalculationUtil.calculatelineLength(currentLine));
-    }
-
-    @Override
-    public void onCleanUp(Pane drawingPane) {
-        // delete all previously drawn lines
-        if(line1 != null) {
-            drawingPane.getChildren().remove(line1);
-        }
-
-        if(line2 != null) {
-            drawingPane.getChildren().remove(line2);
+    public void onCleanUp(Pane drawingPane) {// remove the drawn line from the drawing Pane
+        if(currentLine != null) {
+            drawingPane.getChildren().remove(currentLine);
+            lines.clear();
         }
     }
 
-    // generates a new line
-    private Line generateLine(double x1, double y1, double x2, double y2) {
-        Line line = new Line();
-        line.setStartX(x1);
-        line.setStartY(y1);
-        line.setEndX(x2);
-        line.setEndY(y2);
-        line.setStrokeWidth(4);
-        line.setStroke(javafx.scene.paint.Color.LIGHTGREEN);
-        return line;
+    public double totalLength(ArrayList<Line> lines) {
+        double total = 0;
+        for (Line line : lines) {
+            double length = CalculationUtil.calculatelineLength(line);
+            total += length;
+        }
+        return total;
     }
 }

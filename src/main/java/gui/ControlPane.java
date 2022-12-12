@@ -27,10 +27,9 @@ public class ControlPane extends StackPane {
         Button measureScope = new Button("Umfang messen");
         Button measureDegree = new Button("Winkel messen");
 
-        measureLength.setOnAction(event -> {MainPane.Instance.getGraphicPane().changeTool(new LineTool());});
-        measureDegree.setOnAction(event -> {MainPane.Instance.getGraphicPane().changeTool(new AngleTool());});
-        measureScope.setOnAction(event -> {MainPane.Instance.getGraphicPane().changeTool(new ScopeTool());});
-
+        measureLength.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new LineTool()));
+        measureDegree.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new AngleTool()));
+        measureScope.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new ScopeTool()));
 
         ComboBox measureUnit = new ComboBox();
         measureUnit.setEditable(false);
@@ -61,10 +60,6 @@ public class ControlPane extends StackPane {
                 // Image ins statemodel setzen unm es abspeichern zu können.
                 MainPane.Instance.getGraphicPane().setImage(imgGenerator.getImg());
 
-                /**
-                 * Grund fürs nicht funktionieren (s. Blockcomment unten) war: Ausserhalb 'imgGenerator'
-                 * Zusätzlich noch zusammengefasst, ohne Definition von Zwischenvariablen.
-                 */
                 textArea.clear();
                 textArea.appendText("--- Image information ---\n");
                 textArea.appendText(imgGenerator.getDescription()+"\n");
@@ -74,9 +69,7 @@ public class ControlPane extends StackPane {
             }
         });
 
-        /**
-         * Alles in die Box rein
-         */
+        // put the components in a vertical box
         VBox controlPane = new VBox();
         controlPane.getChildren().addAll(loadButton,measureLength, measureDegree, measureScope, measureUnit, textArea, nightMode );
         controlPane.setAlignment(Pos.CENTER);

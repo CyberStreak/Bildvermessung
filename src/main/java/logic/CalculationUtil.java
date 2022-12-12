@@ -1,9 +1,6 @@
 package logic;
 
-import gui.GraphicPane;
 import javafx.scene.shape.Line;
-
-import java.util.ArrayList;
 
 public class CalculationUtil {
     public static double calculateAngel(Line line1, Line line2) {
@@ -17,8 +14,6 @@ public class CalculationUtil {
         double y4 = line2.getEndY();
 
         // Swap values if the 2nd one of each pair is smaller
-
-
         double temp;
 
         if (x1 > x2){

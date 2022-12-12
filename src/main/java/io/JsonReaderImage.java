@@ -18,12 +18,6 @@ public class JsonReaderImage implements ImageDataReader {
 
     JSONParser parser = new JSONParser();
 
-    // Das hat es vorgeschlagen, weiss nicht ob es wirklich gebraucht wird.
-    @Override
-    public Optional<ImageGenerator> readData() {
-        return Optional.empty();
-    }
-
     @Override
     public Optional<ImageGenerator> read(File file) throws FileNotFoundException {
         // Checkpoint to make sure the call from FileHandler hits here

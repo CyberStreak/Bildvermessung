@@ -2,47 +2,13 @@ package io;
 
 import logic.ImageGenerator;
 
-import javax.imageio.ImageReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.Optional;
 import java.util.Scanner;
 
 public class TxtReaderImage implements ImageDataReader {
-
     // Daten aus dem Text lesen.
-
-    public Optional<ImageGenerator> readData() {
-        /**
-         * Reader um .txt Dateien lesen zu können
-         * @return Das Bild als Objekt.
-         */
-        /*Scanner fileScanner;
-        try {
-            fileScanner = new Scanner(imageData);
-        } catch (FileNotFoundException e) {
-            System.err.println("File not found: " + imageData.getAbsolutePath());
-            return Optional.empty();
-        }
-
-        /**
-         * .txt Dateien sind nicht gleich aufgebaut.
-         * Methode muss durchlaufen bis alle Variablen gefüllt sind oder mit if statements nach den Schlagwörtern suchen.
-         */
-        /*String description = "";
-        String imageFile = "";
-        String resolution = "";
-        while (fileScanner.hasNextLine()) {
-            description = fileScanner.nextLine().split("description:")[1].trim();
-            imageFile = fileScanner.nextLine().split("image-file:")[1].trim();
-            resolution = fileScanner.nextLine().split("resolution:")[1].trim();
-        }
-        //ImageGenerator image = new ImageGenerator(description, imageFile, resolution, "");
-        return Optional.of(image);*/
-        return null;
-    }
     @Override
     public Optional<ImageGenerator> read(File file) {
 
@@ -53,11 +19,6 @@ public class TxtReaderImage implements ImageDataReader {
             System.err.println("File not found: " + file.getAbsolutePath());
             return Optional.empty();
         }
-
-        /**
-         * .txt Dateien sind nicht gleich aufgebaut.
-         * Methode muss durchlaufen bis alle Variablen gefüllt sind oder mit if statements nach den Schlagwörtern suchen.
-         */
 
         //String resolution = "";
         String fileContent = "";

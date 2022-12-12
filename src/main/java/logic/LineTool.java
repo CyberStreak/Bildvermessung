@@ -6,11 +6,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 
-import java.awt.*;
-
-import static java.awt.Color.*;
-import static java.awt.Color.GREEN;
-
 public class LineTool implements iTool {
     // stores the current Line that is being drawn or previously was drawn
     private Line currentLine = null;

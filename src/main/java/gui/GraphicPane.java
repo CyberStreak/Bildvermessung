@@ -11,24 +11,25 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import logic.LineTool;
+import logic.ScopeTool;
 import logic.iTool;
 
 import java.util.ArrayList;
 
 public class GraphicPane extends StackPane {
-    static ArrayList<Line> lines; // How can we access this List in another class? For computing the lengths for example.
     private final ImageView iv1;
-    private Label DisplayLabel;
+    private final Label displayLabel;
     // the currently used tool
     private iTool tool;
-    private Pane drawingPane;
+    private final Pane drawingPane;
+    private final ArrayList<Line> lines = ScopeTool.getLines();
 
     public GraphicPane() {
         // create a Pane for drawing
         this.iv1 = new ImageView();
         drawingPane = new Pane();
         Button clear = new Button("Zeichnung bereinigen");
-        DisplayLabel = new Label("");
+        displayLabel = new Label("");
         tool = new LineTool();
 
         // setting for the pane
@@ -45,21 +46,21 @@ public class GraphicPane extends StackPane {
 
 
         // connect the mouse events from the drawing pane to the currently used tool
-        drawingPane.setOnMouseReleased(event -> {tool.onMouseRelease(event, drawingPane);});
-        drawingPane.setOnMouseClicked(event -> {tool.onMouseClicked(event, drawingPane);});
-        drawingPane.setOnMousePressed(event -> {tool.onMousePressed(event, drawingPane);});
-        drawingPane.setOnMouseDragged(event -> {tool.onMouseDragged(event, drawingPane);});
+        drawingPane.setOnMouseReleased(event -> tool.onMouseRelease(event, drawingPane));
+        drawingPane.setOnMouseClicked(event -> tool.onMouseClicked(event, drawingPane));
+        drawingPane.setOnMousePressed(event -> tool.onMousePressed(event, drawingPane));
+        drawingPane.setOnMouseDragged(event -> tool.onMouseDragged(event, drawingPane));
 
         clear.setOnAction(event -> {
             drawingPane.getChildren().clear();
             drawingPane.getChildren().add(iv1);
+            displayLabel.setText("");
             lines.clear();
-            DisplayLabel.setText("");
         });
 
         // arrangement of the components
         HBox hBox = new HBox();
-        hBox.getChildren().addAll(clear, DisplayLabel);
+        hBox.getChildren().addAll(clear, displayLabel);
         hBox.setAlignment(Pos.CENTER);
         hBox.setSpacing(20);
         hBox.autosize();
@@ -70,10 +71,6 @@ public class GraphicPane extends StackPane {
         this.getChildren().add(box);
     }
 
-    public static ArrayList<Line> getLines() {
-        return lines;
-    }
-
     public void setImage(Image image) {
         if(image != null) {
             iv1.setImage(image);
@@ -82,7 +79,7 @@ public class GraphicPane extends StackPane {
 
     // updates the display text
     public void changeDisplayText(String text) {
-        DisplayLabel.setText(text);
+        displayLabel.setText(text);
     }
 
     // changes currently used tool

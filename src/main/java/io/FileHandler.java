@@ -1,6 +1,5 @@
 package io;
 
-import javafx.scene.image.Image;
 import logic.ImageGenerator;
 
 import java.io.File;
@@ -40,7 +39,9 @@ public class FileHandler {
         {
             try {
                 Optional<ImageGenerator> imageOptional = reader.read(file);
-                return imageOptional.get();
+                if (imageOptional.isPresent()) {
+                    return imageOptional.get();
+                }
             } catch (FileNotFoundException e) {
                 throw new RuntimeException(e);
             }
