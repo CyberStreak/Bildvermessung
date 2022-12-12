@@ -55,7 +55,7 @@ public class JsonReaderImage implements ImageDataReader {
         // (2) image_resolution currently is a String: can this be changed to Double?
 
         // By fixing (1) & (2) above, these may work pico bello:
-         ImageGenerator image = new ImageGenerator(description, file.getParent() + "\\" + image_file, image_resolution, image_resolution_unit);
+         ImageGenerator image = new ImageGenerator(description, file.getParent() + File.separator + image_file, image_resolution, image_resolution_unit);
         return Optional.of(image);
 
     }
