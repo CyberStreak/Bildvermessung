@@ -64,6 +64,7 @@ public class ControlPane extends StackPane {
                 textArea.appendText("--- Image information ---\n");
                 textArea.appendText(imgGenerator.getDescription()+"\n");
                 textArea.appendText(imgGenerator.getResolution()+" "+imgGenerator.getResolutionUnit()+" per Pixel\n\n");
+                textArea.appendText(imgGenerator.getWidth().intValue()+" x "+imgGenerator.getHeight().intValue()+" (Width x height)\n\n");
                 textArea.appendText(imgGenerator.getImageFile()+"\n\n");
                 textArea.appendText("--- Debug information ---\n");
             }
