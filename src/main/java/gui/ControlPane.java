@@ -19,7 +19,6 @@ import logic.ScopeTool;
 import java.io.File;
 
 public class ControlPane extends StackPane {
-    //public ImageGenerator imageGenerator; // Warum wird die Variabel bei private nicht gebraucht und public schon? (Bleibt null)
 
     public ControlPane() {
         Button loadButton = new Button(">>Daten laden<<");
@@ -31,14 +30,16 @@ public class ControlPane extends StackPane {
         measureDegree.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new AngleTool()));
         measureScope.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new ScopeTool()));
 
+        /*
         ComboBox measureUnit = new ComboBox();
         measureUnit.setEditable(false);
         measureUnit.getItems().addAll("mm", "cm", "m", "km");
+        */
 
         TextArea textArea = new TextArea();
         textArea.setEditable(false);
 
-        CheckBox nightMode = new CheckBox("Nachtmodus");
+        //CheckBox nightMode = new CheckBox("Nachtmodus");
 
         /**
          * 1. Mit dem Button das Textfile laden
@@ -72,7 +73,7 @@ public class ControlPane extends StackPane {
 
         // put the components in a vertical box
         VBox controlPane = new VBox();
-        controlPane.getChildren().addAll(loadButton,measureLength, measureDegree, measureScope, measureUnit, textArea, nightMode );
+        controlPane.getChildren().addAll(loadButton,measureLength, measureDegree, measureScope, textArea);
         controlPane.setAlignment(Pos.CENTER);
         controlPane.setSpacing(10);
         controlPane.setPadding(new Insets(5, 5, 5, 5));
