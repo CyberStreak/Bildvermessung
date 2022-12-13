@@ -1,13 +1,12 @@
 package gui;
 
+import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.paint.Color;
 import logic.AngleTool;
 import logic.ImageGenerator;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -20,24 +19,54 @@ import java.io.File;
 
 public class ControlPane extends StackPane {
 
-    public ControlPane() {
+    public ControlPane(/*StateModel stateModel*/) {
         Button loadButton = new Button(">>Daten laden<<");
         Button measureLength = new Button("Länge messen");
         Button measureScope = new Button("Umfang messen");
         Button measureDegree = new Button("Winkel messen");
+        TextArea textArea = new TextArea();
+        textArea.setEditable(false);
 
         measureLength.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new LineTool()));
         measureDegree.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new AngleTool()));
         measureScope.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new ScopeTool()));
 
-        /*
-        ComboBox measureUnit = new ComboBox();
-        measureUnit.setEditable(false);
-        measureUnit.getItems().addAll("mm", "cm", "m", "km");
-        */
+        // colors appear in hex
+        ComboBox<Color> colorComboBox = new ComboBox<>();
+        colorComboBox.setEditable(false);
+        colorComboBox.getItems().add(Color.WHITE);
+        colorComboBox.getItems().add(Color.BLACK);
+        colorComboBox.getItems().add(Color.POWDERBLUE);
 
-        TextArea textArea = new TextArea();
-        textArea.setEditable(false);
+        /*
+        colorComboBox.setOnAction(event -> {
+            Color selectedColor = colorComboBox.getValue();
+            if (selectedColor == Color.WHITE) {
+                stateModel.setColor(Color.WHITE);
+            } else if (selectedColor == Color.BLACK) {
+                stateModel.setColor(Color.BLACK);
+            } else if (selectedColor == Color.POWDERBLUE) {
+                stateModel.setColor(Color.POWDERBLUE);
+            }
+        });
+
+        // don't really now how to handle the stateModel
+        stateModel.addObserver(() -> {
+            stateModel.setColor();
+        });
+         */
+
+        Slider strokeWidth = new Slider(1, 5, 3);
+        strokeWidth.setShowTickMarks(true);
+        strokeWidth.setShowTickLabels(true);
+        strokeWidth.setMajorTickUnit(2);
+        strokeWidth.setSnapToTicks(true);
+
+        /*
+        strokeWidth.valueProperty().addListener(observable -> {
+            stateModel.setStrokeWidth(strokeWidth.getValue()/4);
+        });
+         */
 
         //CheckBox nightMode = new CheckBox("Nachtmodus");
 
@@ -71,9 +100,15 @@ public class ControlPane extends StackPane {
             }
         });
 
+        // Horizontale Anordnung für die Linieneinstellungen
+        HBox hBox = new HBox();
+        hBox.getChildren().addAll(colorComboBox, strokeWidth);
+        hBox.setAlignment(Pos.CENTER);
+        hBox.setSpacing(10);
+        hBox.setPadding(new Insets(5, 5, 5, 5));
         // put the components in a vertical box
         VBox controlPane = new VBox();
-        controlPane.getChildren().addAll(loadButton,measureLength, measureDegree, measureScope, textArea);
+        controlPane.getChildren().addAll(loadButton,measureLength, measureDegree, measureScope, hBox ,textArea);
         controlPane.setAlignment(Pos.CENTER);
         controlPane.setSpacing(10);
         controlPane.setPadding(new Insets(5, 5, 5, 5));

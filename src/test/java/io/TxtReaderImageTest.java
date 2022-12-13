@@ -11,11 +11,10 @@ class TxtReaderImageTest {
 
     @Test
     void getImage() {
-        TxtReaderImage reader = new TxtReaderImage():
+        TxtReaderImage reader = new TxtReaderImage();
         reader.read(new File("data/test-image-01.txt"));
         // wie kann man die einzelnen Variablen der Klasse testen?
         // wie hat man zugriff?
-        assertEquals();
     }
 
     @Test
