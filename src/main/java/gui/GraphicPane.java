@@ -41,8 +41,11 @@ public class GraphicPane extends StackPane {
         this.iv1.setSmooth(true);
         this.iv1.setPreserveRatio(true);
         this.iv1.setCache(true);
-        this.iv1.fitHeightProperty().bind(drawingPane.heightProperty());
-        this.iv1.fitWidthProperty().bind(drawingPane.widthProperty());
+        this.iv1.setFitHeight(500);
+        this.iv1.setFitWidth(500);
+
+        //this.iv1.fitHeightProperty().bind(drawingPane.heightProperty());
+        //this.iv1.fitWidthProperty().bind(drawingPane.widthProperty());
 
 
         // connect the mouse events from the drawing pane to the currently used tool

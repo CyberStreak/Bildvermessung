@@ -50,8 +50,7 @@ public class ControlPane extends StackPane {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Metadaten laden..");
             // Filter um Daten laden zu können..
-            fileChooser.getExtensionFilters().addAll(
-                   new FileChooser.ExtensionFilter("Text Files", "*.txt", "*.json"));
+            fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt", "*.json"));
 
             File dataFile = fileChooser.showOpenDialog(null);
 
