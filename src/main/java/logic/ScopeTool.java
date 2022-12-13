@@ -78,7 +78,7 @@ public class ScopeTool implements iTool{
     public double totalLength(ArrayList<Line> lines) {
         double total = 0;
         for (Line line : lines) {
-            double length = CalculationUtil.calculatelineLength(line);
+            double length = CalculationUtil.calculateLineLength(line);
             total += length;
         }
         return total;

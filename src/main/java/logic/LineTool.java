@@ -15,7 +15,7 @@ public class LineTool implements iTool {
     @Override
     public void onMouseRelease(MouseEvent event, Pane drawingPane) {
         // calculates the length of the drawn line
-        double measuredPixels = CalculationUtil.calculatelineLength(currentLine);
+        double measuredPixels = CalculationUtil.calculateLineLength(currentLine);
         // Imageview from the GraphicsPane for calculating the effective real world length
         ImageView view = MainPane.Instance.getGraphicPane().getImageView();
         // ImageGenerator from the GraphicsPane for calculating the effective real world length

@@ -62,7 +62,7 @@ public class CalculationUtil {
         return Math.abs(Math.toDegrees(angleBetween));
     }
 
-    public static double calculatelineLength(Line line) {
+    public static double calculateLineLength(Line line) {
         double x1 = line.getStartX();
         double y1 = line.getStartY();
         double x2 = line.getEndX();
@@ -77,8 +77,10 @@ public class CalculationUtil {
 
                 break;
             case "cm":
+
                 break;
             case "m":
+
                 break;
             default:
                 final String s = "Masseinheiten nicht bekannt";
