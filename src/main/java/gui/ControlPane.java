@@ -1,13 +1,11 @@
 package gui;
 
+import javafx.beans.binding.Bindings;
+import javafx.scene.control.*;
 import logic.AngleTool;
 import logic.ImageGenerator;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextArea;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
@@ -36,8 +34,15 @@ public class ControlPane extends StackPane {
         measureUnit.getItems().addAll("mm", "cm", "m", "km");
         */
 
+        // define 1st text box & label for the file information
+        Label label = new Label();
         TextArea textArea = new TextArea();
         textArea.setEditable(false);
+
+        // define 2nd text box for displaying measurements as they are taken -- this needs to be dynamic !!!
+        Label label2 = new Label();
+        TextArea textArea2 = new TextArea();
+        textArea2.setEditable(false);
 
         //CheckBox nightMode = new CheckBox("Nachtmodus");
 
@@ -60,20 +65,30 @@ public class ControlPane extends StackPane {
                 // Image ins statemodel setzen unm es abspeichern zu können.
                 MainPane.Instance.getGraphicPane().setImage(imgGenerator.getImg());
 
+                // 1st text box to display file/image information that doesn't change as measurements are taken
                 textArea.clear();
-                textArea.appendText("--- Image information ---\n");
+                textArea.setWrapText(true);
+                textArea.appendText("-- Image information --\n");
                 textArea.appendText(imgGenerator.getDescription()+"\n");
-                textArea.appendText(imgGenerator.getResolution()+" "+imgGenerator.getResolutionUnit()+" per Pixel\n\n");
-                textArea.appendText(imgGenerator.getWidth().intValue()+" x "+imgGenerator.getHeight().intValue()+" (Width x height in pixel)\n");
-                textArea.appendText((double)Math.round(imgGenerator.getWidth().intValue() * imgGenerator.getResolution() * 100)/100 + imgGenerator.getResolutionUnit() + " x " + (double)Math.round(imgGenerator.getHeight().intValue() * imgGenerator.getResolution() * 100)/100 + imgGenerator.getResolutionUnit() + " (Width x height in metrischer Einheit)\n\n");
-                textArea.appendText(imgGenerator.getImageFile()+"\n\n");
-                textArea.appendText("--- Debug information ---\n");
+                textArea.appendText(imgGenerator.getResolution()+" "+imgGenerator.getResolutionUnit()+" per pixel\n\n");
+                textArea.appendText(imgGenerator.getWidth().intValue()+" x "+imgGenerator.getHeight().intValue()+" pixels\n");
+                textArea.appendText((double)Math.round(imgGenerator.getWidth().intValue() * imgGenerator.getResolution() * 100)/100 + imgGenerator.getResolutionUnit() + " x " + (double)Math.round(imgGenerator.getHeight().intValue() * imgGenerator.getResolution() * 100)/100 + imgGenerator.getResolutionUnit() +"\n");
+                textArea.appendText(imgGenerator.getImageFile());
+
+                // 2nd text box to display measurements -- this block needs to be transferred to where these measurements are calculated!
+                textArea2.clear();
+                textArea2.setWrapText(true);
+                textArea2.appendText("-- Measurements --\n");
+                textArea2.appendText(" mm\n");
+                textArea2.appendText(" cm\n");
+                textArea2.appendText(" m\n");
+                textArea2.appendText(" km\n");
             }
         });
 
         // put the components in a vertical box
         VBox controlPane = new VBox();
-        controlPane.getChildren().addAll(loadButton,measureLength, measureDegree, measureScope, textArea);
+        controlPane.getChildren().addAll(loadButton,measureLength, measureDegree, measureScope, textArea, textArea2);
         controlPane.setAlignment(Pos.CENTER);
         controlPane.setSpacing(10);
         controlPane.setPadding(new Insets(5, 5, 5, 5));
