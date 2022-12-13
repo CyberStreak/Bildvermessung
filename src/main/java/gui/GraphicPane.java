@@ -17,7 +17,7 @@ import logic.iTool;
 import java.util.ArrayList;
 
 public class GraphicPane extends StackPane {
-    private final ImageView iv1;
+    private final ImageView imageView;
     private final Label displayLabel;
     // the currently used tool
     private iTool tool;
@@ -26,7 +26,7 @@ public class GraphicPane extends StackPane {
 
     public GraphicPane() {
         // create a Pane for drawing
-        this.iv1 = new ImageView();
+        this.imageView = new ImageView();
         drawingPane = new Pane();
         Button clear = new Button("Zeichnung bereinigen");
         displayLabel = new Label("");
@@ -34,20 +34,18 @@ public class GraphicPane extends StackPane {
 
         // setting for the pane
         drawingPane.setStyle("-fx-background-color: red");
-        drawingPane.getChildren().add(iv1);
+        drawingPane.getChildren().add(imageView);
 
         // Settings for the image
         // image resizes itself to the pane and gets smaller with it, but it doesn't get bigger anymore
-        this.iv1.setSmooth(true);
-        this.iv1.setPreserveRatio(true);
-        this.iv1.setCache(true);
-        //this.iv1.fitHeightProperty().bind(drawingPane.heightProperty());
+        this.imageView.setSmooth(true);
+        this.imageView.setPreserveRatio(true);
+        this.imageView.setCache(true);
         drawingPane.heightProperty().addListener((observable, oldValue, newValue) -> {
-            this.iv1.setFitHeight(newValue.doubleValue());
+            this.imageView.setFitHeight(newValue.doubleValue());
         });
-        //this.iv1.fitWidthProperty().bind(drawingPane.widthProperty());
         drawingPane.widthProperty().addListener((observable, oldValue, newValue) -> {
-            this.iv1.setFitWidth(newValue.doubleValue());
+            this.imageView.setFitWidth(newValue.doubleValue());
         });
 
 
@@ -59,7 +57,7 @@ public class GraphicPane extends StackPane {
 
         clear.setOnAction(event -> {
             drawingPane.getChildren().clear();
-            drawingPane.getChildren().add(iv1);
+            drawingPane.getChildren().add(imageView);
             displayLabel.setText("");
             lines.clear();
         });
@@ -79,7 +77,7 @@ public class GraphicPane extends StackPane {
 
     public void setImage(Image image) {
         if(image != null) {
-            iv1.setImage(image);
+            imageView.setImage(image);
         }
     }
 
@@ -100,6 +98,6 @@ public class GraphicPane extends StackPane {
     }
 
     public ImageView getImageView() {
-        return iv1;
+        return imageView;
     }
 }

@@ -69,4 +69,21 @@ public class CalculationUtil {
         double y2 = line.getEndY();
         return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
+
+    /*
+    public String unit(String resolutionUnit) {
+        switch(resolutionUnit) {
+            case "mm":
+
+                break;
+            case "cm":
+                break;
+            case "m":
+                break;
+            default:
+                final String s = "Masseinheiten nicht bekannt";
+                break;
+        }
+    }
+     */
 }
