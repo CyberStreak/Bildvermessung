@@ -33,7 +33,7 @@ public class GraphicPane extends StackPane {
         tool = new LineTool();
 
         // setting for the pane
-        drawingPane.setStyle("-fx-background-color: red");
+        drawingPane.setStyle("-fx-background-color: gray");
         drawingPane.getChildren().add(imageView);
 
         // Settings for the image

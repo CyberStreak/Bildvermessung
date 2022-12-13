@@ -3,6 +3,8 @@ package gui;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.beans.binding.Bindings;
+import javafx.scene.control.*;
 import logic.AngleTool;
 import logic.ImageGenerator;
 import javafx.geometry.Insets;
@@ -24,8 +26,6 @@ public class ControlPane extends StackPane {
         Button measureLength = new Button("Länge messen");
         Button measureScope = new Button("Umfang messen");
         Button measureDegree = new Button("Winkel messen");
-        TextArea textArea = new TextArea();
-        textArea.setEditable(false);
 
         measureLength.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new LineTool()));
         measureDegree.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new AngleTool()));
@@ -56,6 +56,11 @@ public class ControlPane extends StackPane {
         });
          */
 
+        // define 1st text box & label for the file information
+        Label label = new Label();
+        TextArea textArea = new TextArea();
+        textArea.setEditable(false);
+
         Slider strokeWidth = new Slider(1, 5, 3);
         strokeWidth.setShowTickMarks(true);
         strokeWidth.setShowTickLabels(true);
@@ -67,6 +72,11 @@ public class ControlPane extends StackPane {
             stateModel.setStrokeWidth(strokeWidth.getValue()/4);
         });
          */
+
+        // define 2nd text box for displaying measurements as they are taken -- this needs to be dynamic !!!
+        Label label2 = new Label();
+        TextArea textArea2 = new TextArea();
+        textArea2.setEditable(false);
 
         //CheckBox nightMode = new CheckBox("Nachtmodus");
 
@@ -89,14 +99,24 @@ public class ControlPane extends StackPane {
                 // Image ins statemodel setzen unm es abspeichern zu können.
                 MainPane.Instance.getGraphicPane().setImage(imgGenerator.getImg());
 
+                // 1st text box to display file/image information that doesn't change as measurements are taken
                 textArea.clear();
-                textArea.appendText("--- Image information ---\n");
+                textArea.setWrapText(true);
+                textArea.appendText("-- Image information --\n");
                 textArea.appendText(imgGenerator.getDescription()+"\n");
-                textArea.appendText(imgGenerator.getResolution()+" "+imgGenerator.getResolutionUnit()+" per Pixel\n\n");
-                textArea.appendText(imgGenerator.getWidth().intValue()+" x "+imgGenerator.getHeight().intValue()+" (Width x height in pixel)\n");
-                textArea.appendText((double)Math.round(imgGenerator.getWidth().intValue() * imgGenerator.getResolution() * 100)/100 + imgGenerator.getResolutionUnit() + " x " + (double)Math.round(imgGenerator.getHeight().intValue() * imgGenerator.getResolution() * 100)/100 + imgGenerator.getResolutionUnit() + " (Width x height in metrischer Einheit)\n\n");
-                textArea.appendText(imgGenerator.getImageFile()+"\n\n");
-                textArea.appendText("--- Debug information ---\n");
+                textArea.appendText(imgGenerator.getResolution()+" "+imgGenerator.getResolutionUnit()+" per pixel\n\n");
+                textArea.appendText(imgGenerator.getWidth().intValue()+" x "+imgGenerator.getHeight().intValue()+" pixels\n");
+                textArea.appendText((double)Math.round(imgGenerator.getWidth().intValue() * imgGenerator.getResolution() * 100)/100 + imgGenerator.getResolutionUnit() + " x " + (double)Math.round(imgGenerator.getHeight().intValue() * imgGenerator.getResolution() * 100)/100 + imgGenerator.getResolutionUnit() +"\n");
+                textArea.appendText(imgGenerator.getImageFile());
+
+                // 2nd text box to display measurements -- this block needs to be transferred to where these measurements are calculated!
+                textArea2.clear();
+                textArea2.setWrapText(true);
+                textArea2.appendText("-- Measurements --\n");
+                textArea2.appendText(" mm\n");
+                textArea2.appendText(" cm\n");
+                textArea2.appendText(" m\n");
+                textArea2.appendText(" km\n");
             }
         });
 
@@ -108,7 +128,7 @@ public class ControlPane extends StackPane {
         hBox.setPadding(new Insets(5, 5, 5, 5));
         // put the components in a vertical box
         VBox controlPane = new VBox();
-        controlPane.getChildren().addAll(loadButton,measureLength, measureDegree, measureScope, hBox ,textArea);
+        controlPane.getChildren().addAll(loadButton,measureLength, measureDegree, measureScope, hBox ,textArea, textArea2);
         controlPane.setAlignment(Pos.CENTER);
         controlPane.setSpacing(10);
         controlPane.setPadding(new Insets(5, 5, 5, 5));
