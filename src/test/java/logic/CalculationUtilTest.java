@@ -40,4 +40,15 @@ class CalculationUtilTest {
 
         assertEquals(45, CalculationUtil.calculateAngel(line1, line2));
     }
+
+    @Test
+    void calculateLineLength_1() {
+        Line line1 = new Line(0, 0, 100, 0);
+        assertEquals(100, CalculationUtil.calculateLineLength(line1));
+    }
+    @Test
+    void calculateLineLength_2() {
+        Line line2 = new Line(100, 100, 0, 0);
+        assertEquals(141.4213562373095, CalculationUtil.calculateLineLength(line2));
+    }
 }
