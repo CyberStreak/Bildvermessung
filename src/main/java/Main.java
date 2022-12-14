@@ -16,7 +16,7 @@ public class Main extends Application {
         Scene scene = new Scene(rootPane, 1000,700);
 
         stage.setScene(scene);
-        stage.setTitle("Image measuring");
+        stage.setTitle("Bildvermessung");
         stage.show();
     }
 

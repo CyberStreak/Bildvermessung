@@ -29,8 +29,7 @@ public class ControlPane extends StackPane {
         measureDegree.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new AngleTool()));
         measureScope.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new ScopeTool()));
 
-        Label strokeColor = new Label("Strichfarbe:");
-        // colors appear in hex
+        Label labelColor = new Label("Strichfarbe:");
         ComboBox<Color> colorComboBox = new ComboBox<>();
         colorComboBox.setEditable(false);
         colorComboBox.getItems().add(Color.WHITE);
@@ -81,13 +80,13 @@ public class ControlPane extends StackPane {
          */
 
         Label widthOfStroke = new Label("Strichdicke:");
-        Slider strokeWidth = new Slider(5, 20, 12);
+        Slider strokeWidth = new Slider(1, 5, 3);
         strokeWidth.setShowTickMarks(true);
         strokeWidth.setShowTickLabels(true);
-        strokeWidth.setMajorTickUnit(3);
+        strokeWidth.setMajorTickUnit(2);
         strokeWidth.setSnapToTicks(true);
 
-        strokeWidth.valueProperty().addListener(observable -> StateModel.setStrokeWidth(strokeWidth.getValue()/5));
+        strokeWidth.valueProperty().addListener(observable -> StateModel.setStrokeWidth(strokeWidth.getValue()));
 
         // define 1st text box & label for the file information
         Label imageInfo = new Label("Bildinformationen");
@@ -145,12 +144,12 @@ public class ControlPane extends StackPane {
 
         // vertical box for the stroke changes
         VBox colorInfo = new VBox();
-        colorInfo.getChildren().addAll(strokeColor, colorComboBox);
-        VBox strokeW = new VBox();
-        strokeW.getChildren().addAll(widthOfStroke, strokeWidth);
+        colorInfo.getChildren().addAll(labelColor, colorComboBox);
+        VBox strokeInfo = new VBox();
+        strokeInfo.getChildren().addAll(widthOfStroke, strokeWidth);
         // horizontal box for the stroke changes
         HBox hBox = new HBox();
-        hBox.getChildren().addAll(colorInfo, strokeW);
+        hBox.getChildren().addAll(colorInfo, strokeInfo);
         hBox.setAlignment(Pos.CENTER);
         hBox.setSpacing(10);
         hBox.setPadding(new Insets(5, 5, 5, 5));
