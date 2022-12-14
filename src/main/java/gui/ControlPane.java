@@ -28,6 +28,7 @@ public class ControlPane extends StackPane {
         measureDegree.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new AngleTool()));
         measureScope.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new ScopeTool()));
 
+        Label strokeColor = new Label("Strichfarbe:");
         // colors appear in hex
         ComboBox<Color> colorComboBox = new ComboBox<>();
         colorComboBox.setEditable(false);
@@ -54,6 +55,7 @@ public class ControlPane extends StackPane {
         });
          */
 
+        Label widthOfStroke = new Label("Strichdicke:");
         Slider strokeWidth = new Slider(5, 20, 12);
         strokeWidth.setShowTickMarks(true);
         strokeWidth.setShowTickLabels(true);
@@ -65,12 +67,12 @@ public class ControlPane extends StackPane {
         });
 
         // define 1st text box & label for the file information
-        Label label = new Label();
+        Label imageInfo = new Label("Bildinformationen");
         TextArea textArea = new TextArea();
         textArea.setEditable(false);
 
         // define 2nd text box for displaying measurements as they are taken -- this needs to be dynamic !!!
-        Label label2 = new Label();
+        Label measureInfo = new Label("Messungen");
         TextArea textArea2 = new TextArea();
         textArea2.setEditable(false);
 
@@ -116,15 +118,20 @@ public class ControlPane extends StackPane {
             }
         });
 
-        // Horizontale Anordnung für die Linieneinstellungen
+        // vertical box for the stroke changes
+        VBox colorInfo = new VBox();
+        colorInfo.getChildren().addAll(strokeColor, colorComboBox);
+        VBox strokeW = new VBox();
+        strokeW.getChildren().addAll(widthOfStroke, strokeWidth);
+        // horizontal box for the stroke changes
         HBox hBox = new HBox();
-        hBox.getChildren().addAll(colorComboBox, strokeWidth);
+        hBox.getChildren().addAll(colorInfo, strokeW);
         hBox.setAlignment(Pos.CENTER);
         hBox.setSpacing(10);
         hBox.setPadding(new Insets(5, 5, 5, 5));
         // put the components in a vertical box
         VBox controlPane = new VBox();
-        controlPane.getChildren().addAll(loadButton,measureLength, measureDegree, measureScope, hBox ,textArea, textArea2);
+        controlPane.getChildren().addAll(loadButton,measureLength, measureDegree, measureScope, hBox , imageInfo ,textArea, measureInfo ,textArea2);
         controlPane.setAlignment(Pos.CENTER);
         controlPane.setSpacing(10);
         controlPane.setPadding(new Insets(5, 5, 5, 5));
