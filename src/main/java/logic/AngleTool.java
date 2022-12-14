@@ -1,6 +1,7 @@
 package logic;
 
 import gui.MainPane;
+import gui.StateModel;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
@@ -88,8 +89,8 @@ public class AngleTool implements iTool{
         line.setStartY(y1);
         line.setEndX(x2);
         line.setEndY(y2);
-        line.setStrokeWidth(4);
-        line.setStroke(javafx.scene.paint.Color.LIGHTGREEN);
+        line.setStrokeWidth(StateModel.getStrokeWidth());
+        line.setStroke(StateModel.getColor());
         return line;
     }
 }

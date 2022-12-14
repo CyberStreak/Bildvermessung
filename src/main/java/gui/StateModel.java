@@ -1,41 +1,49 @@
 package gui;
 
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Line;
 import java.util.ArrayList;
 import java.util.List;
 
 public class StateModel {
     /**
      * Not really sure what I am doing...
+     * how can we resolve the static problem?
+     * how can we add non methods to the observers?
+     * where do you have to add the StateModel? In the tools or in the panes?
      */
-    private Line line;
-    private final List<StateObserver> observers;
+    private static Color color;
+    private static double strokeWidth;
+    private static List<StateObserver> observers;
 
     public StateModel() {
         observers = new ArrayList<>();
     }
 
-    public void setColor(Color color) {
-
-        line.setStroke(color);
+    public static void setColor(Color color) {
+        StateModel.color = color;
         sendChange();
     }
 
-    public void setStrokeWidth(double strokeWidth) {
-        line.setStrokeWidth(strokeWidth);
+    public static Color getColor() {
+        return color;
+    }
+
+    public static void setStrokeWidth(double strokeWidth) {
+        StateModel.strokeWidth = strokeWidth;
         sendChange();
+    }
+
+    public static double getStrokeWidth() {
+        return strokeWidth;
     }
 
     public void addObserver(StateObserver observer) {
         observers.add(observer);
     }
 
-    private void sendChange() {
+    private static void sendChange() {
         for (StateObserver observer : observers) {
             observer.stateChanged();
         }
     }
-
-
 }

@@ -1,6 +1,7 @@
 package logic;
 
 import gui.MainPane;
+import gui.StateModel;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -52,8 +53,8 @@ public class LineTool implements iTool {
         currentLine.setStartY(event.getY());
         currentLine.setEndX(event.getX());
         currentLine.setEndY(event.getY());
-        currentLine.setStrokeWidth(4);
-        currentLine.setStroke(javafx.scene.paint.Color.LIGHTGREEN);
+        currentLine.setStrokeWidth(StateModel.getStrokeWidth());
+        currentLine.setStroke(StateModel.getColor());
     }
 
     @Override

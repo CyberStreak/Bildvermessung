@@ -33,42 +33,43 @@ public class ControlPane extends StackPane {
         colorComboBox.setEditable(false);
         colorComboBox.getItems().add(Color.WHITE);
         colorComboBox.getItems().add(Color.BLACK);
-        colorComboBox.getItems().add(Color.POWDERBLUE);
+        colorComboBox.getItems().add(Color.YELLOWGREEN);
 
-        /*
         colorComboBox.setOnAction(event -> {
             Color selectedColor = colorComboBox.getValue();
             if (selectedColor == Color.WHITE) {
-                stateModel.setColor(Color.WHITE);
+                StateModel.setColor(Color.WHITE);
             } else if (selectedColor == Color.BLACK) {
-                stateModel.setColor(Color.BLACK);
-            } else if (selectedColor == Color.POWDERBLUE) {
-                stateModel.setColor(Color.POWDERBLUE);
+                StateModel.setColor(Color.BLACK);
+            } else if (selectedColor == Color.YELLOWGREEN) {
+                StateModel.setColor(Color.YELLOWGREEN);
             }
         });
 
+        /*
         // don't really now how to handle the stateModel
-        stateModel.addObserver(() -> {
+        // how can I add non methods to the observer?
+        StateModel.addObserver(() -> {
             stateModel.setColor();
         });
          */
+
+        Slider strokeWidth = new Slider(5, 20, 12);
+        strokeWidth.setShowTickMarks(true);
+        strokeWidth.setShowTickLabels(true);
+        strokeWidth.setMajorTickUnit(3);
+        strokeWidth.setSnapToTicks(true);
+
+        strokeWidth.valueProperty().addListener(observable -> {
+            StateModel.setStrokeWidth(strokeWidth.getValue()/5);
+        });
+
+
 
         // define 1st text box & label for the file information
         Label label = new Label();
         TextArea textArea = new TextArea();
         textArea.setEditable(false);
-
-        Slider strokeWidth = new Slider(1, 5, 3);
-        strokeWidth.setShowTickMarks(true);
-        strokeWidth.setShowTickLabels(true);
-        strokeWidth.setMajorTickUnit(2);
-        strokeWidth.setSnapToTicks(true);
-
-        /*
-        strokeWidth.valueProperty().addListener(observable -> {
-            stateModel.setStrokeWidth(strokeWidth.getValue()/4);
-        });
-         */
 
         // define 2nd text box for displaying measurements as they are taken -- this needs to be dynamic !!!
         Label label2 = new Label();
