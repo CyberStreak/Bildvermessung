@@ -9,6 +9,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
+import javafx.util.Callback;
 import logic.AngleTool;
 import logic.ImageGenerator;
 import logic.LineTool;
@@ -36,6 +37,30 @@ public class ControlPane extends StackPane {
         colorComboBox.getItems().add(Color.BLACK);
         colorComboBox.getItems().add(Color.HOTPINK);
 
+        colorComboBox.setCellFactory(new Callback<>() {
+            @Override
+            public ListCell<Color> call(ListView<Color> param) {
+                return new ListCell<>() {
+                    {
+                        super.setPrefWidth(100);
+                    }
+
+                    @Override
+                    protected void updateItem(Color item, boolean empty) {
+                        super.updateItem(item, empty);
+
+                        if (item == null || empty) {
+                            setText(null);
+                            setStyle("");
+                        } else {
+                            setText(item.toString());
+                            setStyle("-fx-background-color: " + item.toString().replace("0x", "#"));
+                        }
+                    }
+                };
+            }
+        });
+
         colorComboBox.setOnAction(event -> {
             Color selectedColor = colorComboBox.getValue();
             if (selectedColor == Color.WHITE) {
@@ -62,9 +87,7 @@ public class ControlPane extends StackPane {
         strokeWidth.setMajorTickUnit(3);
         strokeWidth.setSnapToTicks(true);
 
-        strokeWidth.valueProperty().addListener(observable -> {
-            StateModel.setStrokeWidth(strokeWidth.getValue()/5);
-        });
+        strokeWidth.valueProperty().addListener(observable -> StateModel.setStrokeWidth(strokeWidth.getValue()/5));
 
         // define 1st text box & label for the file information
         Label imageInfo = new Label("Bildinformationen");
@@ -86,7 +109,6 @@ public class ControlPane extends StackPane {
         loadButton.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Metadaten laden..");
-            // Filter um Daten laden zu können..
             fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt", "*.json"));
 
             File dataFile = fileChooser.showOpenDialog(null);
