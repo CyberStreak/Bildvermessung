@@ -156,7 +156,7 @@ public class ControlPane extends StackPane {
         hBox.setAlignment(Pos.CENTER);
         hBox.setSpacing(10);
         hBox.setPadding(new Insets(5, 5, 5, 5));
-        // put the components in a vertical box
+        // vertical box for all components
         VBox controlPane = new VBox();
         controlPane.getChildren().addAll(loadButton,measureLength, measureDegree, measureScope, hBox , imageInfo ,textArea);
         controlPane.setAlignment(Pos.CENTER);
