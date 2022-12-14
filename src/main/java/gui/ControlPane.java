@@ -103,10 +103,10 @@ public class ControlPane extends StackPane {
 
         //CheckBox nightMode = new CheckBox("Nachtmodus");
 
-        /**
-         * 1. Mit dem Button das Textfile laden
-         * 2. textFile unterscheiden zwischen .txt und .json mit fileReader()
-         * 3. aus dem textFile ein Objekt generieren
+        /*
+         1. Mit dem Button das Textfile laden
+         2. textFile unterscheiden zwischen .txt und .json mit fileReader()
+         3. aus dem textFile ein Objekt generieren
          */
         loadButton.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
@@ -127,7 +127,7 @@ public class ControlPane extends StackPane {
                 textArea.appendText(imgGenerator.getDescription()+"\n");
                 textArea.appendText(imgGenerator.getResolution()+" "+imgGenerator.getResolutionUnit()+" per pixel\n\n");
                 textArea.appendText(imgGenerator.getWidth().intValue()+" x "+imgGenerator.getHeight().intValue()+" pixels\n");
-                textArea.appendText((double)Math.round(imgGenerator.getWidth().intValue() * imgGenerator.getResolution() * 100)/100 + imgGenerator.getResolutionUnit() + " x " + (double)Math.round(imgGenerator.getHeight().intValue() * imgGenerator.getResolution() * 100)/100 + imgGenerator.getResolutionUnit() +"\n\n");
+                textArea.appendText((double)Math.round(imgGenerator.getWidth().intValue() * imgGenerator.getResolution() * 100)/100 + " "+ imgGenerator.getResolutionUnit() + " x " + (double)Math.round(imgGenerator.getHeight().intValue() * imgGenerator.getResolution() * 100)/100 + " "+imgGenerator.getResolutionUnit() +"\n\n");
                 textArea.appendText(imgGenerator.getImageFile());
 
                 /*
