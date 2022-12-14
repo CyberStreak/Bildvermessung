@@ -32,6 +32,7 @@ public class ControlPane extends StackPane {
         Label labelColor = new Label("Strichfarbe:");
         ComboBox<Color> colorComboBox = new ComboBox<>();
         colorComboBox.setEditable(false);
+        colorComboBox.getItems().add(Color.YELLOWGREEN);
         colorComboBox.getItems().add(Color.WHITE);
         colorComboBox.getItems().add(Color.BLACK);
         colorComboBox.getItems().add(Color.HOTPINK);
@@ -68,6 +69,8 @@ public class ControlPane extends StackPane {
                 StateModel.setColor(Color.BLACK);
             } else if (selectedColor == Color.HOTPINK) {
                 StateModel.setColor(Color.HOTPINK);
+            } else if (selectedColor == Color.YELLOWGREEN) {
+                StateModel.setColor(Color.YELLOWGREEN);
             }
         });
 
@@ -153,7 +156,7 @@ public class ControlPane extends StackPane {
         hBox.setAlignment(Pos.CENTER);
         hBox.setSpacing(10);
         hBox.setPadding(new Insets(5, 5, 5, 5));
-        // put the components in a vertical box
+        // vertical box for all components
         VBox controlPane = new VBox();
         controlPane.getChildren().addAll(loadButton,measureLength, measureDegree, measureScope, hBox , imageInfo ,textArea);
         controlPane.setAlignment(Pos.CENTER);
