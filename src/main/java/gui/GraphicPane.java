@@ -48,7 +48,6 @@ public class GraphicPane extends StackPane {
             this.imageView.setFitWidth(newValue.doubleValue());
         });
 
-
         // connect the mouse events from the drawing pane to the currently used tool
         drawingPane.setOnMouseReleased(event -> tool.onMouseRelease(event, drawingPane));
         drawingPane.setOnMouseClicked(event -> tool.onMouseClicked(event, drawingPane));
