@@ -58,10 +58,10 @@ public class LineTool implements iTool {
                 kmeters = (float) length;
                 meters = (float) length * 1000;
                 cmeters = (float) length * 100000;
-                cmeters = (float) length * 1000000;
+                mmeters = (float) length * 1000000;
             }
 
-            MainPane.Instance.getGraphicPane().changeDisplayText("Länge: " + meters + " m" + " (" + kmeters + " km | " + cmeters + " cm | " + mmeters + " mm)");
+            MainPane.Instance.getGraphicPane().changeDisplayText("Länge: \t" + String.format("%.3f", meters) + " m" + " | " + String.format("%.4f", kmeters) + " km | " + String.format("%.2f", cmeters) + " cm | " + String.format("%.1f", mmeters) + " mm");
         }
         else {
             System.out.println("Could not calculate line because either ImageView or ImageGenerator are null");
