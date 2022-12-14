@@ -72,9 +72,11 @@ public class ControlPane extends StackPane {
         textArea.setEditable(false);
 
         // define 2nd text box for displaying measurements as they are taken -- this needs to be dynamic !!!
+        /*
         Label measureInfo = new Label("Messungen");
         TextArea textArea2 = new TextArea();
         textArea2.setEditable(false);
+        */
 
         //CheckBox nightMode = new CheckBox("Nachtmodus");
 
@@ -100,14 +102,14 @@ public class ControlPane extends StackPane {
                 // 1st text box to display file/image information that doesn't change as measurements are taken
                 textArea.clear();
                 textArea.setWrapText(true);
-                textArea.appendText("-- Image information --\n");
                 textArea.appendText(imgGenerator.getDescription()+"\n");
                 textArea.appendText(imgGenerator.getResolution()+" "+imgGenerator.getResolutionUnit()+" per pixel\n\n");
                 textArea.appendText(imgGenerator.getWidth().intValue()+" x "+imgGenerator.getHeight().intValue()+" pixels\n");
                 textArea.appendText((double)Math.round(imgGenerator.getWidth().intValue() * imgGenerator.getResolution() * 100)/100 + imgGenerator.getResolutionUnit() + " x " + (double)Math.round(imgGenerator.getHeight().intValue() * imgGenerator.getResolution() * 100)/100 + imgGenerator.getResolutionUnit() +"\n\n");
                 textArea.appendText(imgGenerator.getImageFile());
 
-                // 2nd text box to display measurements -- this block needs to be transferred to where these measurements are calculated!
+                /*
+                // 2nd text box to display measurements -- transfer to where these measurements are calculated, if we want to even display it.
                 textArea2.clear();
                 textArea2.setWrapText(true);
                 textArea2.appendText("-- Measurements --\n");
@@ -115,6 +117,7 @@ public class ControlPane extends StackPane {
                 textArea2.appendText(" cm\n");
                 textArea2.appendText(" m\n");
                 textArea2.appendText(" km\n");
+                */
             }
         });
 
@@ -131,7 +134,7 @@ public class ControlPane extends StackPane {
         hBox.setPadding(new Insets(5, 5, 5, 5));
         // put the components in a vertical box
         VBox controlPane = new VBox();
-        controlPane.getChildren().addAll(loadButton,measureLength, measureDegree, measureScope, hBox , imageInfo ,textArea, measureInfo ,textArea2);
+        controlPane.getChildren().addAll(loadButton,measureLength, measureDegree, measureScope, hBox , imageInfo ,textArea);
         controlPane.setAlignment(Pos.CENTER);
         controlPane.setSpacing(10);
         controlPane.setPadding(new Insets(5, 5, 5, 5));

@@ -23,9 +23,11 @@ public class LineTool implements iTool {
         ImageGenerator generator = MainPane.Instance.getCurrentImageGenerator();
 
         if ( view != null && generator != null) {
-            // calculate the size relation between on disk size and display size and multiply it by the ratio from the meta file
-            // and by the amount of pixels measured from the line
-            double length = generator.getImg().getWidth() / view.getFitWidth() * generator.getResolution() * measuredPixels;
+            // Calculate line length based on:
+            //               (resolution x measured pixels)               * scaling factor (MUST USE HEIGHT HERE!!!)
+            //
+            double length =  (generator.getResolution() * measuredPixels) * (generator.getImg().getHeight() / view.getFitHeight());
+
             // Update the display text
             //MainPane.Instance.getGraphicPane().changeDisplayText("Länge: " + (float) length + " " + generator.getResolutionUnit());
 
