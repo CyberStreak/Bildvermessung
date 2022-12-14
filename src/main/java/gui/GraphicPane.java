@@ -5,10 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.shape.Line;
 import logic.LineTool;
 import logic.ScopeTool;
@@ -41,12 +38,8 @@ public class GraphicPane extends StackPane {
         this.imageView.setSmooth(true);
         this.imageView.setPreserveRatio(true);
         this.imageView.setCache(true);
-        drawingPane.heightProperty().addListener((observable, oldValue, newValue) -> {
-            this.imageView.setFitHeight(newValue.doubleValue());
-        });
-        drawingPane.widthProperty().addListener((observable, oldValue, newValue) -> {
-            this.imageView.setFitWidth(newValue.doubleValue());
-        });
+        drawingPane.heightProperty().addListener((observable, oldValue, newValue) -> this.imageView.setFitHeight(newValue.doubleValue()));
+        drawingPane.widthProperty().addListener((observable, oldValue, newValue) -> this.imageView.setFitWidth(newValue.doubleValue()));
 
         // connect the mouse events from the drawing pane to the currently used tool
         drawingPane.setOnMouseReleased(event -> tool.onMouseRelease(event, drawingPane));
@@ -67,11 +60,12 @@ public class GraphicPane extends StackPane {
         hBox.setAlignment(Pos.CENTER);
         hBox.setSpacing(20);
         hBox.autosize();
-        VBox box = new VBox();
-        box.getChildren().addAll(drawingPane,hBox);
-        box.setAlignment(Pos.CENTER);
-        box.autosize();
-        this.getChildren().add(box);
+        VBox vBox = new VBox();
+        vBox.getChildren().addAll(drawingPane,hBox);
+        VBox.setVgrow(drawingPane, Priority.ALWAYS);
+        vBox.setAlignment(Pos.CENTER);
+        vBox.autosize();
+        this.getChildren().add(vBox);
     }
 
     public void setImage(Image image) {
