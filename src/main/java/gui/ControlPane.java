@@ -33,7 +33,7 @@ public class ControlPane extends StackPane {
         colorComboBox.setEditable(false);
         colorComboBox.getItems().add(Color.WHITE);
         colorComboBox.getItems().add(Color.BLACK);
-        colorComboBox.getItems().add(Color.YELLOWGREEN);
+        colorComboBox.getItems().add(Color.HOTPINK);
 
         colorComboBox.setOnAction(event -> {
             Color selectedColor = colorComboBox.getValue();
@@ -41,8 +41,8 @@ public class ControlPane extends StackPane {
                 StateModel.setColor(Color.WHITE);
             } else if (selectedColor == Color.BLACK) {
                 StateModel.setColor(Color.BLACK);
-            } else if (selectedColor == Color.YELLOWGREEN) {
-                StateModel.setColor(Color.YELLOWGREEN);
+            } else if (selectedColor == Color.HOTPINK) {
+                StateModel.setColor(Color.HOTPINK);
             }
         });
 
@@ -63,8 +63,6 @@ public class ControlPane extends StackPane {
         strokeWidth.valueProperty().addListener(observable -> {
             StateModel.setStrokeWidth(strokeWidth.getValue()/5);
         });
-
-
 
         // define 1st text box & label for the file information
         Label label = new Label();

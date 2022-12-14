@@ -22,7 +22,6 @@ public class MainPane extends StackPane {
         verticalSplitter.getItems().addAll(controlPane);
         verticalSplitter.getItems().addAll(graphicPane);
 
-
         this.getChildren().add(verticalSplitter);
     }
 
