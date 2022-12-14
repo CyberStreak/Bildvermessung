@@ -56,7 +56,41 @@ public class ScopeTool implements iTool{
             // and by the amount of pixels measured from the line
             double length = generator.getImg().getWidth() / view.getFitWidth() * generator.getResolution() * measuredPixels;
             // Update the display text
-            MainPane.Instance.getGraphicPane().changeDisplayText("Länge: " + (float) length + " " + generator.getResolutionUnit());
+            //MainPane.Instance.getGraphicPane().changeDisplayText("Länge: " + (float) length + " " + generator.getResolutionUnit());
+
+            double kmeters = 0;
+            double meters = 0;
+            double cmeters = 0;
+            double mmeters = 0;
+
+            if (generator.getResolutionUnit().equals("mm")) {
+                kmeters = (float) length/1000000;
+                meters = (float) length/1000;
+                cmeters = (float) length/10;
+                mmeters = (float) length;
+            }
+
+            if (generator.getResolutionUnit().equals("cm")) {
+                kmeters = (float) length/100000;
+                meters = (float) length/100;
+                cmeters = (float) length;
+                mmeters = (float) length * 10;
+            }
+
+            if (generator.getResolutionUnit().equals("m")) {
+                kmeters = (float) length/1000;
+                meters = (float) length;
+                cmeters = (float) length * 100;
+                mmeters = (float) length * 1000;
+            }
+            if (generator.getResolutionUnit().equals("km")) {
+                kmeters = (float) length;
+                meters = (float) length * 1000;
+                cmeters = (float) length * 100000;
+                mmeters = (float) length * 1000000;
+            }
+            MainPane.Instance.getGraphicPane().changeDisplayText("Länge: \t" + String.format("%.3f", meters) + " m" + " | " + String.format("%.4f", kmeters) + " km | " + String.format("%.2f", cmeters) + " cm | " + String.format("%.1f", mmeters) + " mm");
+
         }
         else {
             System.out.println("Could not calculate line because either ImageView or ImageGenerator are null");
