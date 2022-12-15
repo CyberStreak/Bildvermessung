@@ -24,7 +24,14 @@ public class LineTool implements iTool {
             // Calculate line length based on:
             //               (resolution x measured pixels)               * scaling factor (MUST USE HEIGHT HERE!!!)
             //
-            double length =  (generator.getResolution() * measuredPixels) * (generator.getImg().getHeight() / view.getFitHeight());
+            double sFactor = 0d;
+            if(generator.getImg().getHeight() > view.getFitHeight()){
+                sFactor = generator.getImg().getWidth() / view.getFitWidth();
+            }
+            else{
+                sFactor = generator.getImg().getHeight() / view.getFitHeight();
+            }
+            double length =  (generator.getResolution() * measuredPixels) * sFactor;
 
             // Update the display text
             //MainPane.Instance.getGraphicPane().changeDisplayText("Länge: " + (float) length + " " + generator.getResolutionUnit());
