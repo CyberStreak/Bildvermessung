@@ -41,11 +41,9 @@ public class StateModel {
         observers.add(observer);
     }
 
-    /*
-    private static void sendChange() {
+    /*private static void sendChange() {
         for (StateObserver observer : observers) {
             observer.stateChanged();
         }
-    }
-     */
+    }*/
 }
