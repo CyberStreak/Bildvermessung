@@ -10,8 +10,6 @@ import javafx.scene.shape.Line;
 public class LineTool implements iTool {
     // stores the current Line that is being drawn or previously was drawn
     private Line currentLine = null;
-    // Länge der Linie wird gebraucht um vergleich ziehen zu können
-    // private double length = 0;
 
     @Override
     public void onMouseRelease(MouseEvent event, Pane drawingPane) {
