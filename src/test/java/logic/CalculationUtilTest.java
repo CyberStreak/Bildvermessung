@@ -50,6 +50,6 @@ class CalculationUtilTest {
     @Test
     void calculateLineLength_2() {
         Line line2 = new Line(100, 100, 0, 0);
-        assertEquals(141.4213562373095, CalculationUtil.calculateLineLength(line2));
+        assertEquals(141.42, CalculationUtil.calculateLineLength(line2), 0.1);
     }
 }

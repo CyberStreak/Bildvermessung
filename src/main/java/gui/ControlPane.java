@@ -98,13 +98,6 @@ public class ControlPane extends StackPane {
         TextArea textArea = new TextArea();
         textArea.setEditable(false);
 
-        // define 2nd text box for displaying measurements as they are taken -- this needs to be dynamic !!!
-        /*
-        Label measureInfo = new Label("Messungen");
-        TextArea textArea2 = new TextArea();
-        textArea2.setEditable(false);
-        */
-
         //CheckBox nightMode = new CheckBox("Nachtmodus");
 
         /*
@@ -126,24 +119,20 @@ public class ControlPane extends StackPane {
                 MainPane.Instance.getGraphicPane().setImage(imgGenerator.getImg());
 
                 // 1st text box to display file/image information that doesn't change as measurements are taken
+                textArea.setMinHeight(220);
                 textArea.clear();
                 textArea.setWrapText(true);
-                textArea.appendText(imgGenerator.getDescription()+"\n");
-                textArea.appendText(imgGenerator.getResolution()+" "+imgGenerator.getResolutionUnit()+" per pixel\n\n");
-                textArea.appendText(imgGenerator.getWidth().intValue()+" x "+imgGenerator.getHeight().intValue()+" pixels\n");
-                textArea.appendText((double)Math.round(imgGenerator.getWidth().intValue() * imgGenerator.getResolution() * 100)/100 + " "+ imgGenerator.getResolutionUnit() + " x " + (double)Math.round(imgGenerator.getHeight().intValue() * imgGenerator.getResolution() * 100)/100 + " "+imgGenerator.getResolutionUnit() +"\n\n");
-                textArea.appendText(imgGenerator.getImageFile());
 
-                /*
-                // 2nd text box to display measurements -- transfer to where these measurements are calculated, if we want to even display it.
-                textArea2.clear();
-                textArea2.setWrapText(true);
-                textArea2.appendText("-- Measurements --\n");
-                textArea2.appendText(" mm\n");
-                textArea2.appendText(" cm\n");
-                textArea2.appendText(" m\n");
-                textArea2.appendText(" km\n");
-                */
+                textArea.appendText("BESCHREIBUNG & DATEIPFAD:\n");
+                textArea.appendText(imgGenerator.getDescription()+"\n");
+                textArea.appendText(imgGenerator.getImageFile()+"\n");
+
+                textArea.appendText("\nAUFLÖSUNG:\n");
+                textArea.appendText(imgGenerator.getResolution()+" "+imgGenerator.getResolutionUnit()+"/Pixel\n");
+                
+                textArea.appendText("\nDIMENSIONEN:\n");
+                textArea.appendText((double)Math.round(imgGenerator.getWidth().intValue() * imgGenerator.getResolution() * 100)/100 + " "+ imgGenerator.getResolutionUnit() + " x " + (double)Math.round(imgGenerator.getHeight().intValue() * imgGenerator.getResolution() * 100)/100 + " "+imgGenerator.getResolutionUnit() +" (BxH)\n");
+                textArea.appendText(imgGenerator.getWidth().intValue()+" x "+imgGenerator.getHeight().intValue()+" Pixel (BxH)\n");
             }
             stateModel.setColor(Color.YELLOWGREEN);
             stateModel.setStrokeWidth(DEFAULT_LINE_WIDTH);

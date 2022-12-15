@@ -36,7 +36,7 @@ public class AngleTool implements iTool{
             // update display text to the measured angle
             float Angle = (float)CalculationUtil.calculateAngel(line1, line2);
             float Complement = 360 - Angle;
-            MainPane.Instance.getGraphicPane().changeDisplayText("Winkel zwischen den Linien: " + String.format("%.2f", Angle)+" | "+String.format("%.2f", Complement));
+            MainPane.Instance.getGraphicPane().changeDisplayText("Winkel zwischen den Linien: " + String.format("%.2f", Angle)+ "° | " +String.format("%.2f", Complement)+ "°");
         }
     }
 
