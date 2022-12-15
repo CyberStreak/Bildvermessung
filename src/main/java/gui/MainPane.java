@@ -16,6 +16,17 @@ public class MainPane extends StackPane {
         controlPane = new ControlPane();
         graphicPane = new GraphicPane();
 
+        // Work-around wegen Scalingproblemen, können wir die Stage so fixieren?
+        Instance.setMinSize(1000, 700);
+        Instance.setMaxSize(1000, 700);
+
+        controlPane.setMinSize(200, 700);
+        controlPane.setMaxSize(200, 700);
+
+        graphicPane.setMinSize(800, 700);
+        graphicPane.setMaxSize(800, 700);
+
+
         final SplitPane verticalSplitter = new SplitPane();
         verticalSplitter.setOrientation(Orientation.HORIZONTAL);
         verticalSplitter.setDividerPosition(0, 0.2);
