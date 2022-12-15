@@ -6,8 +6,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 
-import javax.swing.plaf.nimbus.State;
-
 public class AngleTool implements iTool{
     // stores the two lines
     private Line line1 = null;
