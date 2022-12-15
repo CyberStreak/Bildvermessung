@@ -32,6 +32,7 @@ class CalculationUtilTest {
 
         assertEquals(45, CalculationUtil.calculateAngel(line1, line2));
     }
+
     @Test
     void calcAng_45_2() {
         // similar test, it WILL fail if you comment out the long if, if, if, if block in calculateAngle Class (search for KAPUTT)

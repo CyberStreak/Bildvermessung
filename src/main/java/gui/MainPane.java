@@ -12,22 +12,14 @@ public class MainPane extends StackPane {
     private ImageGenerator currentImageGenerator;
 
     public MainPane() {
-        Instance = this;
-        controlPane = new ControlPane();
-        graphicPane = new GraphicPane();
+        StateModel stateModel = new StateModel();
 
-        // Work-around wegen Scalingproblemen, können wir die Stage so fixieren?
-        //Instance.setMinSize(1000, 700);
-        //Instance.setMaxSize(1000, 700);
+        Instance = this;
+        controlPane = new ControlPane(stateModel);
+        graphicPane = new GraphicPane(stateModel);
 
         controlPane.setMinWidth(200);
         controlPane.setMaxWidth(200);
-
-        //graphicPane.setMinSize(800, 700);
-        //graphicPane.setMaxSize(800, 700);
-
-
-
 
         final SplitPane verticalSplitter = new SplitPane();
         verticalSplitter.setOrientation(Orientation.HORIZONTAL);

@@ -21,13 +21,13 @@ public class GraphicPane extends StackPane {
     private final Pane drawingPane;
     private final ArrayList<Line> lines = ScopeTool.getLines();
 
-    public GraphicPane() {
+    public GraphicPane(StateModel stateModel) {
         // create a Pane for drawing
         this.imageView = new ImageView();
         drawingPane = new Pane();
         Button clear = new Button("Zeichnung bereinigen");
         displayLabel = new Label("");
-        tool = new LineTool();
+        tool = new LineTool(stateModel);
 
         // setting for the pane
         drawingPane.setStyle("-fx-background-color: gray");

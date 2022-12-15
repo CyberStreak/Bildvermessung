@@ -10,6 +10,18 @@ import javafx.scene.shape.Line;
 public class LineTool implements iTool {
     // stores the current Line that is being drawn or previously was drawn
     private Line currentLine = null;
+    private final StateModel stateModel;
+
+    public LineTool(StateModel stateModel) {
+        this.stateModel = stateModel;
+
+        stateModel.addObserver(() -> {
+            if (currentLine != null) {
+                currentLine.setStrokeWidth(stateModel.getStrokeWidth());
+                currentLine.setStroke(stateModel.getColor());
+            }
+        });
+    }
 
     @Override
     public void onMouseRelease(MouseEvent event, Pane drawingPane) {
@@ -24,15 +36,7 @@ public class LineTool implements iTool {
             // Calculate line length based on:
             //               (resolution x measured pixels)               * scaling factor (MUST USE HEIGHT HERE!!!)
             //
-            //double length =  (generator.getResolution() * measuredPixels) * (generator.getImg().getHeight() / view.getFitHeight());
-            double sFactor = 0d;
-            if(generator.getImg().getHeight() > view.getFitHeight()){
-                sFactor = generator.getImg().getWidth() / view.getFitWidth();
-            }
-            else{
-                sFactor = generator.getImg().getHeight() / view.getFitHeight();
-            }
-            double length =  (generator.getResolution() * measuredPixels) * sFactor;
+            double length =  (generator.getResolution() * measuredPixels) * (generator.getImg().getHeight() / view.getBoundsInLocal().getHeight());
 
             // Update the display text
             //MainPane.Instance.getGraphicPane().changeDisplayText("Länge: " + (float) length + " " + generator.getResolutionUnit());
@@ -95,8 +99,8 @@ public class LineTool implements iTool {
         currentLine.setStartY(event.getY());
         currentLine.setEndX(event.getX());
         currentLine.setEndY(event.getY());
-        currentLine.setStrokeWidth(StateModel.getStrokeWidth());
-        currentLine.setStroke(StateModel.getColor());
+        currentLine.setStrokeWidth(stateModel.getStrokeWidth());
+        currentLine.setStroke(stateModel.getColor());
     }
 
     @Override

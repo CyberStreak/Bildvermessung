@@ -1,6 +1,8 @@
 package gui;
 
 import javafx.scene.paint.Color;
+import logic.iTool;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,29 +13,31 @@ public class StateModel {
      * how can we add non methods to the observers?
      * where do you have to add the StateModel? In the tools or in the panes?
      */
-    private static Color color;
-    private static double strokeWidth;
+    private Color color;
+    private double strokeWidth;
     private final List<StateObserver> observers;
+    // tools evt. auch im stateModel abspeichern
+    //private iTool tool;
 
     public StateModel() {
         observers = new ArrayList<>();
     }
 
-    public static void setColor(Color color) {
-        StateModel.color = color;
-        //sendChange();
+    public void setColor(Color color) {
+        this.color = color;
+        sendChange();
     }
 
-    public static Color getColor() {
+    public Color getColor() {
         return color;
     }
 
-    public static void setStrokeWidth(double strokeWidth) {
-        StateModel.strokeWidth = strokeWidth;
-        //sendChange();
+    public void setStrokeWidth(double strokeWidth) {
+        this.strokeWidth = strokeWidth;
+        sendChange();
     }
 
-    public static double getStrokeWidth() {
+    public double getStrokeWidth() {
         return strokeWidth;
     }
 
@@ -41,11 +45,9 @@ public class StateModel {
         observers.add(observer);
     }
 
-    /*
-    private static void sendChange() {
+    private void sendChange() {
         for (StateObserver observer : observers) {
             observer.stateChanged();
         }
     }
-     */
 }

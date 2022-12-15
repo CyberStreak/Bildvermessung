@@ -12,6 +12,18 @@ import java.util.ArrayList;
 public class ScopeTool implements iTool{
     private Line currentLine;
     private static final ArrayList<Line> lines = new ArrayList<>();
+    private final StateModel stateModel;
+
+    public ScopeTool(StateModel stateModel) {
+        this.stateModel = stateModel;
+
+        stateModel.addObserver(() -> {
+            if (currentLine != null) {
+                currentLine.setStroke(stateModel.getColor());
+                currentLine.setStrokeWidth(stateModel.getStrokeWidth());
+            }
+        });
+    }
 
     public static ArrayList<Line> getLines() {
         return lines;
@@ -26,8 +38,8 @@ public class ScopeTool implements iTool{
         currentLine.setStartY(event.getY());
         currentLine.setEndX(event.getX());
         currentLine.setEndY(event.getY());
-        currentLine.setStrokeWidth(StateModel.getStrokeWidth());
-        currentLine.setStroke(StateModel.getColor());
+        currentLine.setStrokeWidth(stateModel.getStrokeWidth());
+        currentLine.setStroke(stateModel.getColor());
     }
 
     @Override

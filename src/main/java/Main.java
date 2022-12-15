@@ -17,7 +17,6 @@ public class Main extends Application {
 
         stage.setScene(scene);
         stage.setTitle("Bildvermessung");
-        stage.setFullScreen(true);
         stage.show();
     }
 

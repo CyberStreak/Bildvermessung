@@ -14,6 +14,18 @@ public class AngleTool implements iTool{
     private Line currentLine = null;
     // stores the state, 0 = not started, 1 = the first line has been started drawing, 2 = second line has been started drawing
     private int state = 0;
+    private final StateModel stateModel;
+
+    public AngleTool(StateModel stateModel) {
+        this.stateModel = stateModel;
+
+        stateModel.addObserver(() -> {
+            line1.setStroke(stateModel.getColor());
+            line1.setStrokeWidth(stateModel.getStrokeWidth());
+            line2.setStroke(stateModel.getColor());
+            line2.setStrokeWidth(stateModel.getStrokeWidth());
+        });
+    }
 
     @Override
     public void onMouseRelease(MouseEvent event, Pane drawingPane) {
@@ -89,8 +101,8 @@ public class AngleTool implements iTool{
         line.setStartY(y1);
         line.setEndX(x2);
         line.setEndY(y2);
-        line.setStrokeWidth(StateModel.getStrokeWidth());
-        line.setStroke(StateModel.getColor());
+        line.setStrokeWidth(stateModel.getStrokeWidth());
+        line.setStroke(stateModel.getColor());
         return line;
     }
 }

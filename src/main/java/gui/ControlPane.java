@@ -18,16 +18,17 @@ import logic.ScopeTool;
 import java.io.File;
 
 public class ControlPane extends StackPane {
+    private final int DEFAULT_LINE_WIDTH = 3;
 
-    public ControlPane() {
+    public ControlPane(StateModel stateModel) {
         Button loadButton = new Button(">>Daten laden<<");
         Button measureLength = new Button("Länge messen");
         Button measureScope = new Button("Umfang messen");
         Button measureDegree = new Button("Winkel messen");
 
-        measureLength.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new LineTool()));
-        measureDegree.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new AngleTool()));
-        measureScope.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new ScopeTool()));
+        measureLength.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new LineTool(stateModel)));
+        measureDegree.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new AngleTool(stateModel)));
+        measureScope.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new ScopeTool(stateModel)));
 
         Label labelColor = new Label("Strichfarbe:");
         ComboBox<Color> colorComboBox = new ComboBox<>();
@@ -64,13 +65,13 @@ public class ControlPane extends StackPane {
         colorComboBox.setOnAction(event -> {
             Color selectedColor = colorComboBox.getValue();
             if (selectedColor == Color.WHITE) {
-                StateModel.setColor(Color.WHITE);
+                stateModel.setColor(Color.WHITE);
             } else if (selectedColor == Color.BLACK) {
-                StateModel.setColor(Color.BLACK);
+                stateModel.setColor(Color.BLACK);
             } else if (selectedColor == Color.HOTPINK) {
-                StateModel.setColor(Color.HOTPINK);
+                stateModel.setColor(Color.HOTPINK);
             } else if (selectedColor == Color.YELLOWGREEN) {
-                StateModel.setColor(Color.YELLOWGREEN);
+                stateModel.setColor(Color.YELLOWGREEN);
             }
         });
 
@@ -84,13 +85,13 @@ public class ControlPane extends StackPane {
          */
 
         Label widthOfStroke = new Label("Strichdicke:");
-        Slider strokeWidth = new Slider(1, 5, 3);
+        Slider strokeWidth = new Slider(1, 5, DEFAULT_LINE_WIDTH);
         strokeWidth.setShowTickMarks(true);
         strokeWidth.setShowTickLabels(true);
         strokeWidth.setMajorTickUnit(2);
         strokeWidth.setSnapToTicks(true);
 
-        strokeWidth.valueProperty().addListener(observable -> StateModel.setStrokeWidth(strokeWidth.getValue()));
+        strokeWidth.valueProperty().addListener(observable -> stateModel.setStrokeWidth(strokeWidth.getValue()));
 
         // define 1st text box & label for the file information
         Label imageInfo = new Label("Bildinformationen");
@@ -144,8 +145,8 @@ public class ControlPane extends StackPane {
                 textArea2.appendText(" km\n");
                 */
             }
-            StateModel.setColor(Color.YELLOWGREEN);
-            StateModel.setStrokeWidth(3);
+            stateModel.setColor(Color.YELLOWGREEN);
+            stateModel.setStrokeWidth(DEFAULT_LINE_WIDTH);
         });
 
         // vertical box for the stroke changes
