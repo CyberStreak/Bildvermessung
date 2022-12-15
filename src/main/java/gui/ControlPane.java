@@ -104,6 +104,7 @@ public class ControlPane extends StackPane {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Metadaten laden..");
             fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt", "*.json"));
+
             File dataFile = fileChooser.showOpenDialog(null);
 
             ImageGenerator imgGenerator = FileHandler.readFile(dataFile);
@@ -113,13 +114,20 @@ public class ControlPane extends StackPane {
                 MainPane.Instance.getGraphicPane().setImage(imgGenerator.getImg());
 
                 // 1st text box to display file/image information that doesn't change as measurements are taken
+                textArea.setMinHeight(220);
                 textArea.clear();
                 textArea.setWrapText(true);
+
+                textArea.appendText("BESCHREIBUNG & DATEIPFAD:\n");
                 textArea.appendText(imgGenerator.getDescription()+"\n");
-                textArea.appendText(imgGenerator.getResolution()+" "+imgGenerator.getResolutionUnit()+" per pixel\n\n");
-                textArea.appendText(imgGenerator.getWidth().intValue()+" x "+imgGenerator.getHeight().intValue()+" pixels\n");
-                textArea.appendText((double)Math.round(imgGenerator.getWidth().intValue() * imgGenerator.getResolution() * 100)/100 + " "+ imgGenerator.getResolutionUnit() + " x " + (double)Math.round(imgGenerator.getHeight().intValue() * imgGenerator.getResolution() * 100)/100 + " "+imgGenerator.getResolutionUnit() +"\n\n");
-                textArea.appendText(imgGenerator.getImageFile());
+                textArea.appendText(imgGenerator.getImageFile()+"\n");
+
+                textArea.appendText("\nAUFLÖSUNG:\n");
+                textArea.appendText(imgGenerator.getResolution()+" "+imgGenerator.getResolutionUnit()+"/Pixel\n");
+
+                textArea.appendText("\nDIMENSIONEN:\n");
+                textArea.appendText((double)Math.round(imgGenerator.getWidth().intValue() * imgGenerator.getResolution() * 100)/100 + " "+ imgGenerator.getResolutionUnit() + " x " + (double)Math.round(imgGenerator.getHeight().intValue() * imgGenerator.getResolution() * 100)/100 + " "+imgGenerator.getResolutionUnit() +" (BxH)\n");
+                textArea.appendText(imgGenerator.getWidth().intValue()+" x "+imgGenerator.getHeight().intValue()+" Pixel (BxH)\n");
             }
 
             stateModel.setColor(Color.YELLOWGREEN);

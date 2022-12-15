@@ -18,8 +18,8 @@ public class MainPane extends StackPane {
         controlPane = new ControlPane(stateModel);
         graphicPane = new GraphicPane(stateModel);
 
-        controlPane.setMinWidth(200);
-        controlPane.setMaxWidth(200);
+        controlPane.setMinWidth(250);
+        controlPane.setMaxWidth(250);
 
         final SplitPane verticalSplitter = new SplitPane();
         verticalSplitter.setOrientation(Orientation.HORIZONTAL);
