@@ -16,13 +16,12 @@ import java.util.ArrayList;
 public class GraphicPane extends StackPane {
     private final ImageView imageView;
     private final Label displayLabel;
-    // the currently used tool
     private iTool tool;
     private final Pane drawingPane;
     private final ArrayList<Line> lines = ScopeTool.getLines();
 
     public GraphicPane(StateModel stateModel) {
-        // create a Pane for drawing
+        // create the needed components
         this.imageView = new ImageView();
         drawingPane = new Pane();
         Button clear = new Button("Zeichnung bereinigen");
@@ -34,7 +33,6 @@ public class GraphicPane extends StackPane {
         drawingPane.getChildren().add(imageView);
 
         // Settings for the image
-        // image resizes itself to the pane and gets smaller with it, but it doesn't get bigger anymore
         this.imageView.setSmooth(true);
         this.imageView.setPreserveRatio(true);
         this.imageView.setCache(true);
@@ -47,6 +45,7 @@ public class GraphicPane extends StackPane {
         drawingPane.setOnMousePressed(event -> tool.onMousePressed(event, drawingPane));
         drawingPane.setOnMouseDragged(event -> tool.onMouseDragged(event, drawingPane));
 
+        // event for the clearButton
         clear.setOnAction(event -> {
             drawingPane.getChildren().clear();
             drawingPane.getChildren().add(imageView);
@@ -54,12 +53,13 @@ public class GraphicPane extends StackPane {
             lines.clear();
         });
 
-        // arrangement of the components
+        // horizontal box for the button and results
         HBox hBox = new HBox();
         hBox.getChildren().addAll(clear, displayLabel);
         hBox.setAlignment(Pos.CENTER);
         hBox.setSpacing(20);
         hBox.autosize();
+        // vertical box for all the components
         VBox vBox = new VBox();
         vBox.getChildren().addAll(drawingPane,hBox);
         VBox.setVgrow(drawingPane, Priority.ALWAYS);
@@ -68,6 +68,7 @@ public class GraphicPane extends StackPane {
         this.getChildren().add(vBox);
     }
 
+    // method to set the needed image in the imageView
     public void setImage(Image image) {
         if(image != null) {
             imageView.setImage(image);
@@ -90,6 +91,7 @@ public class GraphicPane extends StackPane {
         this.tool = tool;
     }
 
+    // getter for the imageView, needed for the dimensions
     public ImageView getImageView() {
         return imageView;
     }

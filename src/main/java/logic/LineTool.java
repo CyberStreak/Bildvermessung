@@ -38,9 +38,6 @@ public class LineTool implements iTool {
             //
             double length =  (generator.getResolution() * measuredPixels) * (generator.getImg().getHeight() / view.getBoundsInLocal().getHeight());
 
-            // Update the display text
-            //MainPane.Instance.getGraphicPane().changeDisplayText("Länge: " + (float) length + " " + generator.getResolutionUnit());
-
             double kmeters = 0;
             double meters = 0;
             double cmeters = 0;
@@ -73,6 +70,7 @@ public class LineTool implements iTool {
                 mmeters = (float) length * 1000000;
             }
 
+            // update the displayed text
             MainPane.Instance.getGraphicPane().changeDisplayText("Länge: \t" + String.format("%.3f", meters) + " m" + " | " + String.format("%.4f", kmeters) + " km | " + String.format("%.2f", cmeters) + " cm | " + String.format("%.1f", mmeters) + " mm");
         }
         else {

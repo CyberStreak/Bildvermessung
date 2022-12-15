@@ -63,6 +63,7 @@ public class CalculationUtil {
         return Math.abs(Math.toDegrees(angleBetween));
     }
 
+    // calculate the length of a single line
     public static double calculateLineLength(Line line) {
         double x1 = line.getStartX();
         double y1 = line.getStartY();

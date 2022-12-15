@@ -50,6 +50,7 @@ public class FileHandler {
         return null;
     }
 
+    // checking the file extension for the needed reader
     private static String getExtension(File file) {
         String fileName = file.getName();
         System.out.println("Filename used in FileHandler.getExtension: "+fileName);

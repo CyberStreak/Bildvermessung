@@ -23,7 +23,6 @@ public class MainPane extends StackPane {
 
         final SplitPane verticalSplitter = new SplitPane();
         verticalSplitter.setOrientation(Orientation.HORIZONTAL);
-        verticalSplitter.setDividerPosition(0, 0.2);
         verticalSplitter.getItems().addAll(controlPane);
         verticalSplitter.getItems().addAll(graphicPane);
 

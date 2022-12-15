@@ -7,12 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StateModel {
-    /**
-     * not really sure what I am doing... but it works with some errors
-     * how can we resolve the static problem?
-     * how can we add non methods to the observers?
-     * where do you have to add the StateModel? In the tools or in the panes?
-     */
     private Color color;
     private double strokeWidth;
     private final List<StateObserver> observers;

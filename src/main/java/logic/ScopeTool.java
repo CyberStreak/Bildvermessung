@@ -46,7 +46,7 @@ public class ScopeTool implements iTool{
 
     @Override
     public void onMouseDragged(MouseEvent event, Pane drawingPane) {
-        // while draggin update the end point to the mouse position
+        // while dragging update the end point to the mouse position
         currentLine.setEndX(event.getX());
         currentLine.setEndY(event.getY());
     }
@@ -55,11 +55,8 @@ public class ScopeTool implements iTool{
     public void onMouseRelease(MouseEvent event, Pane drawingPane) {
         // store the created lines in a list
         lines.add(currentLine);
-        System.out.println(lines);
-
         // calculates the length of the drawn line
         double measuredPixels = totalLength(lines);
-
         // Imageview from the GraphicsPane for calculating the effective real world length
         ImageView view = MainPane.Instance.getGraphicPane().getImageView();
         // ImageGenerator from the GraphicsPane for calculating the effective real world length
@@ -68,17 +65,7 @@ public class ScopeTool implements iTool{
         if ( view != null && generator != null) {
             // Calculate line length based on:
             //               (resolution x measured pixels)               * scaling factor (MUST USE HEIGHT HERE!!!)
-            //
-            double sFactor;
-            if(generator.getImg().getHeight() > view.getFitHeight()){
-                sFactor = generator.getImg().getWidth() / view.getFitWidth();
-            }
-            else{
-                sFactor = generator.getImg().getHeight() / view.getFitHeight();
-            }
-            double length =  (generator.getResolution() * measuredPixels) * sFactor;
-            // Update the display text
-            //MainPane.Instance.getGraphicPane().changeDisplayText("Länge: " + (float) length + " " + generator.getResolutionUnit());
+            double length =  (generator.getResolution() * measuredPixels) * (generator.getImg().getHeight() / view.getBoundsInLocal().getHeight());
 
             double kmeters = 0;
             double meters = 0;
@@ -112,6 +99,7 @@ public class ScopeTool implements iTool{
                 mmeters = (float) length * 1000000;
             }
 
+            // update the displayed text
             MainPane.Instance.getGraphicPane().changeDisplayText("Länge: \t" + String.format("%.3f", meters) + " m" + " | " + String.format("%.4f", kmeters) + " km | " + String.format("%.2f", cmeters) + " cm | " + String.format("%.1f", mmeters) + " mm");
 
         }
@@ -126,13 +114,15 @@ public class ScopeTool implements iTool{
     }
 
     @Override
-    public void onCleanUp(Pane drawingPane) {// remove the drawn line from the drawing Pane
+    public void onCleanUp(Pane drawingPane) {
+        // remove the drawn line from the drawing Pane
         if(currentLine != null) {
             drawingPane.getChildren().remove(currentLine);
             lines.clear();
         }
     }
 
+    // measure the total length of all drawn lines
     public double totalLength(ArrayList<Line> lines) {
         double total = 0;
         for (Line line : lines) {

@@ -79,7 +79,7 @@ public class AngleTool implements iTool{
         // update the endpoint of the line while dragging
         currentLine.setEndX(event.getX());
         currentLine.setEndY(event.getY());
-        System.out.println("Line length: "+CalculationUtil.calculateLineLength(currentLine));
+        System.out.println("Line length: " + CalculationUtil.calculateLineLength(currentLine));
     }
 
     @Override
