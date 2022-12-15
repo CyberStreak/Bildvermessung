@@ -6,15 +6,17 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
 
+import javax.swing.plaf.nimbus.State;
+
 public class AngleTool implements iTool{
     // stores the two lines
     private Line line1 = null;
     private Line line2 = null;
     // stores the current line (line1 or line2) which the user is currently drawing
     private Line currentLine = null;
-
     // stores the state, 0 = not started, 1 = the first line has been started drawing, 2 = second line has been started drawing
     private int state = 0;
+
     @Override
     public void onMouseRelease(MouseEvent event, Pane drawingPane) {
         // if we are done drawing the second line

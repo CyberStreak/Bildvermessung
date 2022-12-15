@@ -19,7 +19,7 @@ import java.io.File;
 
 public class ControlPane extends StackPane {
 
-    public ControlPane(/*StateModel stateModel*/) {
+    public ControlPane() {
         Button loadButton = new Button(">>Daten laden<<");
         Button measureLength = new Button("Länge messen");
         Button measureScope = new Button("Umfang messen");
@@ -77,8 +77,9 @@ public class ControlPane extends StackPane {
         /*
         // don't really now how to handle the stateModel
         // how can I add non methods to the observer?
-        StateModel.addObserver(() -> {
-            stateModel.setColor();
+        stateModel.addObserver(() -> {
+            stateModel.setColor(colorComboBox.getValue());
+            stateModel.setStrokeWidth(strokeWi);
         });
          */
 
@@ -143,6 +144,8 @@ public class ControlPane extends StackPane {
                 textArea2.appendText(" km\n");
                 */
             }
+            StateModel.setColor(Color.YELLOWGREEN);
+            StateModel.setStrokeWidth(3);
         });
 
         // vertical box for the stroke changes

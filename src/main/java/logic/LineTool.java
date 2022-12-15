@@ -93,7 +93,7 @@ public class LineTool implements iTool {
 
     @Override
     public void onMouseDragged(MouseEvent event, Pane drawingPane) {
-        // while draggin update the end point to the mouse position
+        // while dragging update the end point to the mouse position
         currentLine.setEndX(event.getX());
         currentLine.setEndY(event.getY());
     }

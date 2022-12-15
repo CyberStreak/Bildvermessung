@@ -13,7 +13,7 @@ public class StateModel {
      */
     private static Color color;
     private static double strokeWidth;
-    private static List<StateObserver> observers;
+    private final List<StateObserver> observers;
 
     public StateModel() {
         observers = new ArrayList<>();
@@ -41,9 +41,11 @@ public class StateModel {
         observers.add(observer);
     }
 
-    /*private static void sendChange() {
+    /*
+    private static void sendChange() {
         for (StateObserver observer : observers) {
             observer.stateChanged();
         }
-    }*/
+    }
+     */
 }
