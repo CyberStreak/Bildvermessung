@@ -21,7 +21,7 @@ public class StateModel {
 
     public static void setColor(Color color) {
         StateModel.color = color;
-        sendChange();
+        //sendChange();
     }
 
     public static Color getColor() {
@@ -30,7 +30,7 @@ public class StateModel {
 
     public static void setStrokeWidth(double strokeWidth) {
         StateModel.strokeWidth = strokeWidth;
-        sendChange();
+        //sendChange();
     }
 
     public static double getStrokeWidth() {
@@ -41,9 +41,9 @@ public class StateModel {
         observers.add(observer);
     }
 
-    private static void sendChange() {
+    /*private static void sendChange() {
         for (StateObserver observer : observers) {
             observer.stateChanged();
         }
-    }
+    }*/
 }
