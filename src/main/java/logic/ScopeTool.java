@@ -19,8 +19,10 @@ public class ScopeTool implements iTool{
 
         stateModel.addObserver(() -> {
             if (currentLine != null) {
-                currentLine.setStroke(stateModel.getColor());
-                currentLine.setStrokeWidth(stateModel.getStrokeWidth());
+                for (Line line : lines) {
+                    line.setStroke(stateModel.getColor());
+                    line.setStrokeWidth(stateModel.getStrokeWidth());
+                }
             }
         });
     }
@@ -67,7 +69,7 @@ public class ScopeTool implements iTool{
             // Calculate line length based on:
             //               (resolution x measured pixels)               * scaling factor (MUST USE HEIGHT HERE!!!)
             //
-            double sFactor = 0d;
+            double sFactor;
             if(generator.getImg().getHeight() > view.getFitHeight()){
                 sFactor = generator.getImg().getWidth() / view.getFitWidth();
             }

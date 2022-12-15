@@ -21,15 +21,18 @@ public class ControlPane extends StackPane {
     private final int DEFAULT_LINE_WIDTH = 3;
 
     public ControlPane(StateModel stateModel) {
+        // components for buttons
         Button loadButton = new Button(">>Daten laden<<");
         Button measureLength = new Button("Länge messen");
         Button measureScope = new Button("Umfang messen");
         Button measureDegree = new Button("Winkel messen");
 
+        // event for the tools
         measureLength.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new LineTool(stateModel)));
         measureDegree.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new AngleTool(stateModel)));
         measureScope.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new ScopeTool(stateModel)));
 
+        // comboBox for the stroke color
         Label labelColor = new Label("Strichfarbe:");
         ComboBox<Color> colorComboBox = new ComboBox<>();
         colorComboBox.setEditable(false);
@@ -38,6 +41,7 @@ public class ControlPane extends StackPane {
         colorComboBox.getItems().add(Color.BLACK);
         colorComboBox.getItems().add(Color.HOTPINK);
 
+        // displaying the cells of the comboBox in color
         colorComboBox.setCellFactory(new Callback<>() {
             @Override
             public ListCell<Color> call(ListView<Color> param) {
@@ -62,6 +66,7 @@ public class ControlPane extends StackPane {
             }
         });
 
+        // set the chosen color for the stateModel
         colorComboBox.setOnAction(event -> {
             Color selectedColor = colorComboBox.getValue();
             if (selectedColor == Color.WHITE) {
@@ -75,15 +80,7 @@ public class ControlPane extends StackPane {
             }
         });
 
-        /*
-        // don't really now how to handle the stateModel
-        // how can I add non methods to the observer?
-        stateModel.addObserver(() -> {
-            stateModel.setColor(colorComboBox.getValue());
-            stateModel.setStrokeWidth(strokeWi);
-        });
-         */
-
+        // slider for the stroke width
         Label widthOfStroke = new Label("Strichdicke:");
         Slider strokeWidth = new Slider(1, 5, DEFAULT_LINE_WIDTH);
         strokeWidth.setShowTickMarks(true);
@@ -98,31 +95,21 @@ public class ControlPane extends StackPane {
         TextArea textArea = new TextArea();
         textArea.setEditable(false);
 
-        // define 2nd text box for displaying measurements as they are taken -- this needs to be dynamic !!!
         /*
-        Label measureInfo = new Label("Messungen");
-        TextArea textArea2 = new TextArea();
-        textArea2.setEditable(false);
-        */
-
-        //CheckBox nightMode = new CheckBox("Nachtmodus");
-
-        /*
-         1. Mit dem Button das Textfile laden
-         2. textFile unterscheiden zwischen .txt und .json mit fileReader()
-         3. aus dem textFile ein Objekt generieren
+         1. load metadata with the button
+         2. choose the right reader
+         3. generate the image and imageObject
          */
         loadButton.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Metadaten laden..");
             fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt", "*.json"));
-
             File dataFile = fileChooser.showOpenDialog(null);
 
             ImageGenerator imgGenerator = FileHandler.readFile(dataFile);
             MainPane.Instance.setCurrentImageGenerator(imgGenerator);
             if(imgGenerator != null) {
-                // Image ins statemodel setzen unm es abspeichern zu können.
+                // set the image for the imageView
                 MainPane.Instance.getGraphicPane().setImage(imgGenerator.getImg());
 
                 // 1st text box to display file/image information that doesn't change as measurements are taken
@@ -133,18 +120,8 @@ public class ControlPane extends StackPane {
                 textArea.appendText(imgGenerator.getWidth().intValue()+" x "+imgGenerator.getHeight().intValue()+" pixels\n");
                 textArea.appendText((double)Math.round(imgGenerator.getWidth().intValue() * imgGenerator.getResolution() * 100)/100 + " "+ imgGenerator.getResolutionUnit() + " x " + (double)Math.round(imgGenerator.getHeight().intValue() * imgGenerator.getResolution() * 100)/100 + " "+imgGenerator.getResolutionUnit() +"\n\n");
                 textArea.appendText(imgGenerator.getImageFile());
-
-                /*
-                // 2nd text box to display measurements -- transfer to where these measurements are calculated, if we want to even display it.
-                textArea2.clear();
-                textArea2.setWrapText(true);
-                textArea2.appendText("-- Measurements --\n");
-                textArea2.appendText(" mm\n");
-                textArea2.appendText(" cm\n");
-                textArea2.appendText(" m\n");
-                textArea2.appendText(" km\n");
-                */
             }
+
             stateModel.setColor(Color.YELLOWGREEN);
             stateModel.setStrokeWidth(DEFAULT_LINE_WIDTH);
         });
