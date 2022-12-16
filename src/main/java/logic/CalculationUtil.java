@@ -43,11 +43,11 @@ public class CalculationUtil {
 
         // Calculate the angle of line1 using the atan2 function
         double angle1 = Math.atan2(y2 - y1, x2 - x1);
-        System.out.println("Angle 1 = " + Math.toDegrees(angle1));
+        //System.out.println("Angle 1 = " + Math.toDegrees(angle1));
 
         // Calculate the angle of line2 using the atan2 function
         double angle2 = Math.atan2(y4 - y3, x4 - x3);
-        System.out.println("Angle 2 = " + Math.toDegrees(angle2));
+        //System.out.println("Angle 2 = " + Math.toDegrees(angle2));
 
         // Swap angles if they are not in ascending order
         if (angle1 > angle2){
