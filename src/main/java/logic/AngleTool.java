@@ -2,6 +2,8 @@ package logic;
 
 import gui.MainPane;
 import gui.StateModel;
+import gui.StateObserver;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
@@ -15,20 +17,33 @@ public class AngleTool implements iTool{
     // stores the state, 0 = not started, 1 = the first line has been started drawing, 2 = second line has been started drawing
     private int state = 0;
     private final StateModel stateModel;
+    private StateObserver observer1, observer2;
 
     public AngleTool(StateModel stateModel) {
         this.stateModel = stateModel;
+        observer1 = new StateObserver() {
+            @Override
+            public void stateChanged() {
+                line1.setStroke(stateModel.getColor());
+                line1.setStrokeWidth(stateModel.getStrokeWidth());
+            }
+        };
 
-        stateModel.addObserver(() -> {
-            line1.setStroke(stateModel.getColor());
-            line1.setStrokeWidth(stateModel.getStrokeWidth());
-            line2.setStroke(stateModel.getColor());
-            line2.setStrokeWidth(stateModel.getStrokeWidth());
-        });
+        observer2 = new StateObserver() {
+            @Override
+            public void stateChanged() {
+                line2.setStroke(stateModel.getColor());
+                line2.setStrokeWidth(stateModel.getStrokeWidth());
+            }
+        };
+
     }
 
     @Override
     public void onMouseRelease(MouseEvent event, Pane drawingPane) {
+        if(event.getButton() == MouseButton.SECONDARY) {
+            return;
+        }
         // if we are done drawing the second line
         if(state == 2) {
             // reset state
@@ -47,24 +62,33 @@ public class AngleTool implements iTool{
 
     @Override
     public void onMousePressed(MouseEvent event, Pane drawingPane) {
+        if(event.getButton() == MouseButton.SECONDARY) {
+            onCleanUp(drawingPane);
+            return;
+        }
         // if we just started drawing the first line
         if(state == 0) {
             // remove previous drawn lines
             if(line1 != null) {
                 drawingPane.getChildren().remove(line1);
+
             }
             // remove previous drawn lines
             if(line2 != null) {
                 drawingPane.getChildren().remove(line2);
             }
             // generate a new line starting from mouse position
+            stateModel.removeObserver(observer1);
             line1 = generateLine(event.getX(), event.getY(), event.getX(), event.getY());
+            stateModel.addObserver(observer1);
             currentLine = line1;
         }
         // if first line already has been drawn
         else if(state == 1) {
             // generate second line
+            stateModel.removeObserver(observer2);
             line2 = generateLine(line1.getEndX(), line1.getEndY(), event.getX(), event.getY());
+            stateModel.addObserver(observer2);
             currentLine = line2;
         }
 
@@ -92,6 +116,9 @@ public class AngleTool implements iTool{
         if(line2 != null) {
             drawingPane.getChildren().remove(line2);
         }
+
+        MainPane.Instance.getGraphicPane().changeDisplayText("");
+        state = 0;
     }
 
     // generates a new line

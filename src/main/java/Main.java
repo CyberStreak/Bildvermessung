@@ -12,8 +12,7 @@ public class Main extends Application {
     public void start(Stage stage) {
         Pane mainPane = new MainPane();
 
-        StackPane rootPane = new StackPane(mainPane);
-        Scene scene = new Scene(rootPane, 1000,700);
+        Scene scene = new Scene(mainPane, 1000,700);
 
         stage.setScene(scene);
         stage.setTitle("Bildvermessung");

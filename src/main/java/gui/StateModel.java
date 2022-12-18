@@ -39,6 +39,10 @@ public class StateModel {
         observers.add(observer);
     }
 
+    public void removeObserver(StateObserver observer) {
+        observers.remove(observer);
+    }
+
     private void sendChange() {
         for (StateObserver observer : observers) {
             observer.stateChanged();

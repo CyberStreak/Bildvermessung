@@ -3,6 +3,7 @@ package logic;
 import gui.MainPane;
 import gui.StateModel;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
@@ -33,6 +34,11 @@ public class ScopeTool implements iTool{
 
     @Override
     public void onMousePressed(MouseEvent event, Pane drawingPane) {
+        if(event.getButton() == MouseButton.SECONDARY) {
+            onCleanUp(drawingPane);
+            return;
+        }
+
         // generate and add a new line starting from the mouse position
         currentLine = new Line();
         drawingPane.getChildren().add(currentLine);
@@ -46,6 +52,9 @@ public class ScopeTool implements iTool{
 
     @Override
     public void onMouseDragged(MouseEvent event, Pane drawingPane) {
+        if(event.getButton() == MouseButton.SECONDARY) {
+            return;
+        }
         // while dragging update the end point to the mouse position
         currentLine.setEndX(event.getX());
         currentLine.setEndY(event.getY());
@@ -53,6 +62,9 @@ public class ScopeTool implements iTool{
 
     @Override
     public void onMouseRelease(MouseEvent event, Pane drawingPane) {
+        if(event.getButton() == MouseButton.SECONDARY) {
+            return;
+        }
         // store the created lines in a list
         lines.add(currentLine);
         // calculates the length of the drawn line
@@ -100,7 +112,11 @@ public class ScopeTool implements iTool{
             }
 
             // update the displayed text
-            MainPane.Instance.getGraphicPane().changeDisplayText("Länge: \t" + String.format("%.3f", meters) + " m" + " | " + String.format("%.4f", kmeters) + " km | " + String.format("%.2f", cmeters) + " cm | " + String.format("%.1f", mmeters) + " mm");
+            MainPane.Instance.getGraphicPane().changeDisplayText("Länge: \t"
+                    + String.format("%.3f", meters) + " m"+ " | "
+                    + String.format("%.4f", kmeters) + " km | "
+                    + String.format("%.2f", cmeters) + " cm | "
+                    + String.format("%.1f", mmeters) + " mm");
 
         }
         else {
@@ -117,9 +133,12 @@ public class ScopeTool implements iTool{
     public void onCleanUp(Pane drawingPane) {
         // remove the drawn line from the drawing Pane
         if(currentLine != null) {
-            drawingPane.getChildren().remove(currentLine);
+            drawingPane.getChildren().removeAll(lines);
             lines.clear();
+            currentLine = null;
         }
+
+        MainPane.Instance.getGraphicPane().changeDisplayText("");
     }
 
     // measure the total length of all drawn lines

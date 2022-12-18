@@ -3,6 +3,7 @@ package logic;
 import gui.MainPane;
 import gui.StateModel;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Line;
@@ -25,6 +26,9 @@ public class LineTool implements iTool {
 
     @Override
     public void onMouseRelease(MouseEvent event, Pane drawingPane) {
+        if(event.getButton() == MouseButton.SECONDARY) {
+            return;
+        }
         // calculates the length of the drawn line
         double measuredPixels = CalculationUtil.calculateLineLength(currentLine);
         // Imageview from the GraphicsPane for calculating the effective real world length
@@ -85,6 +89,10 @@ public class LineTool implements iTool {
 
     @Override
     public void onMousePressed(MouseEvent event, Pane drawingPane) {
+        if(event.getButton() == MouseButton.SECONDARY) {
+            onCleanUp(drawingPane);
+            return;
+        }
         // remove the previous line from the drawing Pane
         if(currentLine != null) {
             drawingPane.getChildren().remove(currentLine);
@@ -103,6 +111,9 @@ public class LineTool implements iTool {
 
     @Override
     public void onMouseDragged(MouseEvent event, Pane drawingPane) {
+        if(event.getButton() == MouseButton.SECONDARY) {
+            return;
+        }
         // while dragging update the end point to the mouse position
         currentLine.setEndX(event.getX());
         currentLine.setEndY(event.getY());
@@ -114,5 +125,7 @@ public class LineTool implements iTool {
         if(currentLine != null) {
             drawingPane.getChildren().remove(currentLine);
         }
+
+        MainPane.Instance.getGraphicPane().changeDisplayText("");
     }
 }

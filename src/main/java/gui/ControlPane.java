@@ -10,10 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.util.Callback;
-import logic.AngleTool;
-import logic.ImageGenerator;
-import logic.LineTool;
-import logic.ScopeTool;
+import logic.*;
 
 import java.io.File;
 
@@ -23,9 +20,16 @@ public class ControlPane extends StackPane {
     public ControlPane(StateModel stateModel) {
         // components for buttons
         Button loadButton = new Button(">>Daten laden<<");
-        Button measureLength = new Button("Länge messen");
-        Button measureScope = new Button("Umfang messen");
-        Button measureDegree = new Button("Winkel messen");
+        ToggleGroup toggleGroup = new ToggleGroup();
+        RadioButton measureLength = new RadioButton("Länge messen");
+        RadioButton measureScope = new RadioButton("Umfang messen");
+        RadioButton measureDegree = new RadioButton("Winkel messen");
+
+        measureLength.setToggleGroup(toggleGroup);
+        measureScope.setToggleGroup(toggleGroup);
+        measureDegree.setToggleGroup(toggleGroup);
+
+        toggleGroup.selectToggle(measureLength);
 
         // event for the tools
         measureLength.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new LineTool(stateModel)));
@@ -34,24 +38,25 @@ public class ControlPane extends StackPane {
 
         // comboBox for the stroke color
         Label labelColor = new Label("Strichfarbe:");
-        ComboBox<Color> colorComboBox = new ComboBox<>();
+        ComboBox<ColorName> colorComboBox = new ComboBox<ColorName>();
         colorComboBox.setEditable(false);
-        colorComboBox.getItems().add(Color.YELLOWGREEN);
-        colorComboBox.getItems().add(Color.WHITE);
-        colorComboBox.getItems().add(Color.BLACK);
-        colorComboBox.getItems().add(Color.HOTPINK);
+        colorComboBox.getItems().add(new ColorName(Color.YELLOWGREEN, "Green"));
+        colorComboBox.getItems().add(new ColorName(Color.WHITE, "White"));
+        colorComboBox.getItems().add(new ColorName(Color.BLACK, "Black"));
+        colorComboBox.getItems().add(new ColorName(Color.HOTPINK, "Hotpink"));
+        colorComboBox.getSelectionModel().selectFirst();
 
         // displaying the cells of the comboBox in color
         colorComboBox.setCellFactory(new Callback<>() {
             @Override
-            public ListCell<Color> call(ListView<Color> param) {
+            public ListCell<ColorName> call(ListView<ColorName> param) {
                 return new ListCell<>() {
                     {
                         super.setPrefWidth(100);
                     }
 
                     @Override
-                    protected void updateItem(Color item, boolean empty) {
+                    protected void updateItem(ColorName item, boolean empty) {
                         super.updateItem(item, empty);
 
                         if (item == null || empty) {
@@ -59,7 +64,7 @@ public class ControlPane extends StackPane {
                             setStyle("");
                         } else {
                             setText(item.toString());
-                            setStyle("-fx-background-color: " + item.toString().replace("0x", "#"));
+                            setStyle("-fx-background-color: " + item.color.toString().replace("0x", "#"));
                         }
                     }
                 };
@@ -68,16 +73,8 @@ public class ControlPane extends StackPane {
 
         // set the chosen color for the stateModel
         colorComboBox.setOnAction(event -> {
-            Color selectedColor = colorComboBox.getValue();
-            if (selectedColor == Color.WHITE) {
-                stateModel.setColor(Color.WHITE);
-            } else if (selectedColor == Color.BLACK) {
-                stateModel.setColor(Color.BLACK);
-            } else if (selectedColor == Color.HOTPINK) {
-                stateModel.setColor(Color.HOTPINK);
-            } else if (selectedColor == Color.YELLOWGREEN) {
-                stateModel.setColor(Color.YELLOWGREEN);
-            }
+            ColorName selectedColor = colorComboBox.getValue();
+            stateModel.setColor(selectedColor.color);
         });
 
         // slider for the stroke width
@@ -147,10 +144,10 @@ public class ControlPane extends StackPane {
         hBox.setPadding(new Insets(5, 5, 5, 5));
         // vertical box for all components
         VBox controlPane = new VBox();
-        controlPane.getChildren().addAll(loadButton,measureLength, measureDegree, measureScope, hBox , imageInfo ,textArea);
-        controlPane.setAlignment(Pos.CENTER);
+        controlPane.getChildren().addAll(loadButton, measureLength, measureDegree, measureScope, hBox , imageInfo ,textArea);
+        controlPane.setAlignment(Pos.CENTER_LEFT);
         controlPane.setSpacing(10);
-        controlPane.setPadding(new Insets(5, 5, 5, 5));
+        controlPane.setPadding(new Insets(5, 20, 5, 20));
         this.getChildren().add(controlPane);
     }
 }
