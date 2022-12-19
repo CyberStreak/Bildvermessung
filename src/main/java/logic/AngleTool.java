@@ -2,7 +2,6 @@ package logic;
 
 import gui.MainPane;
 import gui.StateModel;
-import gui.StateObserver;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -17,25 +16,21 @@ public class AngleTool implements iTool{
     // stores the state, 0 = not started, 1 = the first line has been started drawing, 2 = second line has been started drawing
     private int state = 0;
     private final StateModel stateModel;
-    private StateObserver observer1, observer2;
 
     public AngleTool(StateModel stateModel) {
         this.stateModel = stateModel;
-        observer1 = new StateObserver() {
-            @Override
-            public void stateChanged() {
+
+        stateModel.addObserver(()-> {
+            if(line1 != null) {
                 line1.setStroke(stateModel.getColor());
                 line1.setStrokeWidth(stateModel.getStrokeWidth());
             }
-        };
 
-        observer2 = new StateObserver() {
-            @Override
-            public void stateChanged() {
+            if(line2 != null) {
                 line2.setStroke(stateModel.getColor());
                 line2.setStrokeWidth(stateModel.getStrokeWidth());
             }
-        };
+        });
 
     }
 
@@ -57,7 +52,7 @@ public class AngleTool implements iTool{
             // update display text to the measured angle
             float Angle = (float)CalculationUtil.calculateAngle(line1, line2);
             float Complement = 360 - Angle;
-            MainPane.Instance.getGraphicPane().changeDisplayText("Winkel zwischen den Linien: " + String.format("%.2f", Angle)+ "° | " +String.format("%.2f", Complement)+ "°");
+            MainPane.instance.getGraphicPane().changeDisplayText("Winkel zwischen den Linien: " + String.format("%.2f", Angle)+ "° | " +String.format("%.2f", Complement)+ "°");
         }
     }
 
@@ -84,17 +79,13 @@ public class AngleTool implements iTool{
                 drawingPane.getChildren().remove(line2);
             }
             // generate a new line starting from mouse position
-            stateModel.removeObserver(observer1);
             line1 = generateLine(event.getX(), event.getY(), event.getX(), event.getY());
-            stateModel.addObserver(observer1);
             currentLine = line1;
         }
         // if first line already has been drawn
         else if(state == 1) {
             // generate second line
-            stateModel.removeObserver(observer2);
             line2 = generateLine(line1.getEndX(), line1.getEndY(), event.getX(), event.getY());
-            stateModel.addObserver(observer2);
             currentLine = line2;
         }
 
@@ -123,7 +114,7 @@ public class AngleTool implements iTool{
             drawingPane.getChildren().remove(line2);
         }
 
-        MainPane.Instance.getGraphicPane().changeDisplayText("");
+        MainPane.instance.getGraphicPane().changeDisplayText("");
         state = 0;
     }
 

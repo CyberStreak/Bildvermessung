@@ -12,24 +12,20 @@ import java.util.ArrayList;
 
 public class ScopeTool implements iTool{
     private Line currentLine;
-    private static final ArrayList<Line> lines = new ArrayList<>();
+    private final ArrayList<Line> lines = new ArrayList<>();
     private final StateModel stateModel;
 
     public ScopeTool(StateModel stateModel) {
         this.stateModel = stateModel;
 
         stateModel.addObserver(() -> {
-            if (currentLine != null) {
-                for (Line line : lines) {
+            for (Line line : lines) {
+                if(line != null) {
                     line.setStroke(stateModel.getColor());
                     line.setStrokeWidth(stateModel.getStrokeWidth());
                 }
             }
         });
-    }
-
-    public static ArrayList<Line> getLines() {
-        return lines;
     }
 
     @Override
@@ -70,9 +66,9 @@ public class ScopeTool implements iTool{
         // calculates the length of the drawn line
         double measuredPixels = totalLength(lines);
         // Imageview from the GraphicsPane for calculating the effective real world length
-        ImageView view = MainPane.Instance.getGraphicPane().getImageView();
+        ImageView view = MainPane.instance.getGraphicPane().getImageView();
         // ImageGenerator from the GraphicsPane for calculating the effective real world length
-        ImageGenerator generator = MainPane.Instance.getCurrentImageGenerator();
+        ImageGenerator generator = MainPane.instance.getCurrentImageGenerator();
 
         if ( view != null && generator != null) {
             // Calculate line length based on:
@@ -112,7 +108,7 @@ public class ScopeTool implements iTool{
             }
 
             // update the displayed text
-            MainPane.Instance.getGraphicPane().changeDisplayText("Länge: \t"
+            MainPane.instance.getGraphicPane().changeDisplayText("Länge: \t"
                     + String.format("%.3f", meters) + " m"+ " | "
                     + String.format("%.4f", kmeters) + " km | "
                     + String.format("%.2f", cmeters) + " cm | "
@@ -138,7 +134,7 @@ public class ScopeTool implements iTool{
             currentLine = null;
         }
 
-        MainPane.Instance.getGraphicPane().changeDisplayText("");
+        MainPane.instance.getGraphicPane().changeDisplayText("");
     }
 
     // measure the total length of all drawn lines

@@ -32,9 +32,9 @@ public class ControlPane extends StackPane {
         toggleGroup.selectToggle(measureLength);
 
         // event for the tools
-        measureLength.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new LineTool(stateModel)));
-        measureDegree.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new AngleTool(stateModel)));
-        measureScope.setOnAction(event -> MainPane.Instance.getGraphicPane().changeTool(new ScopeTool(stateModel)));
+        measureLength.setOnAction(event -> MainPane.instance.getGraphicPane().changeTool(new LineTool(stateModel)));
+        measureDegree.setOnAction(event -> MainPane.instance.getGraphicPane().changeTool(new AngleTool(stateModel)));
+        measureScope.setOnAction(event -> MainPane.instance.getGraphicPane().changeTool(new ScopeTool(stateModel)));
 
         // comboBox for the stroke color
         Label labelColor = new Label("Strichfarbe:");
@@ -105,10 +105,10 @@ public class ControlPane extends StackPane {
             File dataFile = fileChooser.showOpenDialog(null);
 
             ImageGenerator imgGenerator = FileHandler.readFile(dataFile);
-            MainPane.Instance.setCurrentImageGenerator(imgGenerator);
+            MainPane.instance.setCurrentImageGenerator(imgGenerator);
             if(imgGenerator != null) {
                 // set the image for the imageView
-                MainPane.Instance.getGraphicPane().setImage(imgGenerator.getImg());
+                MainPane.instance.getGraphicPane().setImage(imgGenerator.getImg());
 
                 // 1st text box to display file/image information that doesn't change as measurements are taken
                 textArea.setMinHeight(220);

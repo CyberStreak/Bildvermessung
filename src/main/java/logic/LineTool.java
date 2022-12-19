@@ -32,9 +32,9 @@ public class LineTool implements iTool {
         // calculates the length of the drawn line
         double measuredPixels = CalculationUtil.calculateLineLength(currentLine);
         // Imageview from the GraphicsPane for calculating the effective real world length
-        ImageView view = MainPane.Instance.getGraphicPane().getImageView();
+        ImageView view = MainPane.instance.getGraphicPane().getImageView();
         // ImageGenerator from the GraphicsPane for calculating the effective real world length
-        ImageGenerator generator = MainPane.Instance.getCurrentImageGenerator();
+        ImageGenerator generator = MainPane.instance.getCurrentImageGenerator();
 
         if ( view != null && generator != null) {
             // Calculate line length based on:
@@ -75,7 +75,7 @@ public class LineTool implements iTool {
             }
 
             // update the displayed text
-            MainPane.Instance.getGraphicPane().changeDisplayText("Länge: \t" + String.format("%.3f", meters) + " m" + " | " + String.format("%.4f", kmeters) + " km | " + String.format("%.2f", cmeters) + " cm | " + String.format("%.1f", mmeters) + " mm");
+            MainPane.instance.getGraphicPane().changeDisplayText("Länge: \t" + String.format("%.3f", meters) + " m" + " | " + String.format("%.4f", kmeters) + " km | " + String.format("%.2f", cmeters) + " cm | " + String.format("%.1f", mmeters) + " mm");
         }
         else {
             System.out.println("Could not calculate line because either ImageView or ImageGenerator are null");
@@ -126,6 +126,6 @@ public class LineTool implements iTool {
             drawingPane.getChildren().remove(currentLine);
         }
 
-        MainPane.Instance.getGraphicPane().changeDisplayText("");
+        MainPane.instance.getGraphicPane().changeDisplayText("");
     }
 }

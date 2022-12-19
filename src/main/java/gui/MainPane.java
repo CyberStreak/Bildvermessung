@@ -6,7 +6,7 @@ import javafx.scene.layout.StackPane;
 import logic.ImageGenerator;
 
 public class MainPane extends StackPane {
-    public static MainPane Instance;
+    public static MainPane instance;
     private final ControlPane controlPane;
     private final GraphicPane graphicPane;
     private ImageGenerator currentImageGenerator;
@@ -14,7 +14,7 @@ public class MainPane extends StackPane {
     public MainPane() {
         StateModel stateModel = new StateModel();
 
-        Instance = this;
+        instance = this;
         controlPane = new ControlPane(stateModel);
         graphicPane = new GraphicPane(stateModel);
 

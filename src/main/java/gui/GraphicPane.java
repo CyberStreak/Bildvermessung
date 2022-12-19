@@ -18,7 +18,6 @@ public class GraphicPane extends StackPane {
     private final Label displayLabel;
     private iTool tool;
     private final Pane drawingPane;
-    private final ArrayList<Line> lines = ScopeTool.getLines();
 
     public GraphicPane(StateModel stateModel) {
         // create the needed components
@@ -50,7 +49,7 @@ public class GraphicPane extends StackPane {
             drawingPane.getChildren().clear();
             drawingPane.getChildren().add(imageView);
             displayLabel.setText("");
-            lines.clear();
+            tool.onCleanUp(drawingPane);
         });
 
         // horizontal box for the button and results

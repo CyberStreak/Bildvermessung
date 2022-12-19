@@ -3,7 +3,6 @@ package logic;
 import javafx.scene.shape.Line;
 
 public class CalculationUtil {
-
     public static double calculateAngle(Line line1, Line line2) {
         return Math.toDegrees(Math.acos(dotProduct(line1, line2)/(calculateLineLength(line1) * calculateLineLength(line2))));
     }
