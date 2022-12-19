@@ -4,38 +4,8 @@ import javafx.scene.shape.Line;
 
 public class CalculationUtil {
 
-    public static double calculateAngel(Line line1, Line line2) {
-        double x1 = line1.getStartX();
-        double y1 = line1.getStartY();
-        double x2 = line1.getEndX();
-        double y2 = line1.getEndY();
-        double x3 = line2.getStartX();
-        double y3 = line2.getStartY();
-        double x4 = line2.getEndX();
-        double y4 = line2.getEndY();
-
-        // Swap values if the 2nd one of each pair is smaller
-        double temp;
-        // Calculate the angle of line1 using the atan2 function
-        double angle1 = Math.atan2(y2 - y1, x2 - x1);
-        System.out.println("Angle 1 = " + Math.toDegrees(angle1));
-
-        // Calculate the angle of line2 using the atan2 function
-        double angle2 = Math.atan2(y4 - y3, x4 - x3);
-        System.out.println("Angle 2 = " + Math.toDegrees(angle2));
-
-        // Swap angles if they are not in ascending order
-        if (angle1 > angle2){
-            temp = angle1;
-            angle1 = angle2;
-            angle2 = temp;
-        }
-
-        // Subtract the two angles to find the angle between the lines
-        double angleBetween = angle2 - angle1;
-
-        // Convert the angle from radians to degrees
-        return Math.abs(Math.toDegrees(angleBetween));
+    public static double calculateAngle(Line line1, Line line2) {
+        return Math.toDegrees(Math.acos(dotProduct(line1, line2)/(calculateLineLength(line1) * calculateLineLength(line2))));
     }
 
     // calculate the length of a single line
@@ -46,4 +16,14 @@ public class CalculationUtil {
         double y2 = line.getEndY();
         return Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
     }
+
+    public static double dotProduct(Line line1, Line line2) {
+        double x1 = line1.getEndX() - line1.getStartX();
+        double y1 = line1.getEndY() - line1.getStartY();
+        double x2 = line2.getEndX() - line2.getStartX();
+        double y2 = line2.getEndY() - line2.getStartY();
+
+        return x1 * x2 + y1 * y2;
+    }
+
 }

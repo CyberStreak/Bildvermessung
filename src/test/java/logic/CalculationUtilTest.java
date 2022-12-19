@@ -13,7 +13,7 @@ class CalculationUtilTest {
         Line line1 = new Line(100, 0, 0, 0);    // horizontal right to left
         Line line2 = new Line(0, 0, 0, 100);    // vertical top to bottom
 
-        assertEquals(90, CalculationUtil.calculateAngel(line1, line2));
+        assertEquals(90, CalculationUtil.calculateAngle(line1, line2));
     }
 
     @Test
@@ -22,7 +22,7 @@ class CalculationUtilTest {
         Line line1 = new Line(0, 0, 100, 0);    // horizontal left to right
         Line line2 = new Line(0, 0, 0, 100);    // vertical top to bottom
 
-        assertEquals(90, CalculationUtil.calculateAngel(line1, line2));
+        assertEquals(90, CalculationUtil.calculateAngle(line1, line2));
     }
 
     @Test
@@ -30,7 +30,7 @@ class CalculationUtilTest {
         Line line1 = new Line(0, 0, 100, 0);
         Line line2 = new Line(0, 0, 100, 100);
 
-        assertEquals(45, CalculationUtil.calculateAngel(line1, line2));
+        assertEquals(45, CalculationUtil.calculateAngle(line1, line2));
     }
 
     @Test
@@ -39,7 +39,7 @@ class CalculationUtilTest {
         Line line1 = new Line(0, 0, 100, 0);
         Line line2 = new Line(100, 100, 0, 0);
 
-        assertEquals(45, CalculationUtil.calculateAngel(line1, line2));
+        assertEquals(45, CalculationUtil.calculateAngle(line1, line2));
     }
 
     @Test
