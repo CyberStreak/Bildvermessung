@@ -16,38 +16,13 @@ public class CalculationUtil {
 
         // Swap values if the 2nd one of each pair is smaller
         double temp;
-
-        if (x1 > x2){
-            temp = x1;
-            x1 = x2;
-            x2 = temp;
-        }
-
-        if (x3 > x4){
-            temp = x3;
-            x3 = x4;
-            x4 = temp;
-        }
-
-        if (y1 > y2){
-            temp = y1;
-            y1 = y2;
-            y2 = temp;
-        }
-
-        if (y3 > y4){
-            temp = y3;
-            y3 = y4;
-            y4 = temp;
-        }
-
         // Calculate the angle of line1 using the atan2 function
         double angle1 = Math.atan2(y2 - y1, x2 - x1);
-        //System.out.println("Angle 1 = " + Math.toDegrees(angle1));
+        System.out.println("Angle 1 = " + Math.toDegrees(angle1));
 
         // Calculate the angle of line2 using the atan2 function
         double angle2 = Math.atan2(y4 - y3, x4 - x3);
-        //System.out.println("Angle 2 = " + Math.toDegrees(angle2));
+        System.out.println("Angle 2 = " + Math.toDegrees(angle2));
 
         // Swap angles if they are not in ascending order
         if (angle1 > angle2){
@@ -57,7 +32,7 @@ public class CalculationUtil {
         }
 
         // Subtract the two angles to find the angle between the lines
-        double angleBetween = angle1 - angle2;
+        double angleBetween = angle2 - angle1;
 
         // Convert the angle from radians to degrees
         return Math.abs(Math.toDegrees(angleBetween));
