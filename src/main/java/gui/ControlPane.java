@@ -11,7 +11,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.FileChooser;
 import javafx.util.Callback;
 import logic.*;
-
 import java.io.File;
 
 public class ControlPane extends StackPane {
@@ -38,7 +37,7 @@ public class ControlPane extends StackPane {
 
         // comboBox for the stroke color
         Label labelColor = new Label("Strichfarbe:");
-        ComboBox<ColorName> colorComboBox = new ComboBox<ColorName>();
+        ComboBox<ColorName> colorComboBox = new ComboBox<>();
         colorComboBox.setEditable(false);
         colorComboBox.getItems().add(new ColorName(Color.YELLOWGREEN, "Green"));
         colorComboBox.getItems().add(new ColorName(Color.WHITE, "White"));
@@ -99,14 +98,14 @@ public class ControlPane extends StackPane {
          */
         loadButton.setOnAction(event -> {
             FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Metadaten laden..");
+            fileChooser.setTitle("Metadaten laden");
             fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text Files", "*.txt", "*.json"));
 
             File dataFile = fileChooser.showOpenDialog(null);
 
             ImageGenerator imgGenerator = FileHandler.readFile(dataFile);
             MainPane.instance.setCurrentImageGenerator(imgGenerator);
-            if(imgGenerator != null) {
+            if (imgGenerator != null) {
                 // set the image for the imageView
                 MainPane.instance.getGraphicPane().setImage(imgGenerator.getImg());
 
@@ -116,15 +115,15 @@ public class ControlPane extends StackPane {
                 textArea.setWrapText(true);
 
                 textArea.appendText("BESCHREIBUNG & DATEIPFAD:\n");
-                textArea.appendText(imgGenerator.getDescription()+"\n");
-                textArea.appendText(imgGenerator.getImageFile()+"\n");
+                textArea.appendText(imgGenerator.getDescription() + "\n");
+                textArea.appendText(imgGenerator.getImageFile() + "\n");
 
                 textArea.appendText("\nAUFLÖSUNG:\n");
-                textArea.appendText(imgGenerator.getResolution()+" "+imgGenerator.getResolutionUnit()+"/Pixel\n");
+                textArea.appendText(imgGenerator.getResolution() + " " + imgGenerator.getResolutionUnit() + "/Pixel\n");
 
                 textArea.appendText("\nDIMENSIONEN:\n");
-                textArea.appendText((double)Math.round(imgGenerator.getWidth().intValue() * imgGenerator.getResolution() * 100)/100 + " "+ imgGenerator.getResolutionUnit() + " x " + (double)Math.round(imgGenerator.getHeight().intValue() * imgGenerator.getResolution() * 100)/100 + " "+imgGenerator.getResolutionUnit() +" (BxH)\n");
-                textArea.appendText(imgGenerator.getWidth().intValue()+" x "+imgGenerator.getHeight().intValue()+" Pixel (BxH)\n");
+                textArea.appendText((double) Math.round(imgGenerator.getWidth().intValue() * imgGenerator.getResolution() * 100) / 100 + " " + imgGenerator.getResolutionUnit() + " x " + (double) Math.round(imgGenerator.getHeight().intValue() * imgGenerator.getResolution() * 100) / 100 + " " + imgGenerator.getResolutionUnit() + " (BxH)\n");
+                textArea.appendText(imgGenerator.getWidth().intValue() + " x " + imgGenerator.getHeight().intValue() + " Pixel (BxH)\n");
             }
 
             stateModel.setColor(Color.YELLOWGREEN);
@@ -144,7 +143,7 @@ public class ControlPane extends StackPane {
         hBox.setPadding(new Insets(5, 5, 5, 5));
         // vertical box for all components
         VBox controlPane = new VBox();
-        controlPane.getChildren().addAll(loadButton, measureLength, measureDegree, measureScope, hBox , imageInfo ,textArea);
+        controlPane.getChildren().addAll(loadButton, measureLength, measureDegree, measureScope, hBox, imageInfo, textArea);
         controlPane.setAlignment(Pos.CENTER_LEFT);
         controlPane.setSpacing(10);
         controlPane.setPadding(new Insets(5, 20, 5, 20));

@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.Scanner;
 
 public class TxtReaderImage implements ImageDataReader {
-    // Daten aus dem Text lesen.
+    // read the data from the file
     @Override
     public Optional<ImageGenerator> read(File file) {
 
@@ -20,13 +20,10 @@ public class TxtReaderImage implements ImageDataReader {
             return Optional.empty();
         }
 
-        //String resolution = "";
         String fileContent = "";
         while (fileScanner.hasNextLine()) {
             fileContent += fileScanner.nextLine() + "\n";
         }
-
-        //System.out.print(resolution);
 
         String[] resolutionArray = getValue("resolution: ", fileContent).split(" ");
         Double resolution = 0.0;
@@ -36,7 +33,7 @@ public class TxtReaderImage implements ImageDataReader {
             resolutionUnit = resolutionArray[1];
         }
 
-        // Für alle Betriebssysteme möglich -> File.seperator
+        // File.separator needed that the file can be called on all systems
         String filePath = file.getParent() + File.separator + getValue("image-file: ", fileContent);
         // image-file:
         ImageGenerator image = new ImageGenerator(getValue("description: ", fileContent),
@@ -52,7 +49,6 @@ public class TxtReaderImage implements ImageDataReader {
             String right = sArray[1];
             return right.split("\\n")[0];
         }
-
         return null;
     }
 }

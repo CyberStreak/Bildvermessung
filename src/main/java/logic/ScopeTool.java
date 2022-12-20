@@ -34,7 +34,6 @@ public class ScopeTool implements iTool{
             onCleanUp(drawingPane);
             return;
         }
-
         // generate and add a new line starting from the mouse position
         currentLine = new Line();
         drawingPane.getChildren().add(currentLine);
@@ -121,9 +120,7 @@ public class ScopeTool implements iTool{
     }
 
     @Override
-    public void onMouseClicked(MouseEvent event, Pane drawingPane) {
-
-    }
+    public void onMouseClicked(MouseEvent event, Pane drawingPane) {    }
 
     @Override
     public void onCleanUp(Pane drawingPane) {

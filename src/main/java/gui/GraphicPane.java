@@ -6,12 +6,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.shape.Line;
 import logic.LineTool;
-import logic.ScopeTool;
 import logic.iTool;
-
-import java.util.ArrayList;
 
 public class GraphicPane extends StackPane {
     private final ImageView imageView;
@@ -81,8 +77,7 @@ public class GraphicPane extends StackPane {
 
     // changes currently used tool
     public void changeTool(iTool tool) {
-        // if previous tool is not null -> call the cleanup method
-        // to remove unused lines for example
+        // if previous tool is not null -> call the cleanup method to remove unused lines for example
         if (this.tool != null) {
             this.tool.onCleanUp(drawingPane);
         }

@@ -1,7 +1,6 @@
 package io;
 
 import logic.ImageGenerator;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Optional;

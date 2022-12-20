@@ -1,11 +1,9 @@
 package io;
 
 import logic.ImageGenerator;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Optional;
-
 
 public class FileHandler {
 
@@ -37,14 +35,12 @@ public class FileHandler {
                 throw new RuntimeException(e);
             }
         }
-
         return null;
     }
 
     // checking the file extension for the needed reader
     private static String getExtension(File file) {
         String fileName = file.getName();
-
         int index = fileName.lastIndexOf('.');
         if(index > 0) {
             return fileName.substring(index).toLowerCase();

@@ -11,6 +11,7 @@ public class ImageGenerator {
     private final Double height;
     private final Double width;
 
+    // constructor for the image Object
     public ImageGenerator(String description, String imageFile, Double resolution, String resolutionUnit) {
         this.description = description;
         this.imageFile = imageFile;
@@ -21,6 +22,7 @@ public class ImageGenerator {
         this.width = img.getWidth();
     }
 
+    // getter methods
     public Image getImg() {
         return img;
     }
