@@ -41,7 +41,7 @@ public class JsonReaderImage implements ImageDataReader {
         String image_resolution_unit = (String) imgJsonobj.get("image_resolution_unit");
 
         // pass the strings back to the calling Class
-         ImageGenerator image = new ImageGenerator(description, file.getParent() + File.separator + image_file, image_resolution, image_resolution_unit);
+        ImageGenerator image = new ImageGenerator(description, file.getParent() + File.separator + image_file, image_resolution, image_resolution_unit);
         return Optional.of(image);
 
     }

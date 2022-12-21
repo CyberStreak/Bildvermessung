@@ -30,7 +30,6 @@ public class AngleTool implements iTool{
                 line2.setStrokeWidth(stateModel.getStrokeWidth());
             }
         });
-
     }
 
     @Override
@@ -82,6 +81,7 @@ public class AngleTool implements iTool{
         if(state == 2) {
             // reset state
             state = 0;
+            // change the starting end endpoint for the calculation
             double startX2 = line1.getStartX();
             double startY2 = line1.getStartY();
             line1.setStartX(line1.getEndX());
@@ -109,6 +109,7 @@ public class AngleTool implements iTool{
         state = 0;
     }
 
+    // for additional actions
     @Override
     public void onMouseClicked(MouseEvent event, Pane drawingPane) {    }
 

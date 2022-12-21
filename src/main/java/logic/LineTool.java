@@ -12,9 +12,12 @@ public class LineTool implements iTool {
     // stores the current Line that is being drawn or previously was drawn
     private Line currentLine = null;
     private final StateModel stateModel;
+    private final double x1, y1, x2, y2;
 
     public LineTool(StateModel stateModel) {
         this.stateModel = stateModel;
+        this.x1 = (currentLine.getEndX() - currentLine.getStartX()) / stateModel.getImgWidth();
+        this.y1 = (currentLine.getEndY() - currentLine.getStartY()) / stateModel.getImgWidth();
 
         stateModel.addObserver(() -> {
             if (currentLine != null) {
@@ -104,7 +107,6 @@ public class LineTool implements iTool {
                 cmeters = (float) length * 100000;
                 mmeters = (float) length * 1000000;
             }
-
             // update the displayed text
             MainPane.instance.getGraphicPane().changeDisplayText("Länge: \t" + String.format("%.3f", meters) + " m" + " | " + String.format("%.4f", kmeters) + " km | " + String.format("%.2f", cmeters) + " cm | " + String.format("%.1f", mmeters) + " mm");
         } else {
