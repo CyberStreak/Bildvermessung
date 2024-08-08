@@ -11,20 +11,17 @@ public class TxtReaderImage implements ImageDataReader {
     // read the data from the file
     @Override
     public Optional<ImageGenerator> read(File file) {
+        String fileContent = "";
 
-        Scanner fileScanner;
-        try {
-            fileScanner = new Scanner(file);
+        try (Scanner scanner = new Scanner(file)) {
+            while (scanner.hasNextLine()) {
+                fileContent += scanner.nextLine() + "\n";
+            }
         } catch (FileNotFoundException e) {
             System.err.println("File not found: " + file.getAbsolutePath());
             return Optional.empty();
         }
-
-        String fileContent = "";
-        while (fileScanner.hasNextLine()) {
-            fileContent += fileScanner.nextLine() + "\n";
-        }
-
+        
         String[] resolutionArray = getValue("resolution: ", fileContent).split(" ");
         Double resolution = 0.0;
         String resolutionUnit = "";
