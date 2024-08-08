@@ -1,0 +1,90 @@
+# Maven target directory
+/target/
+
+# IntelliJ IDEA project files
+/.idea/
+/*.iml
+
+# Eclipse project files
+/.project
+/.classpath
+/.settings/
+
+# NetBeans project files
+/nbproject/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+# VS Code settings
+/.vscode/
+
+# macOS specific files
+.DS_Store
+
+# Windows specific files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux specific files
+*~
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+*.bak
+*.orig
+
+# Compiled class files
+*.class
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# Generated files
+*.generated
+
+# Coverage reports
+/coverage/
+/.jacoco/
+
+# Build directories
+/build/
+/out/
+
+# Dependency directories
+/node_modules/
+/bower_components/
+
+# Environment variable files
+.env
+.env.local
+.env.*.local
+
+# IDE specific files
+*.idea/
+*.iml
+*.ipr
+*.iws
+*.sublime-workspace
+*.sublime-project
+*.code-workspace
+
+# Other
+*.log
+*.tmp
+*.lock
+*.pid
+*.seed
+*.pid.lock
+
+tables.md
