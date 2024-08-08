@@ -10,12 +10,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-//import javax.json.stream.JsonParser;
-//import javax.json.stream.JsonParser.Event;
-
 public class JsonReaderImage implements ImageDataReader {
-
-    JSONParser parser = new JSONParser();
 
     @Override
     public Optional<ImageGenerator> read(File file) throws FileNotFoundException {
@@ -23,12 +18,10 @@ public class JsonReaderImage implements ImageDataReader {
         JSONParser jsonparser = new JSONParser();
         FileReader reader = new FileReader(file.getAbsolutePath());
 
-        Object obj = null;
+        Object obj;
         try {
             obj = jsonparser.parse(reader);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ParseException e) {
+        } catch (IOException | ParseException e) {
             throw new RuntimeException(e);
         }
         JSONObject imgJsonobj = (JSONObject)obj;

@@ -104,7 +104,6 @@ public class LineTool implements iTool {
                 cmeters = (float) length * 100000;
                 mmeters = (float) length * 1000000;
             }
-
             // update the displayed text
             MainPane.instance.getGraphicPane().changeDisplayText("Länge: \t" + String.format("%.3f", meters) + " m" + " | " + String.format("%.4f", kmeters) + " km | " + String.format("%.2f", cmeters) + " cm | " + String.format("%.1f", mmeters) + " mm");
         } else {

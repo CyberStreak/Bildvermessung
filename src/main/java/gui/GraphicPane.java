@@ -33,6 +33,8 @@ public class GraphicPane extends StackPane {
         this.imageView.setCache(true);
         drawingPane.heightProperty().addListener((observable, oldValue, newValue) -> this.imageView.setFitHeight(newValue.doubleValue()));
         drawingPane.widthProperty().addListener((observable, oldValue, newValue) -> this.imageView.setFitWidth(newValue.doubleValue()));
+        stateModel.setImgHeight(imageView.getFitHeight());
+        stateModel.setImgWidth(imageView.getFitWidth());
 
         // connect the mouse events from the drawing pane to the currently used tool
         drawingPane.setOnMouseReleased(event -> tool.onMouseRelease(event, drawingPane));
