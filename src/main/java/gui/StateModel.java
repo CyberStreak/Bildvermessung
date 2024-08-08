@@ -35,6 +35,7 @@ public class StateModel {
 
     public void setImgWidth(double width) {
         this.imgWidth = width;
+        sendChange();
     }
 
     public double getImgWidth() {
@@ -43,6 +44,7 @@ public class StateModel {
 
     public void setImgHeight(double height) {
         this.imgHeight = height;
+        sendChange();
     }
 
     public double getImgHeight() {
